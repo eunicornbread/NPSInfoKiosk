@@ -1,0 +1,35 @@
+body {
+	background-color: #B2DFDB;
+}
+
+.wrapper {
+	position: relative;
+}
+
+.search-bar {
+	width: 600px;
+	position: absolute;
+	left: 400px;
+	top: 50px;
+}
+
+#search-input {
+	width: 600px;
+	height: 40px;
+	padding-left: 17px;
+	border-radius: 50px;
+	border: none;
+	outline: none;
+}
+
+#search-button {
+	height: 40px;
+	width: 40px;
+	border-radius: 50px;
+	background-color: #00B0FF;
+	border: none;
+	color: white;
+	position: absolute;
+	right: 0px;
+	outline: none;
+}
