@@ -1,9 +1,7 @@
-body {
-	background-color: #B2DFDB;
-}
-
 .wrapper {
 	position: relative;
+	background-color: #B2DFDB;
+	height: 100vh;
 }
 
 .search-bar {
@@ -13,7 +11,7 @@ body {
 	top: 50px;
 }
 
-#search-input {
+.search-input {
 	width: 600px;
 	height: 40px;
 	padding-left: 17px;
@@ -22,7 +20,7 @@ body {
 	outline: none;
 }
 
-#search-button {
+.search-button {
 	height: 40px;
 	width: 40px;
 	border-radius: 50px;
@@ -32,4 +30,71 @@ body {
 	position: absolute;
 	right: 0px;
 	outline: none;
+}
+
+.filter-menu {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+}
+
+.dropdown-item {
+	width: 100%;
+	height: 35px;
+}
+
+.dropdown-menu {
+	height: 300px;
+	overflow-y: auto;
+	padding: 0px;
+}
+
+.filter-button {
+}
+
+.state-filter-button {
+	background-color: rgba(0, 0, 0, 0);
+	color: black;
+	border-color: black;
+}
+
+.state-filter-button:hover {
+	/* Add style later */
+	background-color: rgba(0, 0, 0, 0);
+	color: black;
+	border-color: black;
+}
+
+.state-filter-button::after {
+	/*display: none;*/
+}
+
+.filter-group {
+	position: absolute;
+	top: 120px;
+	left: 60px;
+}
+
+.state-filter-item {
+	position: relative;
+	background-color: #00BCD4;
+	border-radius: 50px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+}
+
+.state-filter-item i {
+	color: white;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	right: 12px;
+}
+
+.filter-text {
+	height: 100%;
+	margin-right: 20px;
 }

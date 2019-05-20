@@ -35,10 +35,14 @@ class App extends Component {
   render() {
     return (
       <>
-        <p>Hi! This is the landing page :)</p>
-        <NavLink to="/search" class="nounderline">
-          <button type="button" class="btn btn-primary">Find a park</button>
-        </NavLink>
+        <div className="main">
+          <div className="content">
+            <p>Hi! This is the landing page :)</p>
+            <NavLink to="/search" className="nounderline">
+              <button type="button" className="btn btn-primary">Find a park</button>
+            </NavLink>
+          </div>
+        </div>
       </>
     );
   }

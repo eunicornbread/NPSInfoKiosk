@@ -1,3 +1,20 @@
+.main {
+  height: 100vh;
+  background-color: #B3E5FC;
+  position: relative;
+}
+
+.content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+
 .App {
   text-align: center;
 }
