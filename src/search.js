@@ -15,6 +15,7 @@ class Search extends Component {
 		super(props);
 		this.handleSearch = this.handleSearch.bind(this);
 		this.handleFilter = this.handleFilter.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 		this.state = {
 			searchResults: [],
 			statesMap: [],
@@ -26,6 +27,15 @@ class Search extends Component {
 	}
 
 	componentDidMount() {
+	}
+
+	handleDelete(event) {
+		var filtered = this.state.stateFilter.filter((value, index, arr) => {
+			return value != event.target.getAttribute("data-state");
+		});
+		this.setState({
+			stateFilter: filtered
+		})
 	}
 
 	handleFilter(event) {
@@ -91,7 +101,7 @@ class Search extends Component {
 			filterList.push(
 				<div className="state-filter-item" key={ index }>
 					<div className="filter-text">{ element }</div>
-					<i className="fas fa-times"></i>
+					<i className="fas fa-times" data-state={ element } onClick={ this.handleDelete }></i>
 				</div>
 			);
 			index += 1;
