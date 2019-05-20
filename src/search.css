@@ -14,7 +14,7 @@
 .search-input {
 	width: 600px;
 	height: 40px;
-	padding-left: 17px;
+	padding-left: 18px;
 	border-radius: 50px;
 	border: none;
 	outline: none;
@@ -52,7 +52,7 @@
 .filter-button {
 }
 
-.state-filter-button, .desig-filter-button {
+.state-filter-button, .desig-filter-button, .search-filter-button {
 	background-color: rgba(0, 0, 0, 0);
 	color: black;
 	border-color: black;
@@ -117,3 +117,4 @@
 	height: 100%;
 	margin-right: 20px;
 }
+

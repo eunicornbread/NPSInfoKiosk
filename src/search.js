@@ -52,6 +52,9 @@ class Search extends Component {
 
 	handleStateFilter(event) {
 		event.preventDefault();
+		if (document.getElementById('state-filter').value === 'Filter By State') {
+			return;
+		}
 		var stateFilter = this.state.stateFilter;
 		stateFilter.push(document.getElementById('state-filter').value);
 		var uniqueState = [...new Set(stateFilter)];
@@ -63,6 +66,9 @@ class Search extends Component {
 
 	handleDesigFilter(event) {
 		event.preventDefault();
+		if (document.getElementById('desig-filter').value === 'Filter By Designation') {
+			return;
+		}
 		var desigFilter = this.state.desigFilter;
 		desigFilter.push(document.getElementById('desig-filter').value);
 		var uniqueDesig = [...new Set(desigFilter)];
@@ -70,6 +76,11 @@ class Search extends Component {
 		this.setState({
 			desigFilter: uniqueDesig
 		});
+	}
+
+	handleSearchFilter(event) {
+		event.preventDefault();
+		console.log(document.getElementById('search-filter').value);
 	}
 
 	handleSearch(event) {
@@ -171,6 +182,7 @@ class Search extends Component {
 				    			ref={(input) => this.textInput = input} placeholder="Find a park" />
 					</form>
 				</div>
+
 				<div className="search-result">{ /*resultList*/ }</div>
 
 				<div className="filter-menu" id="filter-menu">
@@ -181,13 +193,21 @@ class Search extends Component {
 						</option>
 						{ stateOptions }
 					</select>
+					
 					<br />
-					<select className="filter-button desig-filter-button mt-5" 
+					<select className="filter-button desig-filter-button mt-4" 
 							id="desig-filter" onChange={ this.handleDesigFilter }>
 						<option className="dropdown-item" key={ 0 }>
 							Filter By Designation
 						</option>
 						{ desigOptions }
+					</select>
+					
+					<br />
+					<select className="filter-button search-filter-button mt-4"
+							id="search-filter" onChange={ this.handleSearchFilter } >
+						<option className="dropdown-item">By Keyword</option>
+						<option className="dropdown-item">By Name</option>
 					</select>
 				</div>
 
@@ -195,6 +215,8 @@ class Search extends Component {
 					{ stateFilterList }
 					{ desigFilterList }
 				</div>
+
+				
 
 			</div>
 
