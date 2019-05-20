@@ -14,8 +14,10 @@ class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.handleSearch = this.handleSearch.bind(this);
-		this.handleFilter = this.handleFilter.bind(this);
-		this.handleDelete = this.handleDelete.bind(this);
+		this.handleStateFilter = this.handleStateFilter.bind(this);
+		this.handleStateDelete = this.handleStateDelete.bind(this);
+		this.handleDesigFilter = this.handleDesigFilter.bind(this);
+		this.handleDesigDelete = this.handleDesigDelete.bind(this);
 		this.state = {
 			searchResults: [],
 			statesMap: [],
@@ -23,22 +25,32 @@ class Search extends Component {
 			desigArray: [],
 			desigFilter: []
 		};
-		console.log(designationData);
 	}
 
 	componentDidMount() {
+
 	}
 
-	handleDelete(event) {
+
+	handleDesigDelete(event) {
+		var filtered = this.state.desigFilter.filter((value, index, arr) => {
+			return value !== event.target.getAttribute("data-desig");
+		})
+		this.setState({
+			desigFilter: filtered
+		});
+	}
+
+	handleStateDelete(event) {
 		var filtered = this.state.stateFilter.filter((value, index, arr) => {
-			return value != event.target.getAttribute("data-state");
+			return value !== event.target.getAttribute("data-state");
 		});
 		this.setState({
 			stateFilter: filtered
-		})
+		});
 	}
 
-	handleFilter(event) {
+	handleStateFilter(event) {
 		event.preventDefault();
 		var stateFilter = this.state.stateFilter;
 		stateFilter.push(document.getElementById('state-filter').value);
@@ -46,6 +58,17 @@ class Search extends Component {
 		
 		this.setState({
 			stateFilter: uniqueState
+		});
+	}
+
+	handleDesigFilter(event) {
+		event.preventDefault();
+		var desigFilter = this.state.desigFilter;
+		desigFilter.push(document.getElementById('desig-filter').value);
+		var uniqueDesig = [...new Set(desigFilter)];
+
+		this.setState({
+			desigFilter: uniqueDesig
 		});
 	}
 
@@ -67,6 +90,7 @@ class Search extends Component {
 	}
 
 	render() {
+		// display the results from the api get request
 		var resultList = [];
 		this.state.searchResults.forEach(element => {
 			resultList.push(
@@ -84,10 +108,11 @@ class Search extends Component {
 		USStateData.forEach(element => {
 			map.set(element.name, element.abbreviation);
 		});
-		var stateSelected = [];
+		// display all the state options
+		var stateOptions = [];
 		var index = 1;
 		map.forEach((value, key) => {
-			stateSelected.push(
+			stateOptions.push(
 				<option className="dropdown-item" key={ index }>
 					{ key }
 				</option>
@@ -95,18 +120,43 @@ class Search extends Component {
 			index += 1;
 		});
 
-		var filterList = [];
+		// display all the designation options
+		var desigOptions = [];
+		index = 1;
+		designationData.forEach((element) => {
+			desigOptions.push(
+				<option className="dropdown-item" key={ index }>
+					{ element.designation }
+				</option>
+			);
+			index += 1;
+		});
+
+		// display selected state filters
+		var stateFilterList = [];
 		index = 0;
 		this.state.stateFilter.forEach(element => {
-			filterList.push(
+			stateFilterList.push(
 				<div className="state-filter-item" key={ index }>
 					<div className="filter-text">{ element }</div>
-					<i className="fas fa-times" data-state={ element } onClick={ this.handleDelete }></i>
+					<i className="fas fa-times" data-state={ element } onClick={ this.handleStateDelete }></i>
 				</div>
 			);
 			index += 1;
 		});
 
+		// display selected designation filters
+		var desigFilterList = [];
+		index = 0;
+		this.state.desigFilter.forEach(element => {
+			desigFilterList.push(
+				<div className="desig-filter-item" key={ index }>
+					<div className="filter-text">{ element }</div>
+					<i className="fas fa-times" data-desig={ element } onClick={ this.handleDesigDelete }></i>
+				</div>
+			);
+			index += 1;
+		})
 
 
 		return (
@@ -125,16 +175,25 @@ class Search extends Component {
 
 				<div className="filter-menu" id="filter-menu">
 					<select className="filter-button state-filter-button" 
-							id="state-filter" onChange={ this.handleFilter }>
+							id="state-filter" onChange={ this.handleStateFilter }>
 						<option className="dropdown-item" key={ 0 }>
 							Filter By State
 						</option>
-						{ stateSelected }
+						{ stateOptions }
+					</select>
+					<br />
+					<select className="filter-button desig-filter-button mt-5" 
+							id="desig-filter" onChange={ this.handleDesigFilter }>
+						<option className="dropdown-item" key={ 0 }>
+							Filter By Designation
+						</option>
+						{ desigOptions }
 					</select>
 				</div>
 
 				<div className="filter-group">
-					{ filterList }
+					{ stateFilterList }
+					{ desigFilterList }
 				</div>
 
 			</div>

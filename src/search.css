@@ -52,7 +52,7 @@
 .filter-button {
 }
 
-.state-filter-button {
+.state-filter-button, .desig-filter-button {
 	background-color: rgba(0, 0, 0, 0);
 	color: black;
 	border-color: black;
@@ -71,7 +71,7 @@
 
 .filter-group {
 	position: absolute;
-	top: 120px;
+	top: 180px;
 	left: 60px;
 }
 
@@ -84,6 +84,25 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin-top: 10px;
+}
+
+.desig-filter-item {
+	position: relative;
+	background-color: #9575CD;
+	border-radius: 50px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+}
+
+.desig-filter-item i {
+	color: white;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	right: 12px;
 }
 
 .state-filter-item i {
