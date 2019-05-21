@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import Search from './search';
+import Park from './park';
 import * as serviceWorker from './serviceWorker';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ const routing = (
 		<div>
 			<Route exact path="/" component={ App } />
 			<Route path="/search" component={ Search } />
+			<Route path="/park/:parkCode" component={ Park } />
 		</div>
 	</Router>
 );

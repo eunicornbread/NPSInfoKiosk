@@ -3,6 +3,7 @@ import axios from 'axios';
 import './search.css';
 import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
+import { NavLink } from 'react-router-dom';
 
 // US State JSON 
 // https://gist.github.com/mshafrir/2646763
@@ -105,8 +106,11 @@ class Search extends Component {
 			self.setState({
 				searchResults: res.data.data
 			});
-			console.log(res.data.data);
+			//console.log(res.data.data);
 		})
+		.catch(error => {
+			console.log(error)
+		});
 	}
 
 	render() {
@@ -155,13 +159,16 @@ class Search extends Component {
 			}
 
 			if (includeState && includeDesig && includeSearch) {
+				var parkURL = "/park/" + element.parkCode;
 				resultList.push(
-					<div className="result-item mb-3" key={ element.parkCode }>
-						<span className="mr-5">{ element.states }</span>
-						<span className="mr-5">{ element.fullName }</span>
-						<span>{ element.designation }</span>
-						<br />
-					</div>
+					<NavLink to={ parkURL } className="result-link" key={ element.parkCode }>
+						<div className="result-item mb-3">
+							<span className="mr-5">{ element.states }</span>
+							<span className="mr-5">{ element.fullName }</span>
+							<span>{ element.designation }</span>
+							<br />
+						</div>
+					</NavLink>
 				);
 			}
 			

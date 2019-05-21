@@ -124,3 +124,19 @@ body {
 	padding-left: 400px;
 	padding-top: 150px;
 }
+
+.result-item {
+	border: 1px black solid;
+	width: 800px;
+	height: 70px;
+	padding: 20px;
+}
+
+.result-link {
+	color: black;
+}
+
+.result-link:hover {
+	text-decoration: none;
+	color: black;
+}
