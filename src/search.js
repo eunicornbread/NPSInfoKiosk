@@ -18,6 +18,7 @@ class Search extends Component {
 		this.handleStateDelete = this.handleStateDelete.bind(this);
 		this.handleDesigFilter = this.handleDesigFilter.bind(this);
 		this.handleDesigDelete = this.handleDesigDelete.bind(this);
+		this.handleSearchFilter = this.handleSearchFilter.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -87,7 +88,7 @@ class Search extends Component {
 
 	handleSearchFilter(event) {
 		event.preventDefault();
-		console.log(document.getElementById('search-filter').value);
+		this.forceUpdate();
 	}
 
 	handleSearch(event) {
@@ -140,7 +141,20 @@ class Search extends Component {
 				includeDesig = true;
 			}
 
-			if (includeState && includeDesig) {
+			// search by name or (default) keyword
+			var includeSearch = false;
+			if (document.getElementById('search-filter').value === "By Keyword") {
+				includeSearch = true;
+			}
+
+			if (document.getElementById('search-filter').value === "By Name") {
+				if (element.fullName.toLowerCase().includes(
+							document.getElementById("search-input").value.toLowerCase())) {
+					includeSearch = true;
+				}
+			}
+
+			if (includeState && includeDesig && includeSearch) {
 				resultList.push(
 					<div className="result-item mb-3" key={ element.parkCode }>
 						<span className="mr-5">{ element.states }</span>
@@ -213,7 +227,7 @@ class Search extends Component {
 				    	<button type="submit" className="search-button">
 				    		<i className="fas fa-search"></i>
 				    	</button>
-				    	<input type="text" className="search-input" 
+				    	<input type="text" className="search-input" id="search-input" 
 				    			ref={(input) => this.textInput = input} placeholder="Find a park" />
 					</form>
 				</div>
