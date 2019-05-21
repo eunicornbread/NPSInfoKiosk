@@ -1,7 +1,9 @@
+body {
+	background-color: #B2DFDB;
+}
+
 .wrapper {
 	position: relative;
-	background-color: #B2DFDB;
-	height: 100vh;
 }
 
 .search-bar {
@@ -118,3 +120,7 @@
 	margin-right: 20px;
 }
 
+.search-result {
+	padding-left: 400px;
+	padding-top: 150px;
+}

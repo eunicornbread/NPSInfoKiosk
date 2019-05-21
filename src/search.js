@@ -18,9 +18,16 @@ class Search extends Component {
 		this.handleStateDelete = this.handleStateDelete.bind(this);
 		this.handleDesigFilter = this.handleDesigFilter.bind(this);
 		this.handleDesigDelete = this.handleDesigDelete.bind(this);
+
+		// convert the json file to key value pair
+		var map = new Map();
+		USStateData.forEach(element => {
+			map.set(element.abbreviation, element.name);
+		});
+
 		this.state = {
 			searchResults: [],
-			statesMap: [],
+			statesMap: map,
 			stateFilter: [],
 			desigArray: [],
 			desigFilter: []
@@ -96,7 +103,8 @@ class Search extends Component {
 		.then(res => {
 			self.setState({
 				searchResults: res.data.data
-			})
+			});
+			console.log(res.data.data);
 		})
 	}
 
@@ -104,28 +112,55 @@ class Search extends Component {
 		// display the results from the api get request
 		var resultList = [];
 		this.state.searchResults.forEach(element => {
-			resultList.push(
-				<div className="result-item" key={ element.parkCode }>
-					<span className="mr-5">{ element.states }</span>
-					<span className="mr-5">{ element.name }</span>
-					<span>{ element.designation }</span>
-					<br />
-				</div>
-			);
+			
+			// filter by state
+			var includeState = false;
+			var states = [];
+			element.states.split(",").forEach(stateAbbr => {
+				states.push(this.state.statesMap.get(stateAbbr));
+			});
+
+			if (this.state.stateFilter.length === 0) {
+				includeState = true;
+			}
+
+			states.forEach(state => {
+				if (this.state.stateFilter.includes(state)) {
+					includeState = true;
+				}
+			});
+
+			// filter by designation
+			var includeDesig = false;
+			if (this.state.desigFilter.length === 0) {
+				includeDesig = true;
+			}
+
+			if (this.state.desigFilter.includes(element.designation)) {
+				includeDesig = true;
+			}
+
+			if (includeState && includeDesig) {
+				resultList.push(
+					<div className="result-item mb-3" key={ element.parkCode }>
+						<span className="mr-5">{ element.states }</span>
+						<span className="mr-5">{ element.fullName }</span>
+						<span>{ element.designation }</span>
+						<br />
+					</div>
+				);
+			}
+			
 		});
 
-		// convert the json file to key value pair
-		var map = new Map();
-		USStateData.forEach(element => {
-			map.set(element.name, element.abbreviation);
-		});
+		
 		// display all the state options
 		var stateOptions = [];
 		var index = 1;
-		map.forEach((value, key) => {
+		this.state.statesMap.forEach(element => {
 			stateOptions.push(
 				<option className="dropdown-item" key={ index }>
-					{ key }
+					{ element }
 				</option>
 			);
 			index += 1;
@@ -183,7 +218,7 @@ class Search extends Component {
 					</form>
 				</div>
 
-				<div className="search-result">{ /*resultList*/ }</div>
+				<div className="search-result" id="search-results">{ resultList }</div>
 
 				<div className="filter-menu" id="filter-menu">
 					<select className="filter-button state-filter-button" 
