@@ -22,6 +22,7 @@ class Search extends Component {
 		this.handleSearchFilter = this.handleSearchFilter.bind(this);
 		this.handleCollapse = this.handleCollapse.bind(this);
 		this.handleStateCollapse = this.handleStateCollapse.bind(this);
+		this.handleDesigCollapse = this.handleDesigCollapse.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -41,6 +42,10 @@ class Search extends Component {
 			if (!document.getElementById('state-filter-wrapper').contains(event.target)) {
 				document.getElementById('state-filter-option').classList.remove('show');
 			}
+
+			if (!document.getElementById('desig-filter-wrapper').contains(event.target)) {
+				document.getElementById('desig-filter-option').classList.remove('show');
+			}
 		});
 	}
 
@@ -58,6 +63,14 @@ class Search extends Component {
 		} else {
 			document.getElementById('state-filter-option').classList.add('show');
 		}
+	}
+
+	handleDesigCollapse(event) {
+		if (document.getElementById('desig-filter-option').classList.contains('show')) {
+			document.getElementById('desig-filter-option').classList.remove('show');
+		} else {
+			document.getElementById('desig-filter-option').classList.add('show');
+		}	
 	}
 
 	handleDesigDelete(event) {
@@ -89,19 +102,14 @@ class Search extends Component {
 	}
 
 	handleDesigFilter(event) {
-		event.preventDefault();
-		if (document.getElementById('desig-filter').value === 'Filter By Designation') {
-			return;
-		}
 		var desigFilter = this.state.desigFilter;
-		desigFilter.push(document.getElementById('desig-filter').value);
+		desigFilter.push(event.target.getAttribute('data-desig'));
 		var uniqueDesig = [...new Set(desigFilter)];
 
 		this.setState({
 			desigFilter: uniqueDesig
 		});
 
-		document.getElementById('desig-filter').selectedIndex = 0;
 	}
 
 	handleSearchFilter(event) {
@@ -205,26 +213,14 @@ class Search extends Component {
 			index += 1;
 		});
 
-
-		// var stateOptions = [];
-		// var index = 1;
-		// this.state.statesMap.forEach(element => {
-		// 	stateOptions.push(
-		// 		<option className="dropdown-item" key={ index }>
-		// 			{ element }
-		// 		</option>
-		// 	);
-		// 	index += 1;
-		// });
-
 		// display all the designation options
 		var desigOptions = [];
-		index = 1;
+		index = 0;
 		designationData.forEach((element) => {
 			desigOptions.push(
-				<option className="dropdown-item" key={ index }>
-					{ element.designation }
-				</option>
+				<div className="dropdown-item" onClick={ this.handleDesigFilter } key={ index } data-desig={ element.designation }>
+					<p data-desig={ element.designation }>{ element.designation }</p>
+				</div>
 			);
 			index += 1;
 		});
@@ -272,18 +268,7 @@ class Search extends Component {
 				<div className="search-result" id="search-results">{ resultList }</div>
 
 				<div className="filter-menu" id="filter-menu">
-					{/*
-					<div>
-						<i className="fas fa-chevron-circle-right collapse-icon"></i>
-						<select className="filter-button state-filter-button" 
-								id="state-filter" onChange={ this.handleStateFilter }>
-							<option className="dropdown-item" key={ 0 }>
-								Filter By State
-							</option>
-							{ stateOptions }
-						</select>
-					</div>
-					*/}
+					
 					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
 						<i className="fas fa-chevron-circle-right collapse-icon"></i>
 						<div className="filter-button state-filter-button">
@@ -293,18 +278,17 @@ class Search extends Component {
 							{ stateOptions }
 						</div>
 					</div>
-					
-					<div>
-						<i className="fas fa-chevron-circle-right collapse-icon"></i>
-						<select className="filter-button desig-filter-button mt-4" 
-								id="desig-filter" onChange={ this.handleDesigFilter }>
-							<option className="dropdown-item" key={ 0 }>
-								Filter By Designation
-							</option>
-							{ desigOptions }
-						</select>
-					</div>
 
+					<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
+						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<div className="filter-button desig-filter-button">
+							<p className="noselect">Filter By Designation</p>
+						</div>
+						<div className="filter-option desig-filter-option" id="desig-filter-option">
+							{ desigOptions }
+						</div>
+					</div>
+					
 					<div>
 						<i className="fas fa-chevron-circle-right collapse-icon"></i>
 						<select className="filter-button search-filter-button mt-4"
