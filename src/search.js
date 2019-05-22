@@ -23,6 +23,7 @@ class Search extends Component {
 		this.handleCollapse = this.handleCollapse.bind(this);
 		this.handleStateCollapse = this.handleStateCollapse.bind(this);
 		this.handleDesigCollapse = this.handleDesigCollapse.bind(this);
+		this.handleSearchCollapse = this.handleSearchCollapse.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -45,6 +46,10 @@ class Search extends Component {
 
 			if (!document.getElementById('desig-filter-wrapper').contains(event.target)) {
 				document.getElementById('desig-filter-option').classList.remove('show');
+			}
+
+			if (!document.getElementById('search-filter-wrapper').contains(event.target)) {
+				document.getElementById('search-filter-option').classList.remove('show');
 			}
 		});
 	}
@@ -70,6 +75,14 @@ class Search extends Component {
 			document.getElementById('desig-filter-option').classList.remove('show');
 		} else {
 			document.getElementById('desig-filter-option').classList.add('show');
+		}	
+	}
+
+	handleSearchCollapse(event) {
+		if (document.getElementById('search-filter-option').classList.contains('show')) {
+			document.getElementById('search-filter-option').classList.remove('show');
+		} else {
+			document.getElementById('search-filter-option').classList.add('show');
 		}	
 	}
 
@@ -114,6 +127,7 @@ class Search extends Component {
 
 	handleSearchFilter(event) {
 		event.preventDefault();
+		document.getElementById('search-filter').innerHTML = event.target.getAttribute('data-search');
 		this.forceUpdate();
 	}
 
@@ -172,12 +186,15 @@ class Search extends Component {
 			}
 
 			// search by name or (default) keyword
+
 			var includeSearch = false;
-			if (document.getElementById('search-filter').value === "Search By Keyword") {
+			if (document.getElementById('search-filter') !== null
+				&& document.getElementById('search-filter').textContent === "Search By Keyword") {
 				includeSearch = true;
 			}
 
-			if (document.getElementById('search-filter').value === "Search By Name") {
+			if (document.getElementById('search-filter') !== null
+				&& document.getElementById('search-filter').textContent === "Search By Name") {
 				if (element.fullName.toLowerCase().includes(
 							document.getElementById("search-input").value.toLowerCase())) {
 					includeSearch = true;
@@ -288,14 +305,22 @@ class Search extends Component {
 							{ desigOptions }
 						</div>
 					</div>
-					
-					<div>
+
+					<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
 						<i className="fas fa-chevron-circle-right collapse-icon"></i>
-						<select className="filter-button search-filter-button mt-4"
-								id="search-filter" onChange={ this.handleSearchFilter } >
-							<option className="dropdown-item">Search By Keyword</option>
-							<option className="dropdown-item">Search By Name</option>
-						</select>
+						<div className="filter-button search-filter-button">
+							<p className="noselect" id="search-filter">Search By Keyword</p>
+						</div>
+						<div className="filter-option search-filter-option" id="search-filter-option">
+							<div className="dropdown-item" onClick={ this.handleSearchFilter } 
+																		data-search="Search By Keyword">
+								<p data-search="Search By Keyword">Search By Keyword</p>
+							</div>
+							<div className="dropdown-item" onClick={ this.handleSearchFilter } 
+																		data-search="Search By Name">
+								<p data-search="Search By Name">Search By Name</p>
+							</div>
+						</div>
 					</div>
 				</div>
 
