@@ -79,20 +79,13 @@ class Search extends Component {
 	}
 
 	handleStateFilter(event) {
-		event.preventDefault();
-		if (document.getElementById('state-filter').value === 'Filter By State') {
-			return;
-		}
 		var stateFilter = this.state.stateFilter;
-		stateFilter.push(document.getElementById('state-filter').value);
+		stateFilter.push(event.target.getAttribute('data-state'));
 		var uniqueState = [...new Set(stateFilter)];
 		
 		this.setState({
 			stateFilter: uniqueState
-		});
-
-		document.getElementById('state-filter').selectedIndex = 0;
-
+		});		
 	}
 
 	handleDesigFilter(event) {
@@ -205,8 +198,8 @@ class Search extends Component {
 		var index = 0;
 		this.state.statesMap.forEach(element => {
 			stateOptions.push(
-				<div className="dropdown-item" key={ index }>
-					<p>{ element }</p>
+				<div className="dropdown-item" onClick={ this.handleStateFilter } key={ index } data-state={ element }>
+					<p data-state={ element }>{ element }</p>
 				</div>
 			);
 			index += 1;

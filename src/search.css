@@ -163,6 +163,7 @@
 	overflow-y: scroll;
 	display: none;
 	position: absolute;
+	z-index: 10;
 }
 
 .show {
