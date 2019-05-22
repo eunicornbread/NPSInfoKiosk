@@ -21,6 +21,7 @@ class Search extends Component {
 		this.handleDesigDelete = this.handleDesigDelete.bind(this);
 		this.handleSearchFilter = this.handleSearchFilter.bind(this);
 		this.handleCollapse = this.handleCollapse.bind(this);
+		this.handleStateCollapse = this.handleStateCollapse.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -35,6 +36,12 @@ class Search extends Component {
 			desigArray: [],
 			desigFilter: []
 		};
+
+		window.addEventListener('click', event => {
+			if (!document.getElementById('state-filter-wrapper').contains(event.target)) {
+				document.getElementById('state-filter-option').classList.remove('show');
+			}
+		});
 	}
 
 	componentDidMount() {
@@ -45,6 +52,13 @@ class Search extends Component {
 
 	}
 
+	handleStateCollapse(event) {
+		if (document.getElementById('state-filter-option').classList.contains('show')) {
+			document.getElementById('state-filter-option').classList.remove('show');
+		} else {
+			document.getElementById('state-filter-option').classList.add('show');
+		}
+	}
 
 	handleDesigDelete(event) {
 		var filtered = this.state.desigFilter.filter((value, index, arr) => {
@@ -188,15 +202,27 @@ class Search extends Component {
 		
 		// display all the state options
 		var stateOptions = [];
-		var index = 1;
+		var index = 0;
 		this.state.statesMap.forEach(element => {
 			stateOptions.push(
-				<option className="dropdown-item" key={ index }>
-					{ element }
-				</option>
+				<div className="dropdown-item" key={ index }>
+					<p>{ element }</p>
+				</div>
 			);
 			index += 1;
 		});
+
+
+		// var stateOptions = [];
+		// var index = 1;
+		// this.state.statesMap.forEach(element => {
+		// 	stateOptions.push(
+		// 		<option className="dropdown-item" key={ index }>
+		// 			{ element }
+		// 		</option>
+		// 	);
+		// 	index += 1;
+		// });
 
 		// display all the designation options
 		var desigOptions = [];
@@ -253,6 +279,7 @@ class Search extends Component {
 				<div className="search-result" id="search-results">{ resultList }</div>
 
 				<div className="filter-menu" id="filter-menu">
+					{/*
 					<div>
 						<i className="fas fa-chevron-circle-right collapse-icon"></i>
 						<select className="filter-button state-filter-button" 
@@ -262,6 +289,16 @@ class Search extends Component {
 							</option>
 							{ stateOptions }
 						</select>
+					</div>
+					*/}
+					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
+						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<div className="filter-button state-filter-button">
+							<p className="noselect">Filter By State</p>
+						</div>
+						<div className="filter-option state-filter-option" id="state-filter-option">
+							{ stateOptions }
+						</div>
 					</div>
 					
 					<div>
