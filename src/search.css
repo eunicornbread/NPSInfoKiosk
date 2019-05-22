@@ -1,9 +1,10 @@
-body {
-	background-color: #B2DFDB;
-}
+
 
 .wrapper {
 	position: relative;
+	background-color: #E0F2F1;
+	min-height: 100vh;
+	height: 100%;
 }
 
 .search-bar {
@@ -52,13 +53,17 @@ body {
 }
 
 .filter-button {
-}
-
-.state-filter-button, .desig-filter-button, .search-filter-button {
+	-webkit-appearance: none;
+    -moz-appearance: none;
 	background-color: rgba(0, 0, 0, 0);
 	color: black;
-	border-color: black;
+	border: none;
 }
+
+.filter-button:focus {
+	outline: none;
+}
+
 
 .state-filter-button:hover {
 	/* Add style later */
@@ -67,9 +72,6 @@ body {
 	border-color: black;
 }
 
-.state-filter-button::after {
-	/*display: none;*/
-}
 
 .filter-group {
 	position: absolute;
@@ -139,4 +141,13 @@ body {
 .result-link:hover {
 	text-decoration: none;
 	color: black;
+}
+
+.rotate-90 {
+	transform: rotate(90deg);
+}
+
+.collapse-icon {
+	margin-right: 11px;
+	color: #3CDBBC;
 }

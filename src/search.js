@@ -20,6 +20,7 @@ class Search extends Component {
 		this.handleDesigFilter = this.handleDesigFilter.bind(this);
 		this.handleDesigDelete = this.handleDesigDelete.bind(this);
 		this.handleSearchFilter = this.handleSearchFilter.bind(this);
+		this.handleCollapse = this.handleCollapse.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -37,6 +38,10 @@ class Search extends Component {
 	}
 
 	componentDidMount() {
+
+	}
+
+	handleCollapse(event) {
 
 	}
 
@@ -71,6 +76,9 @@ class Search extends Component {
 		this.setState({
 			stateFilter: uniqueState
 		});
+
+		document.getElementById('state-filter').selectedIndex = 0;
+
 	}
 
 	handleDesigFilter(event) {
@@ -85,6 +93,8 @@ class Search extends Component {
 		this.setState({
 			desigFilter: uniqueDesig
 		});
+
+		document.getElementById('desig-filter').selectedIndex = 0;
 	}
 
 	handleSearchFilter(event) {
@@ -97,7 +107,7 @@ class Search extends Component {
 		var self = this;
 		axios.get("https://developer.nps.gov/api/v1/parks", {
 			params: {
-				limit: 20,
+				limit: 19,
 				q: this.textInput.value,
 				api_key: process.env.REACT_APP_API_KEY
 			}
@@ -114,6 +124,7 @@ class Search extends Component {
 	}
 
 	render() {
+
 		// display the results from the api get request
 		var resultList = [];
 		this.state.searchResults.forEach(element => {
@@ -147,11 +158,11 @@ class Search extends Component {
 
 			// search by name or (default) keyword
 			var includeSearch = false;
-			if (document.getElementById('search-filter').value === "By Keyword") {
+			if (document.getElementById('search-filter').value === "Search By Keyword") {
 				includeSearch = true;
 			}
 
-			if (document.getElementById('search-filter').value === "By Name") {
+			if (document.getElementById('search-filter').value === "Search By Name") {
 				if (element.fullName.toLowerCase().includes(
 							document.getElementById("search-input").value.toLowerCase())) {
 					includeSearch = true;
@@ -242,29 +253,36 @@ class Search extends Component {
 				<div className="search-result" id="search-results">{ resultList }</div>
 
 				<div className="filter-menu" id="filter-menu">
-					<select className="filter-button state-filter-button" 
-							id="state-filter" onChange={ this.handleStateFilter }>
-						<option className="dropdown-item" key={ 0 }>
-							Filter By State
-						</option>
-						{ stateOptions }
-					</select>
+					<div>
+						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<select className="filter-button state-filter-button" 
+								id="state-filter" onChange={ this.handleStateFilter }>
+							<option className="dropdown-item" key={ 0 }>
+								Filter By State
+							</option>
+							{ stateOptions }
+						</select>
+					</div>
 					
-					<br />
-					<select className="filter-button desig-filter-button mt-4" 
-							id="desig-filter" onChange={ this.handleDesigFilter }>
-						<option className="dropdown-item" key={ 0 }>
-							Filter By Designation
-						</option>
-						{ desigOptions }
-					</select>
-					
-					<br />
-					<select className="filter-button search-filter-button mt-4"
-							id="search-filter" onChange={ this.handleSearchFilter } >
-						<option className="dropdown-item">By Keyword</option>
-						<option className="dropdown-item">By Name</option>
-					</select>
+					<div>
+						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<select className="filter-button desig-filter-button mt-4" 
+								id="desig-filter" onChange={ this.handleDesigFilter }>
+							<option className="dropdown-item" key={ 0 }>
+								Filter By Designation
+							</option>
+							{ desigOptions }
+						</select>
+					</div>
+
+					<div>
+						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<select className="filter-button search-filter-button mt-4"
+								id="search-filter" onChange={ this.handleSearchFilter } >
+							<option className="dropdown-item">Search By Keyword</option>
+							<option className="dropdown-item">Search By Name</option>
+						</select>
+					</div>
 				</div>
 
 				<div className="filter-group">
@@ -272,7 +290,6 @@ class Search extends Component {
 					{ desigFilterList }
 				</div>
 
-				
 
 			</div>
 
