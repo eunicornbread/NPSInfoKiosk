@@ -4,7 +4,6 @@ import './search.css';
 import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
-import AnimateHeight from 'react-animate-height';
 
 // US State JSON 
 // https://gist.github.com/mshafrir/2646763
@@ -44,16 +43,19 @@ class Search extends Component {
 			if (!document.getElementById('state-filter-wrapper').contains(event.target)) {
 				document.getElementById('state-filter-option').classList.remove('show');
 				document.getElementById('state-collapse').classList.remove('rotate-90');
+				document.getElementById('state-wrapper').classList.remove('expand');
 			}
 
 			if (!document.getElementById('desig-filter-wrapper').contains(event.target)) {
 				document.getElementById('desig-filter-option').classList.remove('show');
 				document.getElementById('desig-collapse').classList.remove('rotate-90');
+				document.getElementById('desig-wrapper').classList.remove('expand');
 			}
 
 			if (!document.getElementById('search-filter-wrapper').contains(event.target)) {
 				document.getElementById('search-filter-option').classList.remove('show');
 				document.getElementById('search-collapse').classList.remove('rotate-90');
+				document.getElementById('search-wrapper').classList.remove('expand-sm');
 			}
 		});
 	}
@@ -70,9 +72,11 @@ class Search extends Component {
 		if (document.getElementById('state-filter-option').classList.contains('show')) {
 			document.getElementById('state-filter-option').classList.remove('show');
 			document.getElementById('state-collapse').classList.remove('rotate-90');
+			document.getElementById('state-wrapper').classList.remove('expand');
 		} else {
 			document.getElementById('state-filter-option').classList.add('show');
 			document.getElementById('state-collapse').classList.add('rotate-90');
+			document.getElementById('state-wrapper').classList.add('expand');
 		}
 	}
 
@@ -80,9 +84,11 @@ class Search extends Component {
 		if (document.getElementById('desig-filter-option').classList.contains('show')) {
 			document.getElementById('desig-filter-option').classList.remove('show');
 			document.getElementById('desig-collapse').classList.remove('rotate-90');
+			document.getElementById('desig-wrapper').classList.remove('expand');
 		} else {
 			document.getElementById('desig-filter-option').classList.add('show');
 			document.getElementById('desig-collapse').classList.add('rotate-90');
+			document.getElementById('desig-wrapper').classList.add('expand');
 		}	
 	}
 
@@ -90,9 +96,11 @@ class Search extends Component {
 		if (document.getElementById('search-filter-option').classList.contains('show')) {
 			document.getElementById('search-filter-option').classList.remove('show');
 			document.getElementById('search-collapse').classList.remove('rotate-90');
+			document.getElementById('search-wrapper').classList.remove('expand-sm');
 		} else {
 			document.getElementById('search-filter-option').classList.add('show');
 			document.getElementById('search-collapse').classList.add('rotate-90');
+			document.getElementById('search-wrapper').classList.add('expand-sm');
 		}	
 	}
 
@@ -163,7 +171,6 @@ class Search extends Component {
 	}
 
 	render() {
-		console.log("hi?");
 		
 		// display the results from the api get request
 		var resultList = [];
@@ -307,7 +314,7 @@ class Search extends Component {
 						</div>
 						
 						<div className="filter-option state-filter-option" id="state-filter-option">
-							<div className="option-wrapper">
+							<div className="option-wrapper" id="state-wrapper">
 								{ stateOptions }
 							</div>
 						</div>
@@ -320,7 +327,7 @@ class Search extends Component {
 						</div>
 	
 						<div className="filter-option desig-filter-option" id="desig-filter-option">
-							<div className="option-wrapper">
+							<div className="option-wrapper" id="desig-wrapper">
 								{ desigOptions }
 							</div>
 						</div>
@@ -333,13 +340,15 @@ class Search extends Component {
 						</div>
 
 						<div className="filter-option search-filter-option" id="search-filter-option">
-							<div className="dropdown-item" id="dropdown-keyword"
-								 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
-								<p data-search="Search By Keyword">Search By Keyword</p>
-							</div>
-							<div className="dropdown-item" id="dropdown-name"
-								 onClick={ this.handleSearchFilter } data-search="Search By Name">
-								<p data-search="Search By Name" id="search-by-name">Search By Name</p>
+							<div className="option-wrapper-sm" id="search-wrapper">
+								<div className="dropdown-item" id="dropdown-keyword"
+									 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
+									<p data-search="Search By Keyword">Search By Keyword</p>
+								</div>
+								<div className="dropdown-item" id="dropdown-name"
+									 onClick={ this.handleSearchFilter } data-search="Search By Name">
+									<p data-search="Search By Name" id="search-by-name">Search By Name</p>
+								</div>
 							</div>
 						</div>
 					

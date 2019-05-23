@@ -151,7 +151,8 @@
 .filter-option {
 	padding-top: 5px;
 	background-color: white;
-	display: none;
+	/*display: none;*/
+	visibility: hidden;
 	position: absolute;
 	left: 25px;
 	z-index: 10;
@@ -196,7 +197,8 @@
 }
 
 .show {
-	display: block;
+	/*display: block;*/
+	visibility: visible;
 }
 
 /* Disable text selection highlighting */
@@ -210,8 +212,24 @@
 }
 
 .option-wrapper {
-	height: 400px;
+	/*max-height: 400px;*/
+	max-height: 0px;
+	transition: max-height 500ms ease;
 	overflow-y: scroll;
+}
+
+.option-wrapper-sm {
+	max-height: 0px;
+	overflow: hidden;
+	transition: max-height 500ms ease;
+}
+
+.expand {
+	max-height: 330px;
+}
+
+.expand-sm {
+	max-height: 100px;
 }
 
 .line-grow::after {
