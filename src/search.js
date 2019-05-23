@@ -42,14 +42,17 @@ class Search extends Component {
 		window.addEventListener('click', event => {
 			if (!document.getElementById('state-filter-wrapper').contains(event.target)) {
 				document.getElementById('state-filter-option').classList.remove('show');
+				document.getElementById('state-collapse').classList.remove('rotate-90');
 			}
 
 			if (!document.getElementById('desig-filter-wrapper').contains(event.target)) {
 				document.getElementById('desig-filter-option').classList.remove('show');
+				document.getElementById('desig-collapse').classList.remove('rotate-90');
 			}
 
 			if (!document.getElementById('search-filter-wrapper').contains(event.target)) {
 				document.getElementById('search-filter-option').classList.remove('show');
+				document.getElementById('search-collapse').classList.remove('rotate-90');
 			}
 		});
 	}
@@ -65,24 +68,30 @@ class Search extends Component {
 	handleStateCollapse(event) {
 		if (document.getElementById('state-filter-option').classList.contains('show')) {
 			document.getElementById('state-filter-option').classList.remove('show');
+			document.getElementById('state-collapse').classList.remove('rotate-90');
 		} else {
 			document.getElementById('state-filter-option').classList.add('show');
+			document.getElementById('state-collapse').classList.add('rotate-90');
 		}
 	}
 
 	handleDesigCollapse(event) {
 		if (document.getElementById('desig-filter-option').classList.contains('show')) {
 			document.getElementById('desig-filter-option').classList.remove('show');
+			document.getElementById('desig-collapse').classList.remove('rotate-90');
 		} else {
 			document.getElementById('desig-filter-option').classList.add('show');
+			document.getElementById('desig-collapse').classList.add('rotate-90');
 		}	
 	}
 
 	handleSearchCollapse(event) {
 		if (document.getElementById('search-filter-option').classList.contains('show')) {
 			document.getElementById('search-filter-option').classList.remove('show');
+			document.getElementById('search-collapse').classList.remove('rotate-90');
 		} else {
 			document.getElementById('search-filter-option').classList.add('show');
+			document.getElementById('search-collapse').classList.add('rotate-90');
 		}	
 	}
 
@@ -287,38 +296,44 @@ class Search extends Component {
 				<div className="filter-menu" id="filter-menu">
 					
 					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
 						<div className="filter-button state-filter-button">
-							<p className="noselect">Filter By State</p>
+							<p className="noselect line-grow">Filter By State</p>
 						</div>
-						<div className="filter-option state-filter-option" id="state-filter-option">
-							{ stateOptions }
+						<div className="option-wrapper">
+							<div className="filter-option state-filter-option" id="state-filter-option">
+								{ stateOptions }
+							</div>
 						</div>
 					</div>
 
 					<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
 						<div className="filter-button desig-filter-button">
-							<p className="noselect">Filter By Designation</p>
+							<p className="noselect line-grow">Filter By Designation</p>
 						</div>
-						<div className="filter-option desig-filter-option" id="desig-filter-option">
-							{ desigOptions }
+						<div className="option-wrapper">
+							<div className="filter-option desig-filter-option" id="desig-filter-option">
+								{ desigOptions }
+							</div>
 						</div>
 					</div>
 
 					<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon"></i>
+						<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
 						<div className="filter-button search-filter-button">
-							<p className="noselect" id="search-filter">Search By Keyword</p>
+							<p className="noselect line-grow" id="search-filter">Search By Keyword</p>
 						</div>
-						<div className="filter-option search-filter-option" id="search-filter-option">
-							<div className="dropdown-item" onClick={ this.handleSearchFilter } 
-																		data-search="Search By Keyword">
-								<p data-search="Search By Keyword">Search By Keyword</p>
-							</div>
-							<div className="dropdown-item" onClick={ this.handleSearchFilter } 
-																		data-search="Search By Name">
-								<p data-search="Search By Name">Search By Name</p>
+						<div className="option-wrapper">
+							<div className="filter-option search-filter-option" id="search-filter-option">
+								<div className="dropdown-item" onClick={ this.handleSearchFilter } 
+																			data-search="Search By Keyword">
+									<p data-search="Search By Keyword">Search By Keyword</p>
+								</div>
+								<div className="dropdown-item" onClick={ this.handleSearchFilter } 
+																			data-search="Search By Name">
+									<p data-search="Search By Name">Search By Name</p>
+								</div>
 							</div>
 						</div>
 					</div>
