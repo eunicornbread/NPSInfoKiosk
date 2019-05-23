@@ -35,6 +35,10 @@
 	outline: none;
 }
 
+.search-button:focus {
+	outline: none;
+}
+
 .filter-menu {
 	position: absolute;
 	top: 50px;
@@ -51,25 +55,6 @@
 	box-sizing: border-box;
 	padding-bottom: 11px;
 }
-
-.dropdown-menu {
-	height: 300px;
-	overflow-y: auto;
-	padding: 0px;
-}
-/*
-.filter-button {
-	-webkit-appearance: none;
-    -moz-appearance: none;
-	background-color: rgba(0, 0, 0, 0);
-	color: black;
-	border: none;
-}
-
-.filter-button:focus {
-	outline: none;
-}
-*/
 
 .filter-button {
 	display: inline-block;

@@ -4,6 +4,7 @@ import './search.css';
 import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
+import AnimateHeight from 'react-animate-height';
 
 // US State JSON 
 // https://gist.github.com/mshafrir/2646763
@@ -290,7 +291,7 @@ class Search extends Component {
 				    	<button type="submit" className="search-button">
 				    		<i className="fas fa-search"></i>
 				    	</button>
-				    	<input type="text" className="search-input" id="search-input" 
+				    	<input type="text" className="search-input shadow-sm" id="search-input" 
 				    			ref={(input) => this.textInput = input} placeholder="Find a park" />
 					</form>
 				</div>
