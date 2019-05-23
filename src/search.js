@@ -154,7 +154,7 @@ class Search extends Component {
 			self.setState({
 				searchResults: res.data.data
 			});
-			//console.log(res.data.data);
+			console.log(res.data.data);
 		})
 		.catch(error => {
 			console.log(error)
@@ -162,7 +162,8 @@ class Search extends Component {
 	}
 
 	render() {
-
+		console.log("hi?");
+		
 		// display the results from the api get request
 		var resultList = [];
 		this.state.searchResults.forEach(element => {
@@ -209,6 +210,9 @@ class Search extends Component {
 					includeSearch = true;
 				}
 			}
+			// console.log(includeState);
+			// console.log(includeDesig);
+			// console.log(includeSearch);
 
 			if (includeState && includeDesig && includeSearch) {
 				var parkURL = "/park/" + element.parkCode;
@@ -300,8 +304,9 @@ class Search extends Component {
 						<div className="filter-button state-filter-button">
 							<p className="noselect line-grow">Filter By State</p>
 						</div>
-						<div className="option-wrapper">
-							<div className="filter-option state-filter-option" id="state-filter-option">
+						
+						<div className="filter-option state-filter-option" id="state-filter-option">
+							<div className="option-wrapper">
 								{ stateOptions }
 							</div>
 						</div>
@@ -312,8 +317,9 @@ class Search extends Component {
 						<div className="filter-button desig-filter-button">
 							<p className="noselect line-grow">Filter By Designation</p>
 						</div>
-						<div className="option-wrapper">
-							<div className="filter-option desig-filter-option" id="desig-filter-option">
+	
+						<div className="filter-option desig-filter-option" id="desig-filter-option">
+							<div className="option-wrapper">
 								{ desigOptions }
 							</div>
 						</div>
@@ -324,18 +330,18 @@ class Search extends Component {
 						<div className="filter-button search-filter-button">
 							<p className="noselect line-grow" id="search-filter">Search By Keyword</p>
 						</div>
-						<div className="option-wrapper">
-							<div className="filter-option search-filter-option" id="search-filter-option">
-								<div className="dropdown-item" onClick={ this.handleSearchFilter } 
-																			data-search="Search By Keyword">
-									<p data-search="Search By Keyword">Search By Keyword</p>
-								</div>
-								<div className="dropdown-item" onClick={ this.handleSearchFilter } 
-																			data-search="Search By Name">
-									<p data-search="Search By Name">Search By Name</p>
-								</div>
+
+						<div className="filter-option search-filter-option" id="search-filter-option">
+							<div className="dropdown-item" id="dropdown-keyword"
+								 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
+								<p data-search="Search By Keyword">Search By Keyword</p>
+							</div>
+							<div className="dropdown-item" id="dropdown-name"
+								 onClick={ this.handleSearchFilter } data-search="Search By Name">
+								<p data-search="Search By Name" id="search-by-name">Search By Name</p>
 							</div>
 						</div>
+					
 					</div>
 				</div>
 
