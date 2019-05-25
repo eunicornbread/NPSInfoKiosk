@@ -6,6 +6,22 @@ class Park extends Component {
 	constructor(props) {
 		super(props);
 
+		// get parks
+		axios.get("https://developer.nps.gov/api/v1/parks", {
+			params: {
+				parkCode: this.props.match.params.parkCode,
+				limit: 19,
+				api_key: process.env.REACT_APP_API_KEY
+			}
+		})
+		.then(res => {
+			console.log(res.data.data);
+		})
+		.catch(error => {
+			console.log(error);
+		});
+
+		
 	/*
 		// get alerts
 		axios.get("https://developer.nps.gov/api/v1/alerts", {
@@ -98,20 +114,7 @@ class Park extends Component {
 			console.log(error);
 		});
 
-		// get parks
-		axios.get("https://developer.nps.gov/api/v1/parks", {
-			params: {
-				parkCode: this.props.match.params.parkCode,
-				limit: 19,
-				api_key: process.env.REACT_APP_API_KEY
-			}
-		})
-		.then(res => {
-			console.log(res.data.data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
+		
 
 		// get people
 		axios.get("https://developer.nps.gov/api/v1/people", {

@@ -2,7 +2,8 @@
 
 .wrapper {
 	position: relative;
-	background-color: #E0F2F1;
+	/*background-color: #E0F2F1;*/
+	background-color: #BBDED6;
 	min-height: 100vh;
 	height: 100%;
 }
@@ -189,7 +190,7 @@
 }
 
 #state-filter-option::after, #state-filter-option::before {
-	margin-left: -100px;
+	margin-left: -75px;
 }
 
 #desig-filter-option::after, #desig-filter-option::before {

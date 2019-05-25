@@ -24,6 +24,7 @@ class Search extends Component {
 		this.handleStateCollapse = this.handleStateCollapse.bind(this);
 		this.handleDesigCollapse = this.handleDesigCollapse.bind(this);
 		this.handleSearchCollapse = this.handleSearchCollapse.bind(this);
+		this.handleClickOutside = this.handleClickOutside.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -38,30 +39,34 @@ class Search extends Component {
 			desigArray: [],
 			desigFilter: []
 		};
-
-		window.addEventListener('click', event => {
-			if (!document.getElementById('state-filter-wrapper').contains(event.target)) {
-				document.getElementById('state-filter-option').classList.remove('show');
-				document.getElementById('state-collapse').classList.remove('rotate-90');
-				document.getElementById('state-wrapper').classList.remove('expand');
-			}
-
-			if (!document.getElementById('desig-filter-wrapper').contains(event.target)) {
-				document.getElementById('desig-filter-option').classList.remove('show');
-				document.getElementById('desig-collapse').classList.remove('rotate-90');
-				document.getElementById('desig-wrapper').classList.remove('expand');
-			}
-
-			if (!document.getElementById('search-filter-wrapper').contains(event.target)) {
-				document.getElementById('search-filter-option').classList.remove('show');
-				document.getElementById('search-collapse').classList.remove('rotate-90');
-				document.getElementById('search-wrapper').classList.remove('expand-sm');
-			}
-		});
 	}
 
 	componentDidMount() {
+		window.addEventListener('click', this.handleClickOutside, false);
+	}
 
+	componentWillUnmount() {
+		window.removeEventListener('click', this.handleClickOutside, false);
+	}
+
+	handleClickOutside(event) {
+		if (!document.getElementById('state-filter-wrapper').contains(event.target)) {
+			document.getElementById('state-filter-option').classList.remove('show');
+			document.getElementById('state-collapse').classList.remove('rotate-90');
+			document.getElementById('state-wrapper').classList.remove('expand');
+		}
+
+		if (!document.getElementById('desig-filter-wrapper').contains(event.target)) {
+			document.getElementById('desig-filter-option').classList.remove('show');
+			document.getElementById('desig-collapse').classList.remove('rotate-90');
+			document.getElementById('desig-wrapper').classList.remove('expand');
+		}
+
+		if (!document.getElementById('search-filter-wrapper').contains(event.target)) {
+			document.getElementById('search-filter-option').classList.remove('show');
+			document.getElementById('search-collapse').classList.remove('rotate-90');
+			document.getElementById('search-wrapper').classList.remove('expand-sm');
+		}
 	}
 
 	handleCollapse(event) {

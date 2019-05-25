@@ -1,6 +1,8 @@
 .main {
   height: 100vh;
-  background-color: #B3E5FC;
+  background-image: url('./landing-page.svg');
+  background-repeat: no-repeat;
+  background-size: auto 100%;
   position: relative;
 }
 
