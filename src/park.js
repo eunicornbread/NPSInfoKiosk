@@ -196,7 +196,7 @@ class Park extends Component {
 	// three parts: park info, nearby campgrounds, visitor centers
 
 	render() {
-		console.log(document.getElementsByClassName('nav-option'));
+		//console.log(document.getElementsByClassName('nav-option'));
 		Array.prototype.slice.call(
 			document.getElementsByClassName('nav-option')).forEach(element => {
 			if (element.textContent === 'Park') {
