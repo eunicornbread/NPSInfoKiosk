@@ -35,3 +35,18 @@
 .list-text {
 	font: 30px;
 }
+
+.site-tab {
+	margin-top: 30px;
+	padding-left: 50px;
+}
+
+.site-item {
+	margin-bottom: 17px;
+	font-size: 17px;
+}
+
+.site-name {
+	font-weight: bold;
+	margin-right: 14px;
+}

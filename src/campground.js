@@ -100,13 +100,15 @@ class Campground extends Component {
 				noList.push('Laundry');
 			}
 
-			if (accessData.potablewater.length !== 0 && accessData.potablewater[0].toUpperCase().includes('YES')) {
+			if (accessData.potablewater.length !== 0 
+					&& accessData.potablewater[0].toUpperCase().includes('YES')) {
 				yesList.push('Potable Water');
 			} else {
 				noList.push('Potable Water');
 			}
 
-			if (accessData.showers.length !== 0 && !accessData.showers[0].toUpperCase().includes('NONE')) {
+			if (accessData.showers.length !== 0 
+					&& !accessData.showers[0].toUpperCase().includes('NONE')) {
 				yesList.push('Showers');
 			} else {
 				noList.push('Showers');
@@ -118,7 +120,8 @@ class Campground extends Component {
 				noList.push('Staff Or Volunteer Host On Site');
 			}
 
-			if (accessData.toilets.length !== 0 && !accessData.toilets[0].toUpperCase().includes('NONE')) {
+			if (accessData.toilets.length !== 0 
+					&& !accessData.toilets[0].toUpperCase().includes('NONE')) {
 				yesList.push('Toilets');
 			} else {
 				noList.push('Toilets');
@@ -135,7 +138,7 @@ class Campground extends Component {
 			yesList.forEach((e, i) => {
 				yesDisplay.push(
 					<div className='yes-item mb-3' key={ i }>
-						<img src="https://img.icons8.com/office/30/000000/checkmark.png" />
+						<img src="https://img.icons8.com/office/30/000000/checkmark.png" alt='yes icon' />
 						<span className='ml-3 list-text'>{ e }</span>
 					</div>
 				);
@@ -144,7 +147,7 @@ class Campground extends Component {
 			noList.forEach((e, i) => {
 				noDisplay.push(
 					<div className='no-item mb-3' key={ i }>
-						<img src="https://img.icons8.com/office/30/000000/delete-sign.png" />
+						<img src="https://img.icons8.com/office/30/000000/delete-sign.png" alt='no icon' />
 						<span className='ml-3 list-text'>{ e }</span>
 					</div>
 				);
@@ -158,10 +161,49 @@ class Campground extends Component {
 			);
 
 			// Info about campsites
+			var siteData = element.campsites;
 			var siteTab = (
-				<>
-					<p>Woof</p>
-				</>
+				<div className='site-tab'>
+					<p className='site-item'>
+						<span className='site-name'>Total Sites: </span>
+						<span>{ siteData.totalsites }</span>
+					</p>
+
+					<p className='site-item'>
+						<span className='site-name'>Electrical Hookups: </span>
+						<span>{ siteData.electricalhookups }</span>
+					</p>
+
+					<p className='site-item'>
+						<span className='site-name'>Group: </span>
+						<span>{ siteData.group }</span>
+					</p>
+
+					<p className='site-item'>
+						<span className='site-name'>Horse: </span>
+						<span>{ siteData.horse }</span>
+					</p>
+
+					<p className='site-item'>
+						<span className='site-name'>RV Only: </span>
+						<span>{ siteData.rvonly }</span>
+					</p>
+
+					<p className='site-item'>
+						<span className='site-name'>Tent Only: </span>
+						<span>{ siteData.tentonly }</span>
+					</p>
+
+					<p className='site-item'>
+						<span className='site-name'>Walk & Boat To: </span>
+						<span>{ siteData.walkboatto }</span>
+					</p>
+
+					<p className='site-item'>
+						<span className='site-name'>Other: </span>
+						<span>{ siteData.other }</span>
+					</p>
+				</div>
 			);
 
 
@@ -224,10 +266,7 @@ class Campground extends Component {
 				<div className='space-top'></div>
 				<div className='camp-list'>
 					{ campList }
-				</div>	
-
-
-				
+				</div>		
 			</>
 		);
 	}
