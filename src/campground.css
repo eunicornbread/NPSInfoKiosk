@@ -10,11 +10,28 @@
 
 .close-modal {
 	position: absolute;
-	right: 20px;
+	right: 30px;
 	top: 10px;
+	z-index: 10;
 }
-
 
 .nav-item {
 	height: 37px;
+}
+
+.modal-body {
+	height: 500px;
+	overflow-y: scroll; 
+}
+
+.yes-display {
+	width: 50%;
+}
+
+.no-display {
+	width: 50%;
+}
+
+.list-text {
+	font: 30px;
 }
