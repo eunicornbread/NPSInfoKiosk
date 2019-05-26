@@ -8,10 +8,6 @@ import { NavLink } from 'react-router-dom';
 // font awesome
 
 class App extends Component {
-  
-  componentDidMount() {
-    
-  }
 
   render() {
     return (
