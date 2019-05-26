@@ -44,9 +44,26 @@
 .site-item {
 	margin-bottom: 17px;
 	font-size: 17px;
+	color: #424242;
+}
+
+.site-item i {
+	padding-right: 15px;
+	font-size: 9px;
+	transform: translateY(-3px);
 }
 
 .site-name {
 	font-weight: bold;
 	margin-right: 14px;
+}
+
+.red-icon {
+	color: #FF5252;
+	opacity: 0.7;
+}
+
+.green-icon {
+	color: #69F0AE;
+	opacity: 0.9;
 }

@@ -165,52 +165,81 @@ class Campground extends Component {
 			var siteTab = (
 				<div className='site-tab'>
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.totalsites }>
+							<i className={"fas fa-circle number-" + siteData.totalsites}></i>
+						</span>
 						<span className='site-name'>Total Sites: </span>
 						<span>{ siteData.totalsites }</span>
 					</p>
 
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.electricalhookups }>
+							<i className={"fas fa-circle number-" + siteData.electricalhookups}></i>
+						</span>
 						<span className='site-name'>Electrical Hookups: </span>
 						<span>{ siteData.electricalhookups }</span>
 					</p>
 
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.group }>
+							<i className={"fas fa-circle number-" + siteData.group}></i>
+						</span>
 						<span className='site-name'>Group: </span>
 						<span>{ siteData.group }</span>
 					</p>
 
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.horse }>
+							<i className={"fas fa-circle number-" + siteData.horse}></i>
+						</span>
 						<span className='site-name'>Horse: </span>
 						<span>{ siteData.horse }</span>
 					</p>
 
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.rvonly }>
+							<i className={"fas fa-circle number-" + siteData.rvonly}></i>
+						</span>
 						<span className='site-name'>RV Only: </span>
 						<span>{ siteData.rvonly }</span>
 					</p>
 
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.tentonly }>
+							<i className={"fas fa-circle number-" + siteData.tentonly}></i>
+						</span>
 						<span className='site-name'>Tent Only: </span>
 						<span>{ siteData.tentonly }</span>
 					</p>
 
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.walkboatto }>
+							<i className={"fas fa-circle number-" + siteData.walkboatto}></i>
+						</span>
 						<span className='site-name'>Walk & Boat To: </span>
 						<span>{ siteData.walkboatto }</span>
 					</p>
 
 					<p className='site-item'>
+						<span className='dot-icon' data-number={ siteData.other }>
+							<i className={"fas fa-circle number-" + siteData.other}></i>
+						</span>
 						<span className='site-name'>Other: </span>
 						<span>{ siteData.other }</span>
 					</p>
 				</div>
 			);
 
+			Array.prototype.slice.call(
+					document.getElementsByClassName('dot-icon')).forEach(e => {
+				 if (e.getAttribute('data-number') === "0") {
+				 	e.classList.add('green-icon');
+				 } else {
+				 	e.classList.add('red-icon');
+				 }
+			})
 
-
-
-
-
+			// Combining all into the modal
 			campList.push(
 			  
 			  <div key={index}>
