@@ -3,4 +3,29 @@
 	background-color: #BBDED6;
 	min-height: 100vh;
 	height: 100%;
+	position: relative;
+}
+
+.navigation {
+	position: absolute;
+	right: 50px;
+	top: 20px;
+	box-sizing: border-box;
+}
+
+.nav-item a {
+	color: #512DA8;
+	height: 30px;
+	transform: translateY(-5px);
+}
+
+.nav-active {
+	box-shadow: 0 0 0 2px #512DA8;
+	border-radius: 3px;
+}
+
+.nav-item {
+	margin-left: 10px;
+	height: 30px;
+	box-sizing: border-box;
 }

@@ -8,6 +8,8 @@ class Park extends Component {
 	constructor(props) {
 		super(props);
 
+		this.handleClick = this.handleClick.bind(this);
+
 		this.state = {
 			campground: [],
 			visitorcenter: [],
@@ -187,29 +189,59 @@ class Park extends Component {
 	
 	}
 
+	handleClick(event) {
+		this.forceUpdate();
+	}
+
 	// three parts: park info, nearby campgrounds, visitor centers
 
 	render() {
+		console.log(document.getElementsByClassName('nav-option'));
+		Array.prototype.slice.call(
+			document.getElementsByClassName('nav-option')).forEach(element => {
+			if (element.textContent === 'Park') {
+				if (element.classList.contains('active')) {
+					document.getElementById('nav-park').classList.add('nav-active');
+				} else {
+					document.getElementById('nav-park').classList.remove('nav-active');
+				}
+			} else if (element.textContent === 'Campgrounds') {
+				if (element.classList.contains('active')) {
+					document.getElementById('nav-camp').classList.add('nav-active');
+				} else {
+					document.getElementById('nav-camp').classList.remove('nav-active');
+				}
+			} else if (element.textContent === 'Visitor Centers') {
+				if (element.classList.contains('active')) {
+					document.getElementById('nav-visitor').classList.add('nav-active');
+				} else {
+					document.getElementById('nav-visitor').classList.remove('nav-active');
+				}
+			}	
+		});
+
 		return (
 			<>
 				<div className="wrapper">
-					<ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
-					  <li className="nav-item">
-					    <a className="nav-link active" id="pills-park-tab" data-toggle="pill" 
-							href="#pills-park" role="tab" aria-controls="pills-park" 
-							aria-selected="true">Park</a>
-					  </li>
-					  <li className="nav-item">
-					    <a className="nav-link" id="pills-camp-tab" data-toggle="pill" 
-					    	href="#pills-camp" role="tab" aria-controls="pills-camp" 
-					    	aria-selected="false">Campgrounds</a>
-					  </li>
-					  <li className="nav-item">
-					    <a className="nav-link" id="pills-visitor-tab" data-toggle="pill" 
-					    	href="#pills-visitor" role="tab" aria-controls="pills-visitor" 
-					    	aria-selected="false">Visitor Centers</a>
-					  </li>
-					</ul>
+					<div className="navigation" onClick={ this.handleClick }>
+						<ul className="nav mb-3" id="pills-tab" role="tablist">
+						  <li className="nav-item" id="nav-park">
+						    <a className="nav-link active nav-option" id="pills-park-tab" data-toggle="pill" 
+								href="#pills-park" role="tab" aria-controls="pills-park" 
+								aria-selected="true"><span className='nav-tex'>Park</span></a>
+						  </li>
+						  <li className="nav-item" id="nav-camp">
+						    <a className="nav-link nav-option" id="pills-camp-tab" data-toggle="pill" 
+						    	href="#pills-camp" role="tab" aria-controls="pills-camp" 
+						    	aria-selected="false"><span className='nav-tex'>Campgrounds</span></a>
+						  </li>
+						  <li className="nav-item" id="nav-visitor">
+						    <a className="nav-link nav-option" id="pills-visitor-tab" data-toggle="pill" 
+						    	href="#pills-visitor" role="tab" aria-controls="pills-visitor" 
+						    	aria-selected="false"><span className='nav-tex'>Visitor Centers</span></a>
+						  </li>
+						</ul>
+					</div>
 
 					<div className="tab-content" id="pills-tabContent">
 					  <div className="tab-pane fade show active" id="pills-park" 
