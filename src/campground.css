@@ -1,0 +1,20 @@
+.space-top {
+	height: 100px;
+	width: 100%;
+}
+
+.camp-list {
+	margin-left: 300px;
+
+}
+
+.close-modal {
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+
+
+.nav-item {
+	height: 37px;
+}
