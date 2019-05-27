@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import { NavLink } from 'react-router-dom';
+import bgImage from './new-landing-page.svg';
 
 // resources used:
 // google font
 // font awesome
 
 class App extends Component {
-
   render() {
     return (
       <>
         <div className="main">
+          <div className="bg-img">
+            <img src={ bgImage } alt='background' />
+          </div>
           <div className="content">
             <NavLink to="/search">
               <button type="button" className="button shadow-sm">

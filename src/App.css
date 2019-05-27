@@ -1,16 +1,18 @@
+.bg-img {
+  width: 100%;
+  transform: translateY(-350px);
+}
+
 .main {
   height: 100vh;
-  background-image: url('./landing-page.svg');
-  background-repeat: no-repeat;
-  background-size: auto 100%;
+  overflow: hidden;
   position: relative;
 }
 
 .content {
   position: absolute;
-  left: 670px;
-  top: 50%;
-  transform: translate(0, -50%);
+  left: 350px;
+  top: 200px;
 }
 
 .button:hover {

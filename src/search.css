@@ -1,15 +1,12 @@
-
-
 .wrapper {
 	position: relative;
-	background-color: #BBDED6;
 	min-height: 100vh;
 	height: 100%;
 }
 
 .search-bar {
 	width: 600px;
-	position: absolute;
+	position: relative;
 	left: 400px;
 	top: 50px;
 }
@@ -40,7 +37,7 @@
 }
 
 .filter-menu {
-	position: absolute;
+	position: relative;
 	top: 50px;
 	left: 50px;
 }
@@ -70,9 +67,22 @@
 
 
 .filter-group {
-	position: absolute;
+	position: relative;
 	top: 180px;
 	left: 60px;
+	
+}
+
+#state-filter-wrapper {
+	width: 130px;
+}
+
+#desig-filter-wrapper {
+	width: 180px;
+}
+
+#search-filter-wrapper {
+	width: 180px;
 }
 
 .state-filter-item {

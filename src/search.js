@@ -4,6 +4,8 @@ import './search.css';
 import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
+import natureImage from './nature2.svg';
+import bgImage from './background.svg';
 
 // US State JSON 
 // https://gist.github.com/mshafrir/2646763
@@ -298,6 +300,9 @@ class Search extends Component {
 		return (
 			<>
 			<div className="wrapper">
+				<div className="bg-img">
+	            	
+	          	</div>
 				<div className="search-bar">
 					<form onSubmit={ this.handleSearch }>
 				    	<button type="submit" className="search-button">
