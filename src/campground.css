@@ -157,3 +157,39 @@
 	opacity: 0.9;
 	font-size: 15px;
 }
+
+.camp-tab h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 22px;
+	margin-bottom: 17px;
+	color: #002359;
+	border-bottom: 1px #EEEEEE solid;
+	position: relative;
+	margin-top: 25px;
+	padding-bottom: 2px;
+	padding-left: 3px;
+}
+
+.camp-tab {
+	padding-left: 30px;
+	padding-right: 20px;
+	padding-top: 5px;
+}
+
+.camp-tab p {
+	margin-left: 30px;
+	color: #170956;
+}
+
+#name {
+}
+
+.info-title {
+	margin-bottom: 10px;
+}
+
+.info-detail {
+	padding-left: 40px;
+	opacity: 0.9;
+	font-size: 15px;
+}

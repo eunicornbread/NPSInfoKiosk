@@ -37,26 +37,212 @@ class Campground extends Component {
 				</>
 			);
 		}
-		// modal for selected camp site
-		// one tab the starting tab is basic info about the campgrounds
-		// just display all other information
-		// one tab is accessibility
-		// one tab is amenities will be a checklist with yes on top and no on the bottom
-		// one tab is camp sites
-
-		
-
 
 		// Modal and navigation setup
 		var campList = [];
 		this.props.data.forEach((element, index) => {
 
 			// Info about the campground
-			var campTab = (
-				<>
-					<p>Hi</p>
-				</>
+			var campInfo = [];
+			
+			if (element.description === "") {
+				campInfo.push(
+					<p id='description' key={0}>No Description</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='description' key={0}>{ element.description }</p>
+				);
+			}
+
+			campInfo.push(
+				<h3 key={1}>Direction</h3>
 			);
+
+			campInfo.push(
+				<p key={2} className='info-title'>Direction Overview</p>
+			);
+
+			if (element.directionsoverview === "") {
+				campInfo.push(
+					<p id='direction-overview' key={3} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='direction-overview' key={3} className='info-detail'>{ element.directionsoverview }</p>
+				);
+			}
+
+			campInfo.push(
+				<p key={4} className='info-title'>Direction URL</p>
+			);
+
+			if (element.directionsUrl === "") {
+				campInfo.push(
+					<p id='direction-url' key={5} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='direction-url' key={5} className='info-detail'>{ element.directionsUrl }</p>
+				);
+			}
+
+			campInfo.push(
+				<p key={6} className='info-title'>Longitude & Latitude</p>
+			);
+
+			if (element.latLong === "") {
+				campInfo.push(
+					<p id='lat-long' key={7} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='lat-long' key={7} className='info-detail'>{ element.latLong }</p>
+				);
+			}
+
+			campInfo.push(
+				<h3 key={8}>Regulation</h3>
+			);
+
+			campInfo.push(
+				<p key={11} className='info-title'>Regulation Overview</p>
+			);
+
+			if (element.regulationsoverview === "") {
+				campInfo.push(
+					<p id='regulation-overview' key={9} className='info-detail'>None</p>
+				);
+			} else {
+				var regulation = [];
+				element.regulationsoverview.replace(/\n/g, " ").split('. ').forEach((e, i) => {
+					
+					if (e.charAt(0) === '-') {
+						e = e.substring(1);
+					}
+
+					regulation.push(
+						<p className='rule-item' key={ e } className='info-detail'>
+							{ (i + 1) + ". " + e }
+						</p>
+					);
+				})
+				campInfo.push(
+					<div id='regulation-overview' key={9}>
+						{ regulation }
+					</div>
+				);
+			}
+
+			campInfo.push(
+				<p key={10} className='info-title'>Regulation URL</p>
+			);
+
+
+			if (element.regulationsurl === "") {
+				campInfo.push(
+					<p id='regulation-url' key={12} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='regulation-url' key={12} className='info-detail'>{ element.regulationsurl }</p>
+				);
+			}
+
+			campInfo.push(
+				<h3 key={13}>Reservation</h3>
+			);
+
+			campInfo.push(
+				<p key={14} className='info-title'>Reservation Description</p>
+			);
+
+
+			if (element.reservationsdescription === "") {
+				campInfo.push(
+					<p id='reservation-description' key={15} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='reservation-description' key={15} className='info-detail'>{ element.reservationsdescription }</p>
+				);
+			}
+
+			campInfo.push(
+				<p key={16} className='info-title'>Reservation Sites First Come First Serve</p>
+			);
+
+
+			if (element.reservationssitesfirstcome === "") {
+				campInfo.push(
+					<p id='reservation-first' key={17} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='reservation-first' key={17} className='info-detail'>{ element.reservationssitesfirstcome }</p>
+				);
+			}
+
+			campInfo.push(
+				<p key={18} className='info-title'>Reservation Sites Reservable</p>
+			);
+
+
+			if (element.reservationssitesreservable === "") {
+				campInfo.push(
+					<p id='reservation-reserve' key={19} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='reservation-reserve' key={19} className='info-detail'>{ element.reservationssitesreservable }</p>
+				);
+			}
+
+			campInfo.push(
+				<p key={20} className='info-title'>Reservation URL</p>
+			);
+
+
+			if (element.reservationsurl === "") {
+				campInfo.push(
+					<p id='reservation-url' key={21} className='info-detail'>None</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='reservation-url' key={21} className='info-detail'>{ element.reservationsurl }</p>
+				);
+			}
+
+			campInfo.push(
+				<h3 key={22}>Weather</h3>
+			);
+
+			if (element.weatheroverview === "") {
+				campInfo.push(
+					<p id='weather-overview' key={23}>No Overview</p>
+				);
+			} else {
+				campInfo.push(
+					<p id='weather-overview' key={23}>{ element.weatheroverview }</p>
+				);
+			}
+
+			
+			var campTab = (
+				<div className='camp-tab'>
+					<h3 id='name'>
+						{ element.name }
+					</h3>
+					{ campInfo }
+				</div>
+			);
+
+			// name
+			// - description
+			// direction
+			// regulation
+			// reservation
+			// weather
 
 			// Info about accessibility
 			var accessInfo = [];
@@ -244,17 +430,6 @@ class Campground extends Component {
 					<p key={21}>{ accessData.additionalinfo }</p>
 				);	
 			}
-
-			// roads info
-			// cellphone info
-			// classificatioin
-			// fire stove policy
-			// internet info
-			// vehicle info
-			// - rv
-			// - trailer
-			// additional info
-			// wheelchair access info
 
 			var accessTab = (
 				<div className='access-tab'>
