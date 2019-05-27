@@ -1,5 +1,29 @@
 import React, { Component } from 'react';
 import './campground.css';
+import telephoneIcon from './svg/telephone-black-18.svg';
+import campsiteIcon from './svg/campsite-black-18.svg';
+import fireGrateIcon from './svg/fire-grate-black-22.svg';
+import wheelchairIcon from './svg/wheelchair-accessible-black-18.svg';
+import wifiIcon from './svg/wi-fi-black-18.svg';
+import carIcon from './svg/automobiles-black-22.svg';
+import infoIcon from './svg/information-black-18.svg';
+
+// start with row 1
+// nps symbol libray
+// amphitheater row 1
+// automobiles row 3
+// camping row 7
+// campsite row 7
+// directions row 9
+// electrical hookup row 10
+// emergencies / 911 row 10
+// emergency telephone row 10
+// firewood row 11
+// flushed toilets row 13
+// food service row 13
+// historic feature row 14
+// ice row 15
+
 
 class Campground extends Component {
 
@@ -35,99 +59,296 @@ class Campground extends Component {
 			);
 
 			// Info about accessibility
+			var accessInfo = [];
+			var accessData = element.accessibility;
+			accessInfo.push(
+				<h3 key={0} id='road-info'>
+					<span className='info-header'>
+						Road Info
+						<i className="fas fa-road"></i>
+					</span>
+				</h3>
+			);
+
+			if (accessData.accessroads.length === 0) {
+				accessInfo.push(
+					<p key={1}>None</p>
+				);
+			} else {
+				accessInfo.push(
+					<div key={1}>
+						<div>
+							<p className='road-title'>Road Access</p>
+							<p className='road-detail'>{ accessData.accessroads[0] }</p>
+						</div>
+						<div>
+							<p className='road-title'>Road Info</p>
+							<p className='road-detail'>{ accessData.adainfo }</p>
+						</div>
+					</div>
+				);
+			}
+
+			accessInfo.push(
+				<h3 key={2}>
+					<span className='info-header'>
+						Cellphone Info
+						<img src={ telephoneIcon } alt='telephone icon' id='phone-icon' />
+					</span>
+
+				</h3>
+			);
+
+			if (accessData.cellphoneinfo === "") {
+				accessInfo.push(
+					<p key={3}>None</p>
+				);
+			} else {
+				accessInfo.push(
+					<p key={3}>{ accessData.cellphoneinfo }</p>
+				);	
+			}
+
+			accessInfo.push(
+				<h3 key={4}>
+					<span className='info-header'>
+						Classification
+						<img src={ campsiteIcon } alt='campsite icon' id='camp-icon' />
+					</span>
+				</h3>
+			);
+
+			if (accessData.classifications.length === 0) {
+				accessInfo.push(
+					<p key={5}>None</p>
+				);
+			} else {
+				accessInfo.push(
+					<p key={5}>{ accessData.classifications[0] }</p>
+				);	
+			}
+
+			accessInfo.push(
+				<h3 key={6}>
+					<span className='info-header'>
+						Fire Stove Policy
+						<img src={ fireGrateIcon } alt="fire grate icon" id="fire-grate-icon" />
+					</span>
+				</h3>
+			);
+
+			if (accessData.firestovepolicy === "") {
+				accessInfo.push(
+					<p key={7}>None</p>
+				);
+			} else {
+				accessInfo.push(
+					<p key={7}>{ accessData.firestovepolicy }</p>
+				);	
+			}
+
+			accessInfo.push(
+				<h3 key={8}>
+					<span className='info-header'>
+						Internet Info
+						<img src={ wifiIcon } alt='wifi icon' id='wifi-icon' />
+					</span>
+				</h3>
+			);
+
+			if (accessData.internetinfo === "") {
+				accessInfo.push(
+					<p key={9}>None</p>
+				);
+			} else {
+				accessInfo.push(
+					<p key={9}>{ accessData.internetinfo }</p>
+				);	
+			}
+
+			accessInfo.push(
+				<h3 key={10}>
+					<span className='info-header'>
+						Wheelchair Access
+						<img src={ wheelchairIcon } alt='wheelchair icon' id='wheelchair-icon' />
+					</span>
+				</h3>
+			);
+
+			if (accessData.wheelchairaccess === "") {
+				accessInfo.push(
+					<p key={11}>None</p>
+				);
+			} else {
+				accessInfo.push(
+					<p key={11}>{ accessData.wheelchairaccess }</p>
+				);	
+			}
+
+			accessInfo.push(
+				<h3 key={12}>
+					<span className='info-header'>
+						Vehicle Info
+						<img src={ carIcon } alt='car icon' id='car-icon' />
+					</span>
+				</h3>
+			);
+
+			accessInfo.push(
+				<div key={13}>
+					<p className='vehicle-group'>RV</p>
+					<p className='vehicle-info'>Number of RVs Allowed: { accessData.rvallowed }</p>
+				</div>
+			);
+
+			if (accessData.rvinfo === "") {
+				accessInfo.push(
+					<p key={14} className='vehicle-info'>RV Info: None</p>
+				);
+			} else {
+				accessInfo.push(
+					<p key={14} className='vehicle-info'>RV Info: { accessData.rvinfo }</p>
+				);
+			}
+
+			accessInfo.push(
+				<p key={15} className='vehicle-info'>RV Maxlength: { accessData.rvmaxlength }</p>
+			);
+
+			accessInfo.push(
+				<div key={16}>
+					<p className='vehicle-group'>Trailer</p>
+					<p className='vehicle-info'>Number of Trailers Allowed: { accessData.trailerallowed } </p>
+				</div>
+			);
+
+			accessInfo.push(
+				<p key={17} className='vehicle-info'>Trailers Maxlength: { accessData.trailermaxlength } </p>
+			);
+
+			accessInfo.push(
+				<h3 key={20}>
+					<span className='info-header'>
+						Additional Info
+						<img src={ infoIcon } alt='info icon' id='info-icon' />
+					</span>
+				</h3>
+			);
+
+			if (accessData.additionalinfo === "") {
+				accessInfo.push(
+					<p key={21}>None</p>
+				);
+			} else {
+				accessInfo.push(
+					<p key={21}>{ accessData.additionalinfo }</p>
+				);	
+			}
+
+			// roads info
+			// cellphone info
+			// classificatioin
+			// fire stove policy
+			// internet info
+			// vehicle info
+			// - rv
+			// - trailer
+			// additional info
+			// wheelchair access info
+
 			var accessTab = (
-				<>
-					<p>What</p>
-				</>
+				<div className='access-tab'>
+					{ accessInfo }
+				</div>
 			);
 
 			// Info about amenities
 			var yesList = [];
 			var noList = [];
-			var accessData = element.amenities;
+			var amenData = element.amenities;
 
-			if (accessData.ampitheater.toUpperCase().includes('YES')) {
-				yesList.push('Ampitheater');
+			if (amenData.ampitheater.toUpperCase().includes('YES')) {
+				yesList.push('Amphitheater');
 			} else {
-				noList.push('Ampitheater');
+				noList.push('Amphitheater');
 			}
 
-			if (accessData.campstore.toUpperCase().includes('YES')) {
+			if (amenData.campstore.toUpperCase().includes('YES')) {
 				yesList.push('Camp Store');
 			} else {
 				noList.push('Camp Store');
 			}
 
-			if (accessData.cellphonereception.toUpperCase().includes('YES')) {
+			if (amenData.cellphonereception.toUpperCase().includes('YES')) {
 				yesList.push('Cell Phone Reception');
 			} else {
 				noList.push('Cell Phone Reception');
 			}
 
-			if (accessData.dumpstation.toUpperCase().includes('YES')) {
+			if (amenData.dumpstation.toUpperCase().includes('YES')) {
 				yesList.push('Dump Station');
 			} else {
 				noList.push('Dump Station');
 			}
 
-			if (accessData.firewoodforsale.toUpperCase().includes('YES')) {
+			if (amenData.firewoodforsale.toUpperCase().includes('YES')) {
 				yesList.push('Firewood For Sale');
 			} else {
 				noList.push('Firewood For Sale');
 			}
 
-			if (accessData.foodstoragelockers.toUpperCase().includes('YES')) {
+			if (amenData.foodstoragelockers.toUpperCase().includes('YES')) {
 				yesList.push('Food Storage Lockers');
 			} else {
 				noList.push('Food Storage Lockers');
 			}
 
-			if (accessData.iceavailableforsale.toUpperCase().includes('YES')) {
+			if (amenData.iceavailableforsale.toUpperCase().includes('YES')) {
 				yesList.push('Ice Available For Sale');
 			} else {
 				noList.push('Ice Available For Sale');
 			}
 
-			if (accessData.internetconnectivity.toUpperCase().includes('YES')) {
+			if (amenData.internetconnectivity.toUpperCase().includes('YES')) {
 				yesList.push('Internet Connectivity');
 			} else {
 				noList.push('Internet Connectivity');
 			}
 
-			if (accessData.laundry.toUpperCase().includes('YES')) {
+			if (amenData.laundry.toUpperCase().includes('YES')) {
 				yesList.push('Laundry');
 			} else {
 				noList.push('Laundry');
 			}
 
-			if (accessData.potablewater.length !== 0 
-					&& accessData.potablewater[0].toUpperCase().includes('YES')) {
+			if (amenData.potablewater.length !== 0 
+					&& amenData.potablewater[0].toUpperCase().includes('YES')) {
 				yesList.push('Potable Water');
 			} else {
 				noList.push('Potable Water');
 			}
 
-			if (accessData.showers.length !== 0 
-					&& !accessData.showers[0].toUpperCase().includes('NONE')) {
+			if (amenData.showers.length !== 0 
+					&& !amenData.showers[0].toUpperCase().includes('NONE')) {
 				yesList.push('Showers');
 			} else {
 				noList.push('Showers');
 			}
 
-			if (accessData.stafforvolunteerhostonsite.toUpperCase().includes('YES')) {
+			if (amenData.stafforvolunteerhostonsite.toUpperCase().includes('YES')) {
 				yesList.push('Staff Or Volunteer Host On Site');
 			} else {
 				noList.push('Staff Or Volunteer Host On Site');
 			}
 
-			if (accessData.toilets.length !== 0 
-					&& !accessData.toilets[0].toUpperCase().includes('NONE')) {
+			if (amenData.toilets.length !== 0 
+					&& !amenData.toilets[0].toUpperCase().includes('NONE')) {
 				yesList.push('Toilets');
 			} else {
 				noList.push('Toilets');
 			}
 
-			if (accessData.trashrecyclingcollection.toUpperCase().includes('YES')) {
+			if (amenData.trashrecyclingcollection.toUpperCase().includes('YES')) {
 				yesList.push('Trash Recycling Collection');
 			} else {
 				noList.push('Trash Recycling Collection');
@@ -232,7 +453,7 @@ class Campground extends Component {
 
 			Array.prototype.slice.call(
 					document.getElementsByClassName('dot-icon')).forEach(e => {
-				 if (e.getAttribute('data-number') === "0") {
+				 if (e.getAttribute('data-number') !== "0") {
 				 	e.classList.add('green-icon');
 				 } else {
 				 	e.classList.add('red-icon');

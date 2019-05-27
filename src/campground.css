@@ -55,7 +55,7 @@
 
 .site-name {
 	font-weight: bold;
-	margin-right: 14px;
+	margin-right: 11px;
 }
 
 .red-icon {
@@ -66,4 +66,94 @@
 .green-icon {
 	color: #69F0AE;
 	opacity: 0.9;
+}
+
+.access-tab {
+	padding-left: 30px;
+	padding-top: 22px;
+	padding-right: 20px;
+}
+
+.access-tab h3 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 22px;
+	margin-bottom: 15px;
+	color: #002359;
+	border-bottom: 1px #EEEEEE solid;
+	position: relative;
+	margin-top: 25px;
+}
+
+.access-tab p {
+	margin-left: 30px;
+	color: #170956;
+}
+
+.info-header {
+	padding-bottom: 0px;
+	padding-left: 7px;
+}
+
+.info-header i {
+	padding-left: 7px;
+	font-size: 18px;
+	transform: translateY(-1px);
+	color: black;
+	position: absolute;
+	right: 8px;
+	bottom: 2px;
+	opacity: 0.8;
+}
+
+.info-header img {
+	height: 24px;
+	transform: translateY(-1px);
+	opacity: 0.8;
+	position: absolute;
+	right: 5px;
+	bottom: 0px;
+}
+
+#fire-grate-icon {
+	height: 18px;
+	padding-left: 5px;
+	transform: translateY(-3px);
+}
+
+#phone-icon {
+	height: 24px;
+}
+
+#camp-icon {
+	height: 24px;
+}
+
+#wifi-icon {
+	height: 22px;
+}
+
+#wheelchair-icon {
+	height: 22px;
+}
+
+#car-icon {
+	height: 18px;
+}
+
+#info-icon {
+	height: 22px;
+}
+
+#road-info {
+	margin-top: 10px;
+}
+
+.road-title, .vehicle-group {
+	margin-bottom: 10px;
+}
+
+.road-detail, .vehicle-info {
+	padding-left: 40px;
+	opacity: 0.9;
+	font-size: 15px;
 }
