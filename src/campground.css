@@ -69,7 +69,7 @@
 }
 
 .access-tab {
-	padding-left: 30px;
+	padding-left: 15px;
 	padding-top: 22px;
 	padding-right: 20px;
 }
@@ -171,7 +171,7 @@
 }
 
 .camp-tab {
-	padding-left: 30px;
+	padding-left: 24px;
 	padding-right: 20px;
 	padding-top: 5px;
 }
@@ -192,4 +192,46 @@
 	padding-left: 40px;
 	opacity: 0.9;
 	font-size: 15px;
+}
+
+.link-icon {
+	margin-left: 5px;
+}
+
+#campground-icon {
+	position: absolute;
+	right: 5px;
+	height: 26px;
+	top: 5px;
+}
+
+#direction-icon {
+	height: 18px !important;
+	top: 5px;
+}
+
+
+.inform-icon {
+	position: absolute;
+	right: 5px;
+	font-size: 18px;
+	color: black;
+	opacity: 0.8;
+	top: 5px;
+}
+
+#reservation-icon {
+	position: absolute;
+	right: 3px;
+	height: 20px;
+	top: 4px;
+}
+
+.weather-icon {
+	position: absolute;
+	right: 3px;
+	font-size: 18px;
+	color: black;
+	opacity: 0.8;
+	top: 4px;
 }

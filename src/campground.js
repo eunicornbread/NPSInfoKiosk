@@ -7,6 +7,9 @@ import wheelchairIcon from './svg/wheelchair-accessible-black-18.svg';
 import wifiIcon from './svg/wi-fi-black-18.svg';
 import carIcon from './svg/automobiles-black-22.svg';
 import infoIcon from './svg/information-black-18.svg';
+import directionIcon from './svg/directions-black-22.svg';
+import campgroundIcon from './svg/campground-black-18.svg';
+import reservationIcon from './svg/reservations-black-22.svg';
 
 // start with row 1
 // nps symbol libray
@@ -29,7 +32,7 @@ class Campground extends Component {
 
 
 	render() {
-		console.log(this.props.data);
+		//console.log(this.props.data);
 		if (this.props.data.length === 0) {
 			return (
 				<>
@@ -56,7 +59,10 @@ class Campground extends Component {
 			}
 
 			campInfo.push(
-				<h3 key={1}>Direction</h3>
+				<h3 key={1}>
+					Direction
+					<img src={ directionIcon } alt='direction icon' id='direction-icon' />
+				</h3>
 			);
 
 			campInfo.push(
@@ -83,7 +89,10 @@ class Campground extends Component {
 				);
 			} else {
 				campInfo.push(
-					<p id='direction-url' key={5} className='info-detail'>{ element.directionsUrl }</p>
+					<a href={ element.directionsUrl } target="_blank" rel="noopener noreferrer" id='direction-url' key={5} className='info-detail'>
+						{ element.directionsUrl }
+						<span><i className="fas fa-external-link-alt link-icon"></i></span>
+					</a>
 				);
 			}
 
@@ -102,7 +111,12 @@ class Campground extends Component {
 			}
 
 			campInfo.push(
-				<h3 key={8}>Regulation</h3>
+				<h3 key={8}>
+					Regulation
+					<span>
+						<i className="fas fa-info-circle inform-icon"></i>
+					</span>
+				</h3>
 			);
 
 			campInfo.push(
@@ -122,7 +136,7 @@ class Campground extends Component {
 					}
 
 					regulation.push(
-						<p className='rule-item' key={ e } className='info-detail'>
+						<p className='rule-item info-detail' key={ e }>
 							{ (i + 1) + ". " + e }
 						</p>
 					);
@@ -145,12 +159,18 @@ class Campground extends Component {
 				);
 			} else {
 				campInfo.push(
-					<p id='regulation-url' key={12} className='info-detail'>{ element.regulationsurl }</p>
+					<a href={ element.regulationsurl } target="_blank" rel="noopener noreferrer"  id='regulation-url' key={12} className='info-detail'>
+						{ element.regulationsurl }
+						<span><i className="fas fa-external-link-alt link-icon"></i></span>
+					</a>
 				);
 			}
 
 			campInfo.push(
-				<h3 key={13}>Reservation</h3>
+				<h3 key={13}>
+					Reservation
+					<img src={ reservationIcon } alt='reservation icon' id='reservation-icon' />
+				</h3>
 			);
 
 			campInfo.push(
@@ -214,7 +234,10 @@ class Campground extends Component {
 			}
 
 			campInfo.push(
-				<h3 key={22}>Weather</h3>
+				<h3 key={22}>
+					Weather
+					<span><i className="fas fa-cloud-sun weather-icon"></i></span>
+				</h3>
 			);
 
 			if (element.weatheroverview === "") {
@@ -232,6 +255,7 @@ class Campground extends Component {
 				<div className='camp-tab'>
 					<h3 id='name'>
 						{ element.name }
+						<img src={ campgroundIcon } alt='campground icon' id='campground-icon' />
 					</h3>
 					{ campInfo }
 				</div>
