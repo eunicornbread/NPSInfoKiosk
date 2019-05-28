@@ -328,13 +328,24 @@ class Search extends Component {
 				/*<div className='outer'>
 				</div>*/}
 
+				<div className='web-name'>
+					<h1 className='head-1'>National Park Service Info Kiosk</h1>
+		        </div>
 
-				<button type="button" id="search-button" data-toggle="modal" data-target=".bd-example-modal-xl"><i className="fas fa-search"></i></button>
+		        <button type="button" className="button shadow-sm" id="search-button" data-toggle="modal" data-target=".bd-example-modal-xl">
+					<span className="button-text mr-2">Find a park</span>
+                	<span className='button-icon'><i className="fas fa-chevron-circle-right"></i></span>
+				</button>
 
 				<div className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" id="myModal">
 				  <div className="modal-dialog modal-xl modal-dialog-centered">
 				    <div className="modal-content">
 				      <div className='modal-body-lg'>
+
+				      	<button type="button" className="close close-button" data-dismiss="modal" 
+							        	aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
 
 				{ /* Modal content start */ }
 				<div className="filter-menu shadow" id="filter-menu">
@@ -392,7 +403,7 @@ class Search extends Component {
 				    	<button type="submit" className="search-button">
 				    		<i className="fas fa-search"></i>
 				    	</button>
-				    	<input type="text" className="search-input shadow" id="search-input" 
+				    	<input type="text" className="search-input shadow-sm" id="search-input" 
 				    			ref={(input) => this.textInput = input} placeholder="Find a park" />
 					</form>
 				</div>

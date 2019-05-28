@@ -11,17 +11,14 @@
 }
 
 .web-name {
-  margin-left: 200px;
-  margin-top: 50px;
+  position: fixed;
+  left: 100px;
+  top: 100px;
   color: #01579B;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
 }
 
-.head-2 {
-  margin-left: 90px;
-  margin-top: 20px;
-}
 
 .content {
   position: absolute;
@@ -49,7 +46,9 @@
   width: 155px;
   height: 40px;
   border-radius: 50px;
-  position: relative;
+  position: fixed;
+  left: 300px;
+  top: 220px;
   transition: all 250ms ease;
   box-sizing: border-box;
 }

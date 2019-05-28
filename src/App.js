@@ -17,8 +17,7 @@ class App extends Component {
             <img src={ bgImage } alt='background' />
           </div>
           <div className='web-name'>
-            <h1 className='head-1'>National Park Service</h1>
-            <h1 className='head-2'>Info Kiosk</h1>
+            <h1 className='head-1'>National Park Service Info Kiosk</h1>
           </div>
           <div className="content">
             <NavLink to={{
@@ -28,7 +27,7 @@ class App extends Component {
               }
             }}>
               <button type="button" className="button shadow-sm">
-                <span className="button-text mr-2">Find a park</span>
+                <span className="button-text mr-2">Get Started</span>
                 <span className='button-icon'><i className="fas fa-chevron-circle-right"></i></span>
               </button>
             </NavLink>
