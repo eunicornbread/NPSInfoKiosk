@@ -1,3 +1,26 @@
+html {
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+}
+
+.bg-img {
+	z-index: -1;
+	width: 100%;
+	height: 100vh;
+	transform: translateY(-350px);
+	position: fixed;
+	transition: transform 5s ease-in-out;
+}
+
+.bg-img.top {
+	transform: translateY(0px);
+}
+
+.content {
+	width: 100vw;
+	position: relative;
+}
+
 .wrapper {
 	position: relative;
 	min-height: 100vh;
@@ -9,6 +32,7 @@
 	position: relative;
 	left: 400px;
 	top: 50px;
+	/*opacity: 0;*/
 }
 
 .search-input {
@@ -38,8 +62,9 @@
 
 .filter-menu {
 	position: relative;
-	top: 50px;
 	left: 50px;
+	width: 200px;
+	/*opacity: 0;*/
 }
 
 .dropdown-item {
@@ -68,9 +93,9 @@
 
 .filter-group {
 	position: relative;
-	top: 180px;
-	left: 60px;
-	
+	top: 0px;
+	left: 70px;
+	width: 300px;	
 }
 
 #state-filter-wrapper {
@@ -94,6 +119,7 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin-top: 10px;
+	display: inline-block;
 }
 
 .desig-filter-item {
@@ -105,6 +131,7 @@
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin-top: 10px;
+	display: inline-block;
 }
 
 .desig-filter-item i {

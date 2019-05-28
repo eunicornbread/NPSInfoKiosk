@@ -17,7 +17,12 @@ class App extends Component {
             <img src={ bgImage } alt='background' />
           </div>
           <div className="content">
-            <NavLink to="/search">
+            <NavLink to={{
+              pathname: "/search",
+              props: {
+                transition: true
+              }
+            }}>
               <button type="button" className="button shadow-sm">
                 <span className="button-text mr-2">Find a park</span>
                 <span className='button-icon'><i className="fas fa-chevron-circle-right"></i></span>

@@ -1,6 +1,7 @@
 .bg-img {
   width: 100%;
   transform: translateY(-350px);
+  z-index: -1;
 }
 
 .main {

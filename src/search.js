@@ -5,13 +5,8 @@ import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
 import natureImage from './nature2.svg';
-import bgImage from './background.svg';
-
-// US State JSON 
-// https://gist.github.com/mshafrir/2646763
-
-// Nationa Park Service designation json file with data from
-// https://www.nps.gov/goga/planyourvisit/designations.htm
+//import bgImage from './background.svg';
+import bgImage from './new-landing-page.svg';
 
 class Search extends Component {
 	constructor(props) {
@@ -45,6 +40,10 @@ class Search extends Component {
 
 	componentDidMount() {
 		window.addEventListener('click', this.handleClickOutside, false);
+		setTimeout(() => {
+			document.getElementById('bg-img').classList.add('top');
+		}, 50);
+		
 	}
 
 	componentWillUnmount() {
@@ -275,9 +274,12 @@ class Search extends Component {
 		index = 0;
 		this.state.stateFilter.forEach(element => {
 			stateFilterList.push(
-				<div className="state-filter-item" key={ index }>
-					<div className="filter-text">{ element }</div>
-					<i className="fas fa-times" data-state={ element } onClick={ this.handleStateDelete }></i>
+				<div key={ index }>
+					<div className="state-filter-item" id={ element }>
+						<div className="filter-text">{ element }</div>
+						<i className="fas fa-times" data-state={ element } onClick={ this.handleStateDelete }></i>
+					</div>
+					<br />
 				</div>
 			);
 			index += 1;
@@ -288,9 +290,12 @@ class Search extends Component {
 		index = 0;
 		this.state.desigFilter.forEach(element => {
 			desigFilterList.push(
-				<div className="desig-filter-item" key={ index }>
-					<div className="filter-text">{ element }</div>
-					<i className="fas fa-times" data-desig={ element } onClick={ this.handleDesigDelete }></i>
+				<div key={ index }>
+					<div className="desig-filter-item" id={ element } data-desig={ element }>
+						<div className="filter-text" id={ element + "-text" }>{ element }</div>
+						<i className="fas fa-times" data-desig={ element } onClick={ this.handleDesigDelete }></i>
+					</div>
+					<br />
 				</div>
 			);
 			index += 1;
@@ -300,9 +305,10 @@ class Search extends Component {
 		return (
 			<>
 			<div className="wrapper">
-				<div className="bg-img">
-	            	
+				<div className="bg-img" id="bg-img">
+	            	<img src={ bgImage } alt='background' />
 	          	</div>
+	          	
 				<div className="search-bar">
 					<form onSubmit={ this.handleSearch }>
 				    	<button type="submit" className="search-button">
