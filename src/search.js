@@ -4,8 +4,6 @@ import './search.css';
 import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
-import natureImage from './nature2.svg';
-//import bgImage from './background.svg';
 import bgImage from './new-landing-page.svg';
 
 class Search extends Component {
@@ -43,7 +41,15 @@ class Search extends Component {
 		if (this.props.location.transition !== undefined) {
 			setTimeout(() => {
 				document.getElementById('bg-img').classList.add('top');
-			}, 50);	
+			}, 50);
+			
+			setTimeout(() => {
+				document.getElementById('overlay').classList.add('active');
+			}, 3050);
+		} else {
+			setTimeout(() => {
+				document.getElementById('overlay').classList.add('active');
+			}, 50);
 		}
 	}
 
@@ -305,7 +311,7 @@ class Search extends Component {
 		var background = [];
 		if (this.props.location.transition === undefined) {
 			background.push(
-				<div className="bg-img-no-transition">
+				<div className="bg-img-no-transition" key={0}>
 	            	<img src={ bgImage } alt='background' />
 	          	</div>
 			);
@@ -321,6 +327,7 @@ class Search extends Component {
 			<>
 			<div className="wrapper">
 				{ background }
+				<div id="overlay"></div>
 
 				<div className="search-bar">
 					<form onSubmit={ this.handleSearch }>
@@ -334,56 +341,57 @@ class Search extends Component {
 
 				<div className="search-result" id="search-results">{ resultList }</div>
 
-				<div className="filter-menu" id="filter-menu">
-					
-					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
-						<div className="filter-button state-filter-button">
-							<p className="noselect line-grow">Filter By State</p>
-						</div>
+				<div className='filter'>
+					<div className="filter-menu" id="filter-menu">
 						
-						<div className="filter-option state-filter-option" id="state-filter-option">
-							<div className="option-wrapper" id="state-wrapper">
-								{ stateOptions }
+						<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
+							<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
+							<div className="filter-button state-filter-button">
+								<p className="noselect line-grow">Filter By State</p>
 							</div>
-						</div>
-					</div>
-
-					<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
-						<div className="filter-button desig-filter-button">
-							<p className="noselect line-grow">Filter By Designation</p>
-						</div>
-	
-						<div className="filter-option desig-filter-option" id="desig-filter-option">
-							<div className="option-wrapper" id="desig-wrapper">
-								{ desigOptions }
-							</div>
-						</div>
-					</div>
-
-					<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
-						<div className="filter-button search-filter-button">
-							<p className="noselect line-grow" id="search-filter">Search By Keyword</p>
-						</div>
-
-						<div className="filter-option search-filter-option" id="search-filter-option">
-							<div className="option-wrapper-sm" id="search-wrapper">
-								<div className="dropdown-item" id="dropdown-keyword"
-									 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
-									<p data-search="Search By Keyword">Search By Keyword</p>
-								</div>
-								<div className="dropdown-item" id="dropdown-name"
-									 onClick={ this.handleSearchFilter } data-search="Search By Name">
-									<p data-search="Search By Name" id="search-by-name">Search By Name</p>
+							
+							<div className="filter-option state-filter-option" id="state-filter-option">
+								<div className="option-wrapper" id="state-wrapper">
+									{ stateOptions }
 								</div>
 							</div>
 						</div>
-					
+
+						<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
+							<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
+							<div className="filter-button desig-filter-button">
+								<p className="noselect line-grow">Filter By Designation</p>
+							</div>
+		
+							<div className="filter-option desig-filter-option" id="desig-filter-option">
+								<div className="option-wrapper" id="desig-wrapper">
+									{ desigOptions }
+								</div>
+							</div>
+						</div>
+
+						<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
+							<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
+							<div className="filter-button search-filter-button">
+								<p className="noselect line-grow" id="search-filter">Search By Keyword</p>
+							</div>
+
+							<div className="filter-option search-filter-option" id="search-filter-option">
+								<div className="option-wrapper-sm" id="search-wrapper">
+									<div className="dropdown-item" id="dropdown-keyword"
+										 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
+										<p data-search="Search By Keyword">Search By Keyword</p>
+									</div>
+									<div className="dropdown-item" id="dropdown-name"
+										 onClick={ this.handleSearchFilter } data-search="Search By Name">
+										<p data-search="Search By Name" id="search-by-name">Search By Name</p>
+									</div>
+								</div>
+							</div>
+						
+						</div>
 					</div>
 				</div>
-
 				<div className="filter-group">
 					{ stateFilterList }
 					{ desigFilterList }

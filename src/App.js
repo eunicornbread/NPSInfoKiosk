@@ -16,6 +16,10 @@ class App extends Component {
           <div className="bg-img">
             <img src={ bgImage } alt='background' />
           </div>
+          <div className='web-name'>
+            <h1 className='head-1'>National Park Service</h1>
+            <h1 className='head-2'>Info Kiosk</h1>
+          </div>
           <div className="content">
             <NavLink to={{
               pathname: "/search",
