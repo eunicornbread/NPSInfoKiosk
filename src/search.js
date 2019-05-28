@@ -40,10 +40,11 @@ class Search extends Component {
 
 	componentDidMount() {
 		window.addEventListener('click', this.handleClickOutside, false);
-		setTimeout(() => {
-			document.getElementById('bg-img').classList.add('top');
-		}, 50);
-		
+		if (this.props.location.transition !== undefined) {
+			setTimeout(() => {
+				document.getElementById('bg-img').classList.add('top');
+			}, 50);	
+		}
 	}
 
 	componentWillUnmount() {
@@ -177,6 +178,7 @@ class Search extends Component {
 	}
 
 	render() {
+		console.log(this.props.location.state);
 		
 		// display the results from the api get request
 		var resultList = [];
@@ -224,9 +226,8 @@ class Search extends Component {
 					includeSearch = true;
 				}
 			}
-			// console.log(includeState);
-			// console.log(includeDesig);
-			// console.log(includeSearch);
+
+
 
 			if (includeState && includeDesig && includeSearch) {
 				var parkURL = "/park/" + element.parkCode;
@@ -301,14 +302,26 @@ class Search extends Component {
 			index += 1;
 		})
 
+		var background = [];
+		if (this.props.location.transition === undefined) {
+			background.push(
+				<div className="bg-img-no-transition">
+	            	<img src={ bgImage } alt='background' />
+	          	</div>
+			);
+		} else {
+			background.push(
+				<div className="bg-img" id="bg-img" key={0}>
+	            	<img src={ bgImage } alt='background' />
+	          	</div>
+			);
+		}
 
 		return (
 			<>
 			<div className="wrapper">
-				<div className="bg-img" id="bg-img">
-	            	<img src={ bgImage } alt='background' />
-	          	</div>
-	          	
+				{ background }
+
 				<div className="search-bar">
 					<form onSubmit={ this.handleSearch }>
 				    	<button type="submit" className="search-button">

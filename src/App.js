@@ -19,7 +19,7 @@ class App extends Component {
           <div className="content">
             <NavLink to={{
               pathname: "/search",
-              props: {
+              transition: {
                 transition: true
               }
             }}>
