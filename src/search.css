@@ -2,6 +2,17 @@ html {
     overflow: -moz-scrollbars-vertical; 
     overflow-y: scroll;
 }
+/*
+.outer {
+	box-sizing: border-box;
+	width: 100vw;
+	position: fixed;
+
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.1));
+	opacity: 1;
+	height: 100vh;
+}
+*/
 
 .bg-img {
 	z-index: -10;
@@ -11,7 +22,7 @@ html {
 	position: fixed;
 	transition: transform 4s ease-in-out, background-color 1s ease-in-out;
 }
-
+/*
 #overlay {
 	z-index: -5;
 	width: 100%;
@@ -26,9 +37,10 @@ html {
 }
 
 #overlay.active {
-	background-color: rgba(0, 77, 64, 0.2);
+	background-color: rgba(0, 77, 64, 0.1);
 
 }
+*/
 
 .bg-img.top {
 	transform: translateY(0px);
@@ -41,6 +53,7 @@ html {
 	transform: translateY(0px);
 	position: fixed;
 	transition: transform 5s ease-in-out;
+
 }
 
 .content {
@@ -52,14 +65,31 @@ html {
 	position: relative;
 	min-height: 100vh;
 	height: 100%;
-	display: flex;
 }
 
 .search-bar {
-	max-width: 600px;
 	position: relative;
-	top: 50px;
-	/*opacity: 0;*/
+	margin-top: 40px;
+	grid-row: 1 / 2;
+	grid-column: 3 / 4;
+	max-width: 600px;
+	
+}
+
+#search-button {
+	position: absolute;
+	top: 50%;
+	left: 400px;
+	transform: translate(0%, -50%);
+}
+
+.modal-body-lg {
+	height: 510px;
+	overflow-y: scroll;
+	display: grid;
+	grid-template-columns: 300px 1fr 50% 1fr 1fr 1fr;
+	grid-template-rows: 100px 300px auto;
+
 }
 
 .search-input {
@@ -89,9 +119,17 @@ html {
 
 .filter-menu {
 	position: relative;
-	left: 50px;
-	width: 200px;
-	/*opacity: 0;*/
+	width: 215px;
+	height: 160px;
+	opacity: 0.9;
+	background-color: #F4F3EF;
+	padding-top: 20px;
+	padding-left: 20px;
+	border-radius: 10px;
+	grid-column: 1 /2;
+	grid-row: 2 / 3;
+	place-self: center;
+	
 }
 
 .dropdown-item {
@@ -120,9 +158,8 @@ html {
 
 .filter-group {
 	position: relative;
-	top: 0px;
-	left: 70px;
-	width: 300px;	
+	grid-row-start: 2;
+	grid-column: 4 / 6;
 }
 
 #state-filter-wrapper {
@@ -182,22 +219,21 @@ html {
 	margin-right: 20px;
 }
 
-.filter {
-	max-width: 400px;
-	flex-grow: 1;
-}
-
 .search {
-	flex-grow: 2;
 }
 
 .search-result {
+	grid-row-start: 2;
+	grid-column: 3 / 4;
+	padding-top: 25px;
+	max-width: 600px;
 }
 
 .result-item {
 	border: 1px black solid;
-	width: 800px;
 	height: 70px;
+	margin-left: 10px;
+	margin-right: 10px;
 	padding: 20px;
 	background-color: white;
 	opacity: 0.9;
@@ -224,13 +260,12 @@ html {
 .filter-option {
 	padding-top: 5px;
 	background-color: white;
-	/*display: none;*/
 	visibility: hidden;
 	position: absolute;
 	left: 25px;
 	z-index: 10;
 	border-radius: 10px;
-	border: 1px #BDBDBD solid;
+	border: 1px #9E9E9E solid;
 }
 
 .filter-option::after {

@@ -5,6 +5,7 @@ import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
 import bgImage from './new-landing-page.svg';
+import $ from 'jquery';
 
 class Search extends Component {
 	constructor(props) {
@@ -43,13 +44,13 @@ class Search extends Component {
 				document.getElementById('bg-img').classList.add('top');
 			}, 50);
 			
-			setTimeout(() => {
+			/*setTimeout(() => {
 				document.getElementById('overlay').classList.add('active');
-			}, 3050);
+			}, 3050);*/
 		} else {
-			setTimeout(() => {
+			/*setTimeout(() => {
 				document.getElementById('overlay').classList.add('active');
-			}, 50);
+			}, 50);*/
 		}
 	}
 
@@ -184,7 +185,7 @@ class Search extends Component {
 	}
 
 	render() {
-		console.log(this.props.location.state);
+		//console.log(this.props.location.state);
 		
 		// display the results from the api get request
 		var resultList = [];
@@ -238,7 +239,8 @@ class Search extends Component {
 			if (includeState && includeDesig && includeSearch) {
 				var parkURL = "/park/" + element.parkCode;
 				resultList.push(
-					<NavLink to={ parkURL } className="result-link" key={ element.parkCode }>
+					<NavLink to={ parkURL } className="result-link" key={ element.parkCode } 
+								onClick={e => {$('#myModal').modal('hide');}}>
 						<div className="result-item mb-3">
 							<span className="mr-5">{ element.states }</span>
 							<span className="mr-5">{ element.fullName }</span>
@@ -281,12 +283,9 @@ class Search extends Component {
 		index = 0;
 		this.state.stateFilter.forEach(element => {
 			stateFilterList.push(
-				<div key={ index }>
-					<div className="state-filter-item" id={ element }>
-						<div className="filter-text">{ element }</div>
-						<i className="fas fa-times" data-state={ element } onClick={ this.handleStateDelete }></i>
-					</div>
-					<br />
+				<div className="state-filter-item" id={ element } key={ index }>
+					<div className="filter-text">{ element }</div>
+					<i className="fas fa-times" data-state={ element } onClick={ this.handleStateDelete }></i>
 				</div>
 			);
 			index += 1;
@@ -297,12 +296,9 @@ class Search extends Component {
 		index = 0;
 		this.state.desigFilter.forEach(element => {
 			desigFilterList.push(
-				<div key={ index }>
-					<div className="desig-filter-item" id={ element } data-desig={ element }>
-						<div className="filter-text" id={ element + "-text" }>{ element }</div>
-						<i className="fas fa-times" data-desig={ element } onClick={ this.handleDesigDelete }></i>
-					</div>
-					<br />
+				<div className="desig-filter-item" id={ element } data-desig={ element } key={ index }>
+					<div className="filter-text" id={ element + "-text" }>{ element }</div>
+					<i className="fas fa-times" data-desig={ element } onClick={ this.handleDesigDelete }></i>
 				</div>
 			);
 			index += 1;
@@ -327,80 +323,93 @@ class Search extends Component {
 			<>
 			<div className="wrapper">
 				{ background }
-				<div id="overlay"></div>
+				{/*<div id="overlay"></div>*/
 
-				<div className='filter'>
-					<div className="filter-menu" id="filter-menu">
-						
-						<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
-							<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
-							<div className="filter-button state-filter-button">
-								<p className="noselect line-grow">Filter By State</p>
-							</div>
-							
-							<div className="filter-option state-filter-option" id="state-filter-option">
-								<div className="option-wrapper" id="state-wrapper">
-									{ stateOptions }
-								</div>
-							</div>
+				/*<div className='outer'>
+				</div>*/}
+
+
+				<button type="button" id="search-button" data-toggle="modal" data-target=".bd-example-modal-xl"><i className="fas fa-search"></i></button>
+
+				<div className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" id="myModal">
+				  <div className="modal-dialog modal-xl modal-dialog-centered">
+				    <div className="modal-content">
+				      <div className='modal-body-lg'>
+
+				{ /* Modal content start */ }
+				<div className="filter-menu shadow" id="filter-menu">
+					
+					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
+						<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
+						<div className="filter-button state-filter-button">
+							<p className="noselect line-grow">Filter By State</p>
 						</div>
-
-						<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
-							<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
-							<div className="filter-button desig-filter-button">
-								<p className="noselect line-grow">Filter By Designation</p>
-							</div>
-		
-							<div className="filter-option desig-filter-option" id="desig-filter-option">
-								<div className="option-wrapper" id="desig-wrapper">
-									{ desigOptions }
-								</div>
-							</div>
-						</div>
-
-						<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
-							<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
-							<div className="filter-button search-filter-button">
-								<p className="noselect line-grow" id="search-filter">Search By Keyword</p>
-							</div>
-
-							<div className="filter-option search-filter-option" id="search-filter-option">
-								<div className="option-wrapper-sm" id="search-wrapper">
-									<div className="dropdown-item" id="dropdown-keyword"
-										 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
-										<p data-search="Search By Keyword">Search By Keyword</p>
-									</div>
-									<div className="dropdown-item" id="dropdown-name"
-										 onClick={ this.handleSearchFilter } data-search="Search By Name">
-										<p data-search="Search By Name" id="search-by-name">Search By Name</p>
-									</div>
-								</div>
-							</div>
 						
+						<div className="filter-option state-filter-option" id="state-filter-option">
+							<div className="option-wrapper" id="state-wrapper">
+								{ stateOptions }
+							</div>
 						</div>
 					</div>
+
+					<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
+						<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
+						<div className="filter-button desig-filter-button">
+							<p className="noselect line-grow">Filter By Designation</p>
+						</div>
+	
+						<div className="filter-option desig-filter-option" id="desig-filter-option">
+							<div className="option-wrapper" id="desig-wrapper">
+								{ desigOptions }
+							</div>
+						</div>
+					</div>
+
+					<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
+						<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
+						<div className="filter-button search-filter-button">
+							<p className="noselect line-grow" id="search-filter">Search By Keyword</p>
+						</div>
+
+						<div className="filter-option search-filter-option" id="search-filter-option">
+							<div className="option-wrapper-sm" id="search-wrapper">
+								<div className="dropdown-item" id="dropdown-keyword"
+									 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
+									<p data-search="Search By Keyword">Search By Keyword</p>
+								</div>
+								<div className="dropdown-item" id="dropdown-name"
+									 onClick={ this.handleSearchFilter } data-search="Search By Name">
+									<p data-search="Search By Name" id="search-by-name">Search By Name</p>
+								</div>
+							</div>
+						</div>
 					
-					<div className="filter-group">
-						{ stateFilterList }
-						{ desigFilterList }
 					</div>
 				</div>
 				
-
-				<div className='search'>
-					<div className="search-bar">
-						<form onSubmit={ this.handleSearch }>
-					    	<button type="submit" className="search-button">
-					    		<i className="fas fa-search"></i>
-					    	</button>
-					    	<input type="text" className="search-input shadow-sm" id="search-input" 
-					    			ref={(input) => this.textInput = input} placeholder="Find a park" />
-						</form>
-					</div>
-
-					<div className="search-result" id="search-results">{ resultList }</div>
+				<div className="search-bar">
+					<form onSubmit={ this.handleSearch }>
+				    	<button type="submit" className="search-button">
+				    		<i className="fas fa-search"></i>
+				    	</button>
+				    	<input type="text" className="search-input shadow" id="search-input" 
+				    			ref={(input) => this.textInput = input} placeholder="Find a park" />
+					</form>
 				</div>
 
+				<div className="filter-group">
+					{ stateFilterList }
+					{ desigFilterList }
+				</div>
+
+				<div className="search-result" id="search-results">{ resultList }</div>
+				{ /* Modal content end */ }
+
+					  </div>
+				    </div>
+				  </div>
+				</div>
+				
 			</div>
 
 
