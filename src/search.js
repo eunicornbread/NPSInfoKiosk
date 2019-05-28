@@ -329,18 +329,6 @@ class Search extends Component {
 				{ background }
 				<div id="overlay"></div>
 
-				<div className="search-bar">
-					<form onSubmit={ this.handleSearch }>
-				    	<button type="submit" className="search-button">
-				    		<i className="fas fa-search"></i>
-				    	</button>
-				    	<input type="text" className="search-input shadow-sm" id="search-input" 
-				    			ref={(input) => this.textInput = input} placeholder="Find a park" />
-					</form>
-				</div>
-
-				<div className="search-result" id="search-results">{ resultList }</div>
-
 				<div className='filter'>
 					<div className="filter-menu" id="filter-menu">
 						
@@ -391,12 +379,27 @@ class Search extends Component {
 						
 						</div>
 					</div>
+					
+					<div className="filter-group">
+						{ stateFilterList }
+						{ desigFilterList }
+					</div>
 				</div>
-				<div className="filter-group">
-					{ stateFilterList }
-					{ desigFilterList }
-				</div>
+				
 
+				<div className='search'>
+					<div className="search-bar">
+						<form onSubmit={ this.handleSearch }>
+					    	<button type="submit" className="search-button">
+					    		<i className="fas fa-search"></i>
+					    	</button>
+					    	<input type="text" className="search-input shadow-sm" id="search-input" 
+					    			ref={(input) => this.textInput = input} placeholder="Find a park" />
+						</form>
+					</div>
+
+					<div className="search-result" id="search-results">{ resultList }</div>
+				</div>
 
 			</div>
 

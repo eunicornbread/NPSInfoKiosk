@@ -9,7 +9,7 @@ html {
 	height: 100vh;
 	transform: translateY(-350px);
 	position: fixed;
-	transition: transform 5s ease-in-out, background-color 5s ease-in-out;
+	transition: transform 4s ease-in-out, background-color 1s ease-in-out;
 }
 
 #overlay {
@@ -22,7 +22,7 @@ html {
 	right: 0;
 	bottom: 0;
 	background-color: rgba(0, 77, 64, 0);
-	transition: background-color 2s ease-in;
+	transition: background-color 1s ease-in-out;
 }
 
 #overlay.active {
@@ -52,12 +52,12 @@ html {
 	position: relative;
 	min-height: 100vh;
 	height: 100%;
+	display: flex;
 }
 
 .search-bar {
 	max-width: 600px;
 	position: relative;
-	left: 400px;
 	top: 50px;
 	/*opacity: 0;*/
 }
@@ -184,11 +184,14 @@ html {
 
 .filter {
 	max-width: 400px;
+	flex-grow: 1;
+}
+
+.search {
+	flex-grow: 2;
 }
 
 .search-result {
-	padding-left: 400px;
-	padding-top: 150px;
 }
 
 .result-item {
