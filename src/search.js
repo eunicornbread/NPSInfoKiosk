@@ -44,13 +44,15 @@ class Search extends Component {
 				document.getElementById('bg-img').classList.add('top');
 			}, 50);
 			
-			/*setTimeout(() => {
-				document.getElementById('overlay').classList.add('active');
-			}, 3050);*/
+			setTimeout(() => {
+				document.getElementById('left').classList.add('active');
+				document.getElementById('right').classList.add('active');
+			}, 550);
 		} else {
-			/*setTimeout(() => {
-				document.getElementById('overlay').classList.add('active');
-			}, 50);*/
+			setTimeout(() => {
+				document.getElementById('left').classList.add('active');
+				document.getElementById('right').classList.add('active');
+			}, 10);
 		}
 	}
 
@@ -319,35 +321,16 @@ class Search extends Component {
 			);
 		}
 
+		var slow = (this.props.location.transition === undefined);
+
 		return (
 			<>
 			<div className="wrapper">
 				{ background }
-				{/*<div id="overlay"></div>*/
 
-				/*<div className='outer'>
-				</div>*/}
+				<div className={slow ? 'left-slow' : 'left-fast'} id='left'></div>
+				<div className={slow ? 'right-slow' : 'right-fast'} id='right'>
 
-				<div className='web-name'>
-					<h1 className='head-1'>National Park Service Info Kiosk</h1>
-		        </div>
-
-		        <button type="button" className="button shadow-sm" id="search-button" data-toggle="modal" data-target=".bd-example-modal-xl">
-					<span className="button-text mr-2">Find a park</span>
-                	<span className='button-icon'><i className="fas fa-chevron-circle-right"></i></span>
-				</button>
-
-				<div className="modal fade bd-example-modal-xl" tabIndex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true" id="myModal">
-				  <div className="modal-dialog modal-xl modal-dialog-centered">
-				    <div className="modal-content">
-				      <div className='modal-body-lg'>
-
-				      	<button type="button" className="close close-button" data-dismiss="modal" 
-							        	aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-
-				{ /* Modal content start */ }
 				<div className="filter-menu shadow" id="filter-menu">
 					
 					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
@@ -414,14 +397,13 @@ class Search extends Component {
 				</div>
 
 				<div className="search-result" id="search-results">{ resultList }</div>
-				{ /* Modal content end */ }
 
-					  </div>
-				    </div>
-				  </div>
 				</div>
+
+				</div>
+
+
 				
-			</div>
 
 
 			</>
