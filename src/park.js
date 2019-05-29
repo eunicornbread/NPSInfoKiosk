@@ -230,7 +230,7 @@ class Park extends Component {
 		          	</div>
 
 
-					<div className='left' id='left'>
+					<div className='left-side' id='left-side'>
 
 					<div className="navigation" onClick={ this.handleClick }>
 						<ul className="nav flex-column" id="pills-tab" role="tablist">
@@ -255,7 +255,7 @@ class Park extends Component {
 
 
 					</div>
-					<div className='right' id='right'>
+					<div className='right-side' id='right-side'>
 
 					
 

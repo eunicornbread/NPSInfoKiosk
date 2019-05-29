@@ -8,7 +8,7 @@
 
 }
 
-#left {
+#left-side {
 	height: 100%;
 	width: 25%;
 	position: fixed;
@@ -21,7 +21,7 @@
 	
 }
 
-#right {
+#right-side {
 	height: 100%;
 	width: 75%;
 	position: fixed;
@@ -29,7 +29,11 @@
 	overflow-y: scroll;
 	background-color: rgb(246,244,242);
 	opacity: 1;
-	display: table;
+	
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 100%;
+	
 }
 
 
