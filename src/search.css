@@ -15,7 +15,9 @@
 	overflow-y: scroll;
 	background-color: white;
 	opacity: 0;
-	
+	display: grid;
+	grid-template-columns: 300px auto;
+	grid-template-rows: 100px 200px auto;
 }
 
 .left-slow {
@@ -103,11 +105,12 @@
 
 
 .search-bar {
-	display: none;
 	position: relative;
-	margin-top: 40px;
+	margin-top: 30px;
 	max-width: 600px;
-	
+	grid-row: 1 / 2;
+	grid-column: 2 / 3;
+
 }
 
 
@@ -144,7 +147,6 @@
 }
 
 .filter-menu {
-	display: none;
 	position: relative;
 	width: 215px;
 	height: 160px;
@@ -153,9 +155,11 @@
 	padding-top: 20px;
 	padding-left: 20px;
 	border-radius: 10px;
-	margin-left: 40px;
-	margin-top: 10px;
 	border: 1px #0D47A1 solid;
+	grid-column: 1 / 2;
+	grid-row: 2 / 3;
+	place-self: center;
+	z-index: 1;
 }
 
 .dropdown-item {
@@ -184,7 +188,9 @@
 
 .filter-group {
 	position: relative;
-	
+	grid-row-start: 3;
+	grid-column: 1 / 2;
+	margin-left: 50px;
 }
 
 #state-filter-wrapper {
@@ -248,8 +254,9 @@
 }
 
 .search-result {
-	padding-top: 25px;
 	max-width: 600px;
+	grid-column: 2 / 3;
+	grid-row: 2 / 3;
 }
 
 .result-item {

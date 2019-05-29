@@ -285,9 +285,11 @@ class Search extends Component {
 		index = 0;
 		this.state.stateFilter.forEach(element => {
 			stateFilterList.push(
-				<div className="state-filter-item" id={ element } key={ index }>
-					<div className="filter-text">{ element }</div>
-					<i className="fas fa-times" data-state={ element } onClick={ this.handleStateDelete }></i>
+				<div key={ index }>
+					<div className="state-filter-item" id={ element }>
+						<div className="filter-text">{ element }</div>
+						<i className="fas fa-times" data-state={ element } onClick={ this.handleStateDelete }></i>
+					</div>
 				</div>
 			);
 			index += 1;
@@ -298,9 +300,11 @@ class Search extends Component {
 		index = 0;
 		this.state.desigFilter.forEach(element => {
 			desigFilterList.push(
-				<div className="desig-filter-item" id={ element } data-desig={ element } key={ index }>
-					<div className="filter-text" id={ element + "-text" }>{ element }</div>
-					<i className="fas fa-times" data-desig={ element } onClick={ this.handleDesigDelete }></i>
+				<div key={ index }>
+					<div className="desig-filter-item" id={ element } data-desig={ element }>
+						<div className="filter-text" id={ element + "-text" }>{ element }</div>
+						<i className="fas fa-times" data-desig={ element } onClick={ this.handleDesigDelete }></i>
+					</div>
 				</div>
 			);
 			index += 1;
