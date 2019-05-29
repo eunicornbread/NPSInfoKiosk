@@ -6,6 +6,25 @@ import visitorIcon from './svg/visitor-center-black-18.svg';
 class VisitorCenter extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			display: -1
+		}
+		this.handleReturn = this.handleReturn.bind(this);
+	}
+
+	handleReturn(event) {
+		document.getElementById('camp-' + this.state.display).classList.remove('show');
+		document.getElementById('camp-' + this.state.display).classList.add('hide');
+		document.getElementById('return-button').classList.add('hide');
+
+		setTimeout(() => {
+			document.getElementById('visitor-list').classList.add('show');
+			document.getElementById('visitor-list').classList.remove('hide');
+		
+		}, 500);
+		this.setState({
+			display: -1
+		});
 	}
 
 	handleClick(index, event) {
@@ -14,11 +33,15 @@ class VisitorCenter extends Component {
 		setTimeout(() => {
 			document.getElementById('camp-' + index).classList.remove('hide');
 			document.getElementById('camp-' + index).classList.add('show');
+			document.getElementById('return-button').classList.remove('hide');
 		}, 500);
+		this.setState({
+			display: index
+		});
 	}
 
 	render() {
-		console.log(this.props.data);
+		//console.log(this.props.data);
 		if (this.props.data.length === 0) {
 			return (
 				<div>
@@ -112,6 +135,7 @@ class VisitorCenter extends Component {
 				</div>
 
 				<div className='visitor-detail' id='visitor-detail'>
+					<i className="fas fa-angle-double-left return-button hide" id='return-button' onClick={ this.handleReturn }></i>
 					{ visitorDetail }
 				</div>	
 			</div>
