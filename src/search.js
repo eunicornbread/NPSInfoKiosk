@@ -179,7 +179,7 @@ class Search extends Component {
 			self.setState({
 				searchResults: res.data.data
 			});
-			//console.log(res.data.data);
+			console.log(res.data.data);
 		})
 		.catch(error => {
 			console.log(error)

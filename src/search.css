@@ -13,7 +13,7 @@
 	position: fixed;
 	right: 0;
 	overflow-y: scroll;
-	background-color: white;
+	background-color: rgb(246,244,242);
 	opacity: 0;
 	display: grid;
 	grid-template-columns: 300px auto;
@@ -110,6 +110,9 @@
 	max-width: 600px;
 	grid-row: 1 / 2;
 	grid-column: 2 / 3;
+	/*grid-column: 1 / 2;
+	margin-left: 40px;
+	margin-right: 40px;*/
 
 }
 
@@ -154,7 +157,8 @@
 	background-color: rgba(0,0,0,0);
 	padding-top: 20px;
 	padding-left: 20px;
-	border-radius: 10px;
+	/*border-radius: 10px;*/
+	border-radius: 3px;
 	border: 1px #0D47A1 solid;
 	grid-column: 1 / 2;
 	grid-row: 2 / 3;
@@ -373,7 +377,7 @@
 .line-grow::after {
 	display: block;
 	content: '';
-	border-bottom: solid 3px #019fb6;  
+	border-bottom: solid 3px #00796B;  
 	transform: scaleX(0);  
 	transition: transform 250ms ease-in-out;
 	padding-top: 3px;

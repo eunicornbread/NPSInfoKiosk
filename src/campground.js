@@ -712,7 +712,7 @@ class Campground extends Component {
 
 		return (
 			<>
-				<div className='space-top'></div>
+				
 				<div className='camp-list'>
 					{ campList }
 				</div>		

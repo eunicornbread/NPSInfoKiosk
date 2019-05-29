@@ -104,7 +104,7 @@ class VisitorCenter extends Component {
 		});
 		return (
 			<div>
-				<div className='space-top'></div>
+				
 				<div className='visitor-list'>
 					{ visitorList }
 				</div>	

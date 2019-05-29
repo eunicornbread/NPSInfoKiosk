@@ -3,6 +3,8 @@ import './park.css';
 import axios from 'axios';
 import Campground from './campground.js';
 import VisitorCenter from './visitorcenter.js';
+import bgImage from './new-landing-page.svg';
+
 
 class Park extends Component {
 	constructor(props) {
@@ -197,7 +199,7 @@ class Park extends Component {
 
 	render() {
 		//console.log(document.getElementsByClassName('nav-option'));
-		Array.prototype.slice.call(
+		/*Array.prototype.slice.call(
 			document.getElementsByClassName('nav-option')).forEach(element => {
 			if (element.textContent === 'Park') {
 				if (element.classList.contains('active')) {
@@ -218,13 +220,20 @@ class Park extends Component {
 					document.getElementById('nav-visitor').classList.remove('nav-active');
 				}
 			}	
-		});
+		});*/
 
 		return (
 			<>
 				<div className="wrapper">
+					<div className="bg-img-no-transition" key={0}>
+		            	<img src={ bgImage } alt='background' />
+		          	</div>
+
+
+					<div className='left' id='left'>
+
 					<div className="navigation" onClick={ this.handleClick }>
-						<ul className="nav mb-3" id="pills-tab" role="tablist">
+						<ul className="nav flex-column" id="pills-tab" role="tablist">
 						  <li className="nav-item" id="nav-park">
 						    <a className="nav-link active nav-option" id="pills-park-tab" data-toggle="pill" 
 								href="#pills-park" role="tab" aria-controls="pills-park" 
@@ -243,6 +252,13 @@ class Park extends Component {
 						</ul>
 					</div>
 
+
+
+					</div>
+					<div className='right' id='right'>
+
+					
+
 					<div className="tab-content" id="pills-tabContent">
 					  <div className="tab-pane fade show active" id="pills-park" 
 					  		role="tabpanel" aria-labelledby="pills-park-tab">1</div>
@@ -254,6 +270,8 @@ class Park extends Component {
 					  		role="tabpanel" aria-labelledby="pills-visitor-tab">
 					  		<VisitorCenter data={ this.state.visitorcenter }></VisitorCenter>
 					  </div>
+					</div>
+
 					</div>
 
 				</div>
