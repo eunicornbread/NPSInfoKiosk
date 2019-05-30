@@ -44,13 +44,13 @@ class Search extends Component {
 			}, 50);
 			
 			setTimeout(() => {
-				document.getElementById('left').classList.add('active');
-				document.getElementById('right').classList.add('active');
+				document.getElementById('left').classList.add('page-active');
+				document.getElementById('right').classList.add('page-active');
 			}, 550);
 		} else {
 			setTimeout(() => {
-				document.getElementById('left').classList.add('active');
-				document.getElementById('right').classList.add('active');
+				document.getElementById('left').classList.add('page-active');
+				document.getElementById('right').classList.add('page-active');
 			}, 10);
 		}
 	}

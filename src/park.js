@@ -15,7 +15,8 @@ class Park extends Component {
 		this.state = {
 			campground: [],
 			visitorcenter: [],
-			park: []
+			park: [],
+			events: []
 		};
 
 		var self = this;
@@ -29,9 +30,9 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			//console.log(res.data.data);
+			console.log(res.data.data[0]);
 			self.setState({
-				park: res.data.data
+				park: res.data.data[0]
 			});
 		})
 		.catch(error => {
@@ -74,6 +75,26 @@ class Park extends Component {
 			console.log(error);
 		});
 
+/*
+		// get events
+		axios.get("https://developer.nps.gov/api/v1/events", {
+			params: {
+				parkCode: this.props.match.params.parkCode,
+				limit: 19,
+				api_key: process.env.REACT_APP_API_KEY
+			}
+		})
+		.then(res => {
+			console.log(res.data.data);
+			self.setState({
+				events: res.data.data
+			})
+		})
+		.catch(error => {
+			console.log(error);
+		});
+*/
+
 		
 	/*
 		// get alerts
@@ -109,21 +130,7 @@ class Park extends Component {
 		
 		
 
-		// get events
-		axios.get("https://developer.nps.gov/api/v1/events", {
-			params: {
-				parkCode: this.props.match.params.parkCode,
-				limit: 19,
-				api_key: process.env.REACT_APP_API_KEY
-			}
-		})
-		.then(res => {
-			console.log(res.data.data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
-
+		
 		// get lesson plans
 		axios.get("https://developer.nps.gov/api/v1/lessonplans", {
 			params: {
@@ -233,11 +240,69 @@ class Park extends Component {
 				</div>
 				<div className='right-side' id='right-side'>
 
+				  <div className='park-page'>
 					<div className="tab-content" id="pills-tabContent">
 					  <div className="tab-pane fade show active" id="pills-park" 
 					  		role="tabpanel" aria-labelledby="pills-park-tab">
-					  		This is the park page :P
+					  	
+					  	<nav className='park-nav'>
+						  <div className="nav nav-tabs" id="nav-tab" role="tablist">
+						    <a className="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Info</a>
+						    <a className="nav-item nav-link" id="nav-alert-tab" data-toggle="tab" href="#nav-alert" role="tab" aria-controls="nav-alert" aria-selected="false">Alerts</a>
+						    <a className="nav-item nav-link" id="nav-article-tab" data-toggle="tab" href="#nav-article" role="tab" aria-controls="nav-article" aria-selected="false">Articles</a>
+						    <a className="nav-item nav-link" id="nav-news-tab" data-toggle="tab" href="#nav-news" role="tab" aria-controls="nav-news" aria-selected="false">News</a>
+						  </div>
+						</nav>
+						<div className="tab-content" id="nav-tabContent">
+						  <div className="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
+						  	<div className='basic-page'>
+						  		<div className='park-fullname'>{ this.state.park.fullName }</div>
+						  		<div className='state-desig'>
+						  			<span className='park-state'>{ this.state.park.states }</span>
+						  			<span className='park-desig'>{ this.state.park.designation }</span>
+						  		</div>
+						  		<h4 className='park-overview park-h4'>Overview</h4>
+						  		<p className='park-descr park-text'>{ this.state.park.description }</p>
+						  		{ this.state.park.url !== "" &&
+						  			<p className='park-url'>
+						  				<span className='mr-2 more-info'>More information at</span>
+						  				<a href={ this.state.park.url } target="_blank" rel="noopener noreferrer">
+						  					{ this.state.park.url }
+						  					<span className='park-link'>
+						  						<i className="fas fa-external-link-alt link-icon"></i>
+						  					</span>
+						  				</a>
+						  			</p>
+						  		}
 
+						  		<h4 className='park-h4'>Direction</h4>
+						  		<p className='park-direc park-text'>{ this.state.park.directionsInfo }</p>
+						  		{ this.state.park.directionsUrl !== "" &&
+						  			<div className='park-dire-url'>
+						  				<span className='mr-2 more-info'>More information at</span>
+						  				<a href={ this.state.park.directionsUrl } target="_blank" rel="noopener noreferrer">
+						  					{ this.state.park.directionsUrl }
+						  					<span className='park-link'>
+						  						<i className="fas fa-external-link-alt link-icon"></i>
+						  					</span>
+						  				</a>
+						  			</div>
+						  		}
+						  		
+						  		<h4 className='park-h4 park-text'>Weather</h4>
+						  		<p className='park-weather pb-4'>{ this.state.park.weatherInfo }</p>
+						  	</div>
+						  </div>
+						  <div className="tab-pane fade" id="nav-alert" role="tabpanel" aria-labelledby="nav-alert-tab">
+						  	This is alerts
+						  </div>
+						  <div className="tab-pane fade" id="nav-article" role="tabpanel" aria-labelledby="nav-article-tab">
+						  	This is articles
+						  </div>
+						  <div className="tab-pane fade" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
+						  	This is news
+						  </div>
+						</div>
 
 
 
@@ -257,6 +322,7 @@ class Park extends Component {
 					</div>
 
 				</div>
+			  </div>
 
 			</div>
 			</>

@@ -79,3 +79,78 @@
 .nav-item:hover .line-grow::after {
 	transform: scaleX(1);
 }
+
+.park-page {
+	width: 100%;
+	height: 100%;
+}
+
+.park-nav {
+	margin-top: 20px;
+	margin-left: 65px;
+	margin-right: 40px;
+}
+
+.basic-page {
+	margin-top: 30px;
+	margin-left: 80px;
+	margin-right: 50px;
+
+}
+
+.basic-page .park-fullname {
+	font-family: 'Merriweather', serif;
+	font-size: 27px;
+}
+
+.basic-page .state-desig {
+	font-family: 'Muli', sans-serif;
+}
+
+
+.basic-page .park-state {
+	margin-right: 30px;
+	color: #0D47A1;
+}
+
+.basic-page .park-desig {
+	color: #4A148C;
+}
+
+.basic-page .park-overview {
+	margin-top: 30px;
+}
+
+.basic-page .park-h4 {
+	font-family: 'Muli', sans-serif;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.park-link {
+	font-size: 12px;
+
+}
+
+.more-info {
+	font-size: 15px;
+	color: #757575;
+}
+
+.park-text {
+	color: #424242;
+}
+
+
+
+
+
+.active {
+	background-color: rgba(0,0,0,0) !important;
+	border-bottom-color: #F6F4F2 !important;
+}
+
+.nav-item {
+	padding-top: 6px !important;
+	height: 40px !important;
+}
