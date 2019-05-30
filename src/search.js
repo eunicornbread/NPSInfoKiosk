@@ -5,7 +5,6 @@ import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
 import bgImage from './new-landing-page.svg';
-import $ from 'jquery';
 
 class Search extends Component {
 	constructor(props) {
@@ -170,7 +169,7 @@ class Search extends Component {
 		var self = this;
 		axios.get("https://developer.nps.gov/api/v1/parks", {
 			params: {
-				limit: 19,
+				limit: 9,
 				q: this.textInput.value,
 				api_key: process.env.REACT_APP_API_KEY
 			}
@@ -241,13 +240,17 @@ class Search extends Component {
 			if (includeState && includeDesig && includeSearch) {
 				var parkURL = "/park/" + element.parkCode;
 				resultList.push(
-					<NavLink to={ parkURL } className="result-link" key={ element.parkCode } 
-								onClick={e => {$('#myModal').modal('hide');}}>
-						<div className="result-item mb-3">
-							<span className="mr-5">{ element.states }</span>
-							<span className="mr-5">{ element.fullName }</span>
-							<span>{ element.designation }</span>
-							<br />
+					<NavLink to={ parkURL } className="result-link" key={ element.parkCode }>
+						<div className="result-item">
+							<p className="result-name">
+								<span className='result-fullname'>{ element.fullName }</span>
+								<span><i className="fas fa-link result-link-icon"></i></span>
+							</p>
+							<p className='state-desig'>
+								<span className="result-state">{ element.states }</span>
+								<span className='result-desig'>{ element.designation }</span>
+							</p>
+							<p className='result-dest'>{ element.description }</p>
 						</div>
 					</NavLink>
 				);
@@ -335,12 +338,11 @@ class Search extends Component {
 				<div className={slow ? 'left-slow' : 'left-fast'} id='left'></div>
 				<div className={slow ? 'right-slow' : 'right-fast'} id='right'>
 
-				<div className="filter-menu shadow" id="filter-menu">
-					
+				<div className="filter-menu" id="filter-menu">
 					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
 						<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
 						<div className="filter-button state-filter-button">
-							<p className="noselect line-grow">Filter By State</p>
+							<p className="noselect">Filter By State</p>
 						</div>
 						
 						<div className="filter-option state-filter-option" id="state-filter-option">
@@ -353,7 +355,7 @@ class Search extends Component {
 					<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
 						<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
 						<div className="filter-button desig-filter-button">
-							<p className="noselect line-grow">Filter By Designation</p>
+							<p className="noselect">Filter By Designation</p>
 						</div>
 	
 						<div className="filter-option desig-filter-option" id="desig-filter-option">
@@ -366,7 +368,7 @@ class Search extends Component {
 					<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
 						<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
 						<div className="filter-button search-filter-button">
-							<p className="noselect line-grow" id="search-filter">Search By Keyword</p>
+							<p className="noselect" id="search-filter">Search By Keyword</p>
 						</div>
 
 						<div className="filter-option search-filter-option" id="search-filter-option">

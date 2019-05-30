@@ -198,39 +198,15 @@ class Park extends Component {
 	// three parts: park info, nearby campgrounds, visitor centers
 
 	render() {
-		//console.log(document.getElementsByClassName('nav-option'));
-		/*Array.prototype.slice.call(
-			document.getElementsByClassName('nav-option')).forEach(element => {
-			if (element.textContent === 'Park') {
-				if (element.classList.contains('active')) {
-					document.getElementById('nav-park').classList.add('nav-active');
-				} else {
-					document.getElementById('nav-park').classList.remove('nav-active');
-				}
-			} else if (element.textContent === 'Campgrounds') {
-				if (element.classList.contains('active')) {
-					document.getElementById('nav-camp').classList.add('nav-active');
-				} else {
-					document.getElementById('nav-camp').classList.remove('nav-active');
-				}
-			} else if (element.textContent === 'Visitor Centers') {
-				if (element.classList.contains('active')) {
-					document.getElementById('nav-visitor').classList.add('nav-active');
-				} else {
-					document.getElementById('nav-visitor').classList.remove('nav-active');
-				}
-			}	
-		});*/
 
 		return (
 			<>
-				<div className="wrapper">
-					<div className="bg-img-no-transition" key={0}>
-		            	<img src={ bgImage } alt='background' />
-		          	</div>
+			<div className="wrapper">
+				<div className="bg-img-no-transition" key={0}>
+	            	<img src={ bgImage } alt='background' />
+	          	</div>
 
-
-					<div className='left-side' id='left-side'>
+				<div className='left-side' id='left-side'>
 
 					<div className="navigation" onClick={ this.handleClick }>
 						<ul className="nav flex-column" id="pills-tab" role="tablist">
@@ -254,34 +230,35 @@ class Park extends Component {
 
 
 
-					</div>
-					<div className='right-side' id='right-side'>
-
-					
+				</div>
+				<div className='right-side' id='right-side'>
 
 					<div className="tab-content" id="pills-tabContent">
 					  <div className="tab-pane fade show active" id="pills-park" 
-					  		role="tabpanel" aria-labelledby="pills-park-tab">1</div>
+					  		role="tabpanel" aria-labelledby="pills-park-tab">
+					  		This is the park page :P
+
+
+
+
+
+
+					  </div>
+					  
 					  <div className="tab-pane fade" id="pills-camp" 
 					  		role="tabpanel" aria-labelledby="pills-camp-tab">
 					  		<Campground data={ this.state.campground }></Campground>
 					  </div>
+					  
 					  <div className="tab-pane fade" id="pills-visitor" 
 					  		role="tabpanel" aria-labelledby="pills-visitor-tab">
 					  		<VisitorCenter data={ this.state.visitorcenter }></VisitorCenter>
 					  </div>
 					</div>
 
-					</div>
-
 				</div>
 
-
-
-
-
-
-
+			</div>
 			</>
 		);
 	}
