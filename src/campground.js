@@ -29,7 +29,42 @@ import reservationIcon from './svg/reservations-black-22.svg';
 
 
 class Campground extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			display: -1
+		}
+		this.handleReturn = this.handleReturn.bind(this);
+	}
 
+	handleReturn(event) {
+		document.getElementById('return-button').classList.add('hide');
+		document.getElementById('camp-' + this.state.display).classList.remove('show');
+		document.getElementById('camp-' + this.state.display).classList.add('hide');
+		
+		setTimeout(() => {
+			document.getElementById('camp-list').classList.add('show');
+			document.getElementById('camp-list').classList.remove('hide');
+		
+		}, 250);
+
+		this.setState({
+			display: -1
+		});
+	}
+
+	handleClick(index, event) {
+		document.getElementById('camp-list').classList.add('hide');
+		document.getElementById('camp-list').classList.remove('show');
+		setTimeout(() => {
+			document.getElementById('camp-' + index).classList.remove('hide');
+			document.getElementById('camp-' + index).classList.add('show');
+			document.getElementById('return-button').classList.remove('hide');
+		}, 250);
+		this.setState({
+			display: index
+		});
+	}
 
 	render() {
 		//console.log(this.props.data);
@@ -43,6 +78,8 @@ class Campground extends Component {
 
 		// Modal and navigation setup
 		var campList = [];
+		var campDetail = [];
+
 		this.props.data.forEach((element, index) => {
 
 			// Info about the campground
@@ -661,62 +698,52 @@ class Campground extends Component {
 
 			// Combining all into the modal
 			campList.push(
-			  
-			  <div key={index}>
-				<div className='camp-item mb-5' data-toggle="modal" data-target={'#campModal' + index}>
+				<div className='camp-item' key={index} onClick={ this.handleClick.bind(this, index) }>
 					<p>{ element.name }</p>
 					<p>{ element.description }</p>
 				</div>
+			);
 
-				<div className="modal fade" id={'campModal' + index} tabIndex="-1" role="dialog" 
-						aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-					<div className="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div className="modal-content">
-						    <div className='close-modal'>
-						        <button type="button" className="close" data-dismiss="modal" 
-						        	aria-label="Close">
-						          <span aria-hidden="true">&times;</span>
-						        </button>
-						    </div>
-							<div className="modal-body">
-							  <nav>
-								<div className="nav nav-tabs" id="nav-tab" role="tablist">
-								  <a className="nav-item nav-link active" id={"nav-camp-tab" + index} data-toggle="tab" href={"#nav-camp" + index} role="tab" aria-controls={"nav-camp" + index} aria-selected="true">Campground</a>
-								  <a className="nav-item nav-link" id={"nav-access-tab" + index} data-toggle="tab" href={"#nav-access" + index} role="tab" aria-controls={"nav-access" + index} aria-selected="false">Accessibility</a>
-								  <a className="nav-item nav-link" id={"nav-amen-tab" + index} data-toggle="tab" href={"#nav-amen" + index} role="tab" aria-controls={"nav-amen" + index} aria-selected="false">Amenities</a>
-								  <a className="nav-item nav-link" id={"nav-site-tab" + index} data-toggle="tab" href={"#nav-site" + index} role="tab" aria-controls={"nav-site" + index} aria-selected="false">Campsites</a>
-								</div>
-							  </nav>
-								
-							  <div className="tab-content" id="nav-tabContent">
-								<div className="tab-pane fade show active" id={"nav-camp" + index} role="tabpanel" aria-labelledby={"nav-camp-tab" + index}>
-								  {campTab}
-								</div>
-								<div className="tab-pane fade" id={"nav-access" + index} role="tabpanel" aria-labelledby={"nav-profile-tab" + index}>
-								  {accessTab}
-								</div>
-								<div className="tab-pane fade" id={"nav-amen" + index} role="tabpanel" aria-labelledby={"nav-amen-tab" + index}>
-								  {amenTab}
-								</div>
-								<div className="tab-pane fade" id={"nav-site" + index} role="tabpanel" aria-labelledby={"nav-site-tab" + index}>
-								  {siteTab}
-								</div>
-							  </div>
-							</div>
-				    	</div>
+			campDetail.push(
+				<div className="detail-page-camp hide" id={'camp-' + index} key={index}>
+				  <nav>
+					<div className="nav nav-tabs" id="nav-tab" role="tablist">
+					  <a className="nav-item nav-link active" id={"nav-camp-tab" + index} data-toggle="tab" href={"#nav-camp" + index} role="tab" aria-controls={"nav-camp" + index} aria-selected="true">Campground</a>
+					  <a className="nav-item nav-link" id={"nav-access-tab" + index} data-toggle="tab" href={"#nav-access" + index} role="tab" aria-controls={"nav-access" + index} aria-selected="false">Accessibility</a>
+					  <a className="nav-item nav-link" id={"nav-amen-tab" + index} data-toggle="tab" href={"#nav-amen" + index} role="tab" aria-controls={"nav-amen" + index} aria-selected="false">Amenities</a>
+					  <a className="nav-item nav-link" id={"nav-site-tab" + index} data-toggle="tab" href={"#nav-site" + index} role="tab" aria-controls={"nav-site" + index} aria-selected="false">Campsites</a>
 					</div>
+				  </nav>
+					
+				  <div className="tab-content" id="nav-tabContent">
+					<div className="tab-pane fade show active" id={"nav-camp" + index} role="tabpanel" aria-labelledby={"nav-camp-tab" + index}>
+					  {campTab}
+					</div>
+					<div className="tab-pane fade" id={"nav-access" + index} role="tabpanel" aria-labelledby={"nav-profile-tab" + index}>
+					  {accessTab}
+					</div>
+					<div className="tab-pane fade" id={"nav-amen" + index} role="tabpanel" aria-labelledby={"nav-amen-tab" + index}>
+					  {amenTab}
+					</div>
+					<div className="tab-pane fade" id={"nav-site" + index} role="tabpanel" aria-labelledby={"nav-site-tab" + index}>
+					  {siteTab}
+					</div>
+				  </div>
 				</div>
-			  </div>
+
 			);
 		})
 
 		return (
-			<>
-				
-				<div className='camp-list'>
+			<div className='camp-wrapper'>
+				<div className='camp-list show' id='camp-list'>
 					{ campList }
 				</div>		
-			</>
+				<div className='camp-detail' id='camp-detail'>
+					<i className="fas fa-angle-double-left return-button hide" id='return-button' onClick={ this.handleReturn }></i>
+					{ campDetail }
+				</div>
+			</div>
 		);
 	}
 }

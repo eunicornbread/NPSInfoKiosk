@@ -1,23 +1,23 @@
 
 .camp-list {
-	margin-left: 300px;
-
-}
-
-.close-modal {
+	transition: opacity 250ms ease-in-out;
 	position: absolute;
-	right: 30px;
-	top: 10px;
-	z-index: 10;
+	padding-top: 40px;
 }
+
 
 .nav-item {
 	height: 37px;
 }
 
-.modal-body {
-	height: 500px;
-	overflow-y: scroll; 
+.detail-page-camp {
+	top: 30px;
+	height: 100%;
+	width: 100%;
+	padding-left: 90px;
+	transition: opacity 250ms ease-in-out;
+	position: absolute;
+	padding-right: 40px;
 }
 
 .yes-display {
@@ -230,4 +230,39 @@
 	color: black;
 	opacity: 0.8;
 	top: 4px;
+}
+
+
+.return-button {
+	position: absolute;
+	left: 10px;
+	top: 45vh;
+	font-size: 40px;
+	z-index: 5;
+	color: #8E24AA;
+	opacity: 0.7;
+}
+
+.return-button:hover {
+	opacity: 0.9;
+	cursor: pointer;
+}
+
+
+
+.return-button.hide:hover {
+	opacity: 0;
+}
+
+
+
+
+.show {
+	opacity: 1;
+	z-index: 1;
+}
+
+.hide {
+	opacity: 0;
+	z-index: 0;
 }

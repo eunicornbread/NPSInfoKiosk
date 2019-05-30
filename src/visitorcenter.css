@@ -3,7 +3,7 @@
 	height: 100%;
 	width: 100%;
 	padding-left: 90px;
-	transition: opacity 500ms ease-in-out;
+	transition: opacity 250ms ease-in-out;
 	position: absolute;
 	padding-right: 40px;
 }
@@ -61,7 +61,7 @@
 }
 
 .visitor-list {
-	transition: opacity 500ms ease-in-out;
+	transition: opacity 250ms ease-in-out;
 	position: absolute;
 	padding-top: 40px;
 
@@ -77,7 +77,7 @@
 	
 }
 
-.return-button {
+.return-button1 {
 	position: absolute;
 	left: 10px;
 	top: 45vh;
@@ -85,10 +85,13 @@
 	z-index: 5;
 	color: #8E24AA;
 	opacity: 0.7;
-	
 }
 
-.return-button:hover {
+.return-button1.hide:hover {
+	opacity: 0;
+}
+
+.return-button1:hover {
 	opacity: 0.9;
 	
 }

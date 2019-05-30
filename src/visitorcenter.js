@@ -13,15 +13,16 @@ class VisitorCenter extends Component {
 	}
 
 	handleReturn(event) {
-		document.getElementById('camp-' + this.state.display).classList.remove('show');
-		document.getElementById('camp-' + this.state.display).classList.add('hide');
-		document.getElementById('return-button').classList.add('hide');
-
+		document.getElementById('return-button1').classList.add('hide');
+		document.getElementById('visitor-' + this.state.display).classList.remove('show');
+		document.getElementById('visitor-' + this.state.display).classList.add('hide');
+		
 		setTimeout(() => {
 			document.getElementById('visitor-list').classList.add('show');
 			document.getElementById('visitor-list').classList.remove('hide');
 		
-		}, 500);
+		}, 250);
+
 		this.setState({
 			display: -1
 		});
@@ -30,11 +31,13 @@ class VisitorCenter extends Component {
 	handleClick(index, event) {
 		document.getElementById('visitor-list').classList.add('hide');
 		document.getElementById('visitor-list').classList.remove('show');
+		
 		setTimeout(() => {
-			document.getElementById('camp-' + index).classList.remove('hide');
-			document.getElementById('camp-' + index).classList.add('show');
-			document.getElementById('return-button').classList.remove('hide');
-		}, 500);
+			document.getElementById('return-button1').classList.remove('hide');
+			document.getElementById('visitor-' + index).classList.remove('hide');
+			document.getElementById('visitor-' + index).classList.add('show');
+		}, 250);
+
 		this.setState({
 			display: index
 		});
@@ -64,7 +67,7 @@ class VisitorCenter extends Component {
 			
 
 			visitorDetail.push(
-				<div className="detail-page hide" id={'camp-' + index} key={ index }>
+				<div className="detail-page hide" id={'visitor-' + index} key={ index }>
 					<h3>
 						{ element.name }
 						<img src={ visitorIcon } alt='visitor center icon' id='visitor-icon' />
@@ -135,7 +138,7 @@ class VisitorCenter extends Component {
 				</div>
 
 				<div className='visitor-detail' id='visitor-detail'>
-					<i className="fas fa-angle-double-left return-button hide" id='return-button' onClick={ this.handleReturn }></i>
+					<i className="fas fa-angle-double-left return-button1 hide" id='return-button1' onClick={ this.handleReturn }></i>
 					{ visitorDetail }
 				</div>	
 			</div>
