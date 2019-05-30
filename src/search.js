@@ -338,52 +338,62 @@ class Search extends Component {
 				<div className={slow ? 'left-slow' : 'left-fast'} id='left'></div>
 				<div className={slow ? 'right-slow' : 'right-fast'} id='right'>
 
-				<div className="filter-menu" id="filter-menu">
-					<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
-						<div className="filter-button state-filter-button">
-							<p className="noselect">Filter By State</p>
+				<div className='first-col'>
+					<div className='add-filter' id='add-filter'>
+						Filter your results
+					</div>
+					<div className="filter-menu" id="filter-menu">
+						<div className="filter-wrapper" id="state-filter-wrapper" onClick={ this.handleStateCollapse }>
+							<i className="fas fa-chevron-circle-right collapse-icon" id="state-collapse"></i>
+							<div className="filter-button state-filter-button">
+								<p className="noselect">Filter By State</p>
+							</div>
+							
+							<div className="filter-option state-filter-option" id="state-filter-option">
+								<div className="option-wrapper" id="state-wrapper">
+									{ stateOptions }
+								</div>
+							</div>
 						</div>
+
+						<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
+							<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
+							<div className="filter-button desig-filter-button">
+								<p className="noselect">Filter By Designation</p>
+							</div>
+		
+							<div className="filter-option desig-filter-option" id="desig-filter-option">
+								<div className="option-wrapper" id="desig-wrapper">
+									{ desigOptions }
+								</div>
+							</div>
+						</div>
+
+						<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
+							<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
+							<div className="filter-button search-filter-button">
+								<p className="noselect" id="search-filter">Search By Keyword</p>
+							</div>
+
+							<div className="filter-option search-filter-option" id="search-filter-option">
+								<div className="option-wrapper-sm" id="search-wrapper">
+									<div className="dropdown-item" id="dropdown-keyword"
+										 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
+										<p data-search="Search By Keyword">Search By Keyword</p>
+									</div>
+									<div className="dropdown-item" id="dropdown-name"
+										 onClick={ this.handleSearchFilter } data-search="Search By Name">
+										<p data-search="Search By Name" id="search-by-name">Search By Name</p>
+									</div>
+								</div>
+							</div>
 						
-						<div className="filter-option state-filter-option" id="state-filter-option">
-							<div className="option-wrapper" id="state-wrapper">
-								{ stateOptions }
-							</div>
 						</div>
 					</div>
 
-					<div className="filter-wrapper" id="desig-filter-wrapper" onClick={ this.handleDesigCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon" id="desig-collapse"></i>
-						<div className="filter-button desig-filter-button">
-							<p className="noselect">Filter By Designation</p>
-						</div>
-	
-						<div className="filter-option desig-filter-option" id="desig-filter-option">
-							<div className="option-wrapper" id="desig-wrapper">
-								{ desigOptions }
-							</div>
-						</div>
-					</div>
-
-					<div className="filter-wrapper" id="search-filter-wrapper" onClick={ this.handleSearchCollapse }>
-						<i className="fas fa-chevron-circle-right collapse-icon" id="search-collapse"></i>
-						<div className="filter-button search-filter-button">
-							<p className="noselect" id="search-filter">Search By Keyword</p>
-						</div>
-
-						<div className="filter-option search-filter-option" id="search-filter-option">
-							<div className="option-wrapper-sm" id="search-wrapper">
-								<div className="dropdown-item" id="dropdown-keyword"
-									 onClick={ this.handleSearchFilter } data-search="Search By Keyword">
-									<p data-search="Search By Keyword">Search By Keyword</p>
-								</div>
-								<div className="dropdown-item" id="dropdown-name"
-									 onClick={ this.handleSearchFilter } data-search="Search By Name">
-									<p data-search="Search By Name" id="search-by-name">Search By Name</p>
-								</div>
-							</div>
-						</div>
-					
+					<div className="filter-group">
+						{ stateFilterList }
+						{ desigFilterList }
 					</div>
 				</div>
 				
@@ -397,10 +407,6 @@ class Search extends Component {
 					</form>
 				</div>
 
-				<div className="filter-group">
-					{ stateFilterList }
-					{ desigFilterList }
-				</div>
 
 				<div className="search-result" id="search-results">{ resultList }</div>
 
