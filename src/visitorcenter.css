@@ -2,9 +2,9 @@
 	top: 30px;
 	height: 100%;
 	width: 100%;
-	padding-left: 90px;
 	transition: opacity 250ms ease-in-out;
 	position: absolute;
+	padding-left: 90px;
 	padding-right: 40px;
 }
 
@@ -63,8 +63,31 @@
 .visitor-list {
 	transition: opacity 250ms ease-in-out;
 	position: absolute;
-	padding-top: 40px;
+	width: 100%;
+	height: 100%;
+	padding-top: 20px;
+	padding-left: 80px;
+	padding-right: 60px;
+}
 
+.visitor-item .visitor-name {
+	font-family: 'Merriweather', serif;
+	font-size: 27px;
+}
+
+.visitor-item .visitor-desc, .visitor-item .visitor-dire {
+	color: #616161;
+	font-family: 'Muli', sans-serif;
+	font-size: 14px;
+}
+
+.visitor-item {
+	padding-bottom: 10px;
+}
+
+.visitor-item:hover {
+	color: #7C4DFF;
+	cursor: pointer;
 }
 
 .visitor-detail {
@@ -97,14 +120,23 @@
 }
 
 
+.visitor-item {
+	padding-top: 20px;
+	border-bottom: 1px #E0E0E0 solid;
+}
+
+.bold-text {
+	font-weight: bold;
+	color: black;
+	opacity: 0.9;
+}
 
 
 
 
-
-
-
-
+.no-display {
+	display: none;
+}
 
 .show {
 	opacity: 1;

@@ -18,7 +18,7 @@
 	display: grid;
 	grid-template-rows: 1fr 400px 1fr;
 	grid-template-columns: 1fr 200px 1fr;
-	
+	font-family: 'Open Sans', sans-serif;
 }
 
 #right-side {
@@ -56,11 +56,26 @@
 
 
 .nav-item {
-
+	font-size: 20px;
+	margin-bottom: 20px;
+	display: inline-block;
 }
 
 .navigation {
 	grid-row: 2 / 3;
 	grid-column: 2 / 3;
 	place-self: center;
+}
+
+.line-grow::after {
+	display: block;
+	content: '';
+	border-bottom: solid 3px white;  
+	transform: scaleX(0);  
+	transition: transform 250ms ease-in-out;
+	padding-top: 3px;
+}
+
+.nav-item:hover .line-grow::after {
+	transform: scaleX(1);
 }

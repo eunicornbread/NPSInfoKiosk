@@ -234,20 +234,20 @@ class Park extends Component {
 
 					<div className="navigation" onClick={ this.handleClick }>
 						<ul className="nav flex-column" id="pills-tab" role="tablist">
-						  <li className="nav-item" id="nav-park">
+						  <li className="nav-item mx-auto" id="nav-park">
 						    <a className="nav-link active nav-option" id="pills-park-tab" data-toggle="pill" 
 								href="#pills-park" role="tab" aria-controls="pills-park" 
-								aria-selected="true"><span className='nav-tex'>Park</span></a>
+								aria-selected="true"><span className='nav-tex line-grow'>Park Detail</span></a>
 						  </li>
-						  <li className="nav-item" id="nav-camp">
+						  <li className="nav-item mx-auto" id="nav-camp">
 						    <a className="nav-link nav-option" id="pills-camp-tab" data-toggle="pill" 
 						    	href="#pills-camp" role="tab" aria-controls="pills-camp" 
-						    	aria-selected="false"><span className='nav-tex'>Campgrounds</span></a>
+						    	aria-selected="false"><span className='nav-tex line-grow'>Campgrounds</span></a>
 						  </li>
-						  <li className="nav-item" id="nav-visitor">
+						  <li className="nav-item mx-auto" id="nav-visitor">
 						    <a className="nav-link nav-option" id="pills-visitor-tab" data-toggle="pill" 
 						    	href="#pills-visitor" role="tab" aria-controls="pills-visitor" 
-						    	aria-selected="false"><span className='nav-tex'>Visitor Centers</span></a>
+						    	aria-selected="false"><span className='nav-tex line-grow'>Visitor Centers</span></a>
 						  </li>
 						</ul>
 					</div>

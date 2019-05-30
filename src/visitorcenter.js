@@ -13,11 +13,13 @@ class VisitorCenter extends Component {
 	}
 
 	handleReturn(event) {
+		document.getElementById('visitor-list').classList.remove('no-display');
 		document.getElementById('return-button1').classList.add('hide');
 		document.getElementById('visitor-' + this.state.display).classList.remove('show');
 		document.getElementById('visitor-' + this.state.display).classList.add('hide');
 		
 		setTimeout(() => {
+
 			document.getElementById('visitor-list').classList.add('show');
 			document.getElementById('visitor-list').classList.remove('hide');
 		
@@ -33,6 +35,7 @@ class VisitorCenter extends Component {
 		document.getElementById('visitor-list').classList.remove('show');
 		
 		setTimeout(() => {
+			document.getElementById('visitor-list').classList.add('no-display');
 			document.getElementById('return-button1').classList.remove('hide');
 			document.getElementById('visitor-' + index).classList.remove('hide');
 			document.getElementById('visitor-' + index).classList.add('show');
@@ -44,7 +47,7 @@ class VisitorCenter extends Component {
 	}
 
 	render() {
-		//console.log(this.props.data);
+		console.log(this.props.data);
 		if (this.props.data.length === 0) {
 			return (
 				<div>
@@ -59,8 +62,9 @@ class VisitorCenter extends Component {
 		this.props.data.forEach((element, index) => {
 			visitorList.push(
 				<div className='visitor-item' data-index={index} key={index} onClick={ this.handleClick.bind(this, index) }>
-					<p data-index={index}>{ element.name }</p>
-					<p data-index={index}>{ element.description }</p>
+					<p data-index={index} className='visitor-name'>{ element.name }</p>
+					<p data-index={index} className='visitor-desc'><span className='bold-text'>Description:</span> { element.description }</p>
+					<p data-index={index} className='visitor-dire'><span className='bold-text'>Direction:</span> { element.directionsInfo }</p>
 				</div>
 			);
 
