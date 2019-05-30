@@ -81,9 +81,6 @@
 	font-size: 14px;
 }
 
-.visitor-item {
-	padding-bottom: 10px;
-}
 
 .visitor-item:hover {
 	color: #7C4DFF;
@@ -121,6 +118,7 @@
 
 
 .visitor-item {
+	padding-bottom: 10px;
 	padding-top: 20px;
 	border-bottom: 1px #E0E0E0 solid;
 }
@@ -134,7 +132,7 @@
 
 
 
-.no-display {
+.display-none {
 	display: none;
 }
 

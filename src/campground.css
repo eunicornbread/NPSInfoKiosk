@@ -2,7 +2,23 @@
 .camp-list {
 	transition: opacity 250ms ease-in-out;
 	position: absolute;
-	padding-top: 40px;
+	width: 100%;
+	height: 100%;
+	padding-top: 20px;
+	padding-left: 80px;
+	padding-right: 60px;
+}
+
+
+.camp-item .camp-name {
+	font-family: 'Merriweather', serif;
+	font-size: 27px;
+}
+
+.camp-item .camp-desc, .camp-item .camp-weat {
+	color: #616161;
+	font-family: 'Muli', sans-serif;
+	font-size: 14px;
 }
 
 
@@ -26,6 +42,10 @@
 
 .no-display {
 	width: 50%;
+}
+
+.display-none {
+	display: none;
 }
 
 .list-text {
@@ -248,11 +268,29 @@
 	cursor: pointer;
 }
 
-
-
 .return-button.hide:hover {
 	opacity: 0;
 }
+
+
+.camp-item {
+	padding-bottom: 10px;
+	padding-top: 20px;
+	border-bottom: 1px #E0E0E0 solid;
+}
+
+.camp-item:hover {
+	color: #7C4DFF;
+	cursor: pointer;
+}
+
+.bold-text {
+	font-weight: bold;
+	color: black;
+	opacity: 0.9;
+}
+
+
 
 
 

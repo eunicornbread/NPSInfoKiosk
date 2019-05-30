@@ -11,23 +11,6 @@ import directionIcon from './svg/directions-black-22.svg';
 import campgroundIcon from './svg/campground-black-18.svg';
 import reservationIcon from './svg/reservations-black-22.svg';
 
-// start with row 1
-// nps symbol libray
-// amphitheater row 1
-// automobiles row 3
-// camping row 7
-// campsite row 7
-// directions row 9
-// electrical hookup row 10
-// emergencies / 911 row 10
-// emergency telephone row 10
-// firewood row 11
-// flushed toilets row 13
-// food service row 13
-// historic feature row 14
-// ice row 15
-
-
 class Campground extends Component {
 	constructor(props) {
 		super(props);
@@ -38,25 +21,26 @@ class Campground extends Component {
 	}
 
 	handleReturn(event) {
+		document.getElementById('camp-list').classList.remove('display-none');
 		document.getElementById('return-button').classList.add('hide');
 		document.getElementById('camp-' + this.state.display).classList.remove('show');
 		document.getElementById('camp-' + this.state.display).classList.add('hide');
 		
 		setTimeout(() => {
+			document.getElementById('camp-' + this.state.display).classList.add('display-none');
 			document.getElementById('camp-list').classList.add('show');
 			document.getElementById('camp-list').classList.remove('hide');
 		
 		}, 250);
-
-		this.setState({
-			display: -1
-		});
 	}
 
 	handleClick(index, event) {
+		document.getElementById('camp-' + index).classList.remove('display-none');
 		document.getElementById('camp-list').classList.add('hide');
 		document.getElementById('camp-list').classList.remove('show');
+		
 		setTimeout(() => {
+			document.getElementById('camp-list').classList.add('display-none');
 			document.getElementById('camp-' + index).classList.remove('hide');
 			document.getElementById('camp-' + index).classList.add('show');
 			document.getElementById('return-button').classList.remove('hide');
@@ -67,7 +51,7 @@ class Campground extends Component {
 	}
 
 	render() {
-		//console.log(this.props.data);
+		console.log(this.props.data);
 		if (this.props.data.length === 0) {
 			return (
 				<>
@@ -699,13 +683,18 @@ class Campground extends Component {
 			// Combining all into the modal
 			campList.push(
 				<div className='camp-item' key={index} onClick={ this.handleClick.bind(this, index) }>
-					<p>{ element.name }</p>
-					<p>{ element.description }</p>
+					<p className='camp-name'>{ element.name }</p>
+					<p className='camp-desc'>
+						<span className='bold-text'>Description:</span> { element.description }
+					</p>
+					<p className='camp-weat'>
+						<span className='bold-text'>Weather:</span> { element.weatheroverview }
+					</p>
 				</div>
 			);
 
 			campDetail.push(
-				<div className="detail-page-camp hide" id={'camp-' + index} key={index}>
+				<div className="detail-page-camp hide display-none" id={'camp-' + index} key={index}>
 				  <nav>
 					<div className="nav nav-tabs" id="nav-tab" role="tablist">
 					  <a className="nav-item nav-link active" id={"nav-camp-tab" + index} data-toggle="tab" href={"#nav-camp" + index} role="tab" aria-controls={"nav-camp" + index} aria-selected="true">Campground</a>
