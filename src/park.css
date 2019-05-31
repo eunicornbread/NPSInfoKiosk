@@ -142,7 +142,39 @@
 }
 
 
+.article-page {
+	margin-top: 0px;
+	margin-left: 80px;
+	margin-right: 50px;
 
+}
+
+.article-detail {
+	display: flex;
+}
+
+.article-image {
+	margin-right: 30px;
+}
+
+.article-image img {
+	max-width: 300px;
+}
+
+.article-descr {
+}
+
+
+.park-article {
+	border-bottom: 1px #E0E0E0 solid;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.park-article .article-title {
+	font-family: 'Muli', sans-serif;
+	font-size: 27px;
+}
 
 
 .active {

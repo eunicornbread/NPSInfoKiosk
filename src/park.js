@@ -16,7 +16,9 @@ class Park extends Component {
 			campground: [],
 			visitorcenter: [],
 			park: [],
-			events: []
+			events: [],
+			articles: [],
+			alerts: []
 		};
 
 		var self = this;
@@ -75,6 +77,25 @@ class Park extends Component {
 			console.log(error);
 		});
 
+
+		// get articles
+		axios.get("https://developer.nps.gov/api/v1/articles", {
+			params: {
+				parkCode: this.props.match.params.parkCode,
+				limit: 19,
+				api_key: process.env.REACT_APP_API_KEY
+			}
+		})
+		.then(res => {
+			console.log(res.data.data);
+			self.setState({
+				articles: res.data.data
+			})
+		})
+		.catch(error => {
+			console.log(error);
+		});
+
 /*
 		// get events
 		axios.get("https://developer.nps.gov/api/v1/events", {
@@ -112,20 +133,7 @@ class Park extends Component {
 			console.log(error);
 		});
 
-		// get articles
-		axios.get("https://developer.nps.gov/api/v1/articles", {
-			params: {
-				parkCode: this.props.match.params.parkCode,
-				limit: 19,
-				api_key: process.env.REACT_APP_API_KEY
-			}
-		})
-		.then(res => {
-			console.log(res.data.data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
+		
 
 		
 		
@@ -205,6 +213,24 @@ class Park extends Component {
 	// three parts: park info, nearby campgrounds, visitor centers
 
 	render() {
+
+		var articleList = [];
+		this.state.articles.forEach((element, index) => {
+			articleList.push(
+				<div className='park-article' key={ index }>
+					<p className='article-title'>{ element.title }</p>
+					<div className='article-detail'>
+						<div className='article-image'>
+							<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
+						</div>
+						<div className='article-descr'>
+							<p>{ element.listingdescription }</p>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer">Read more</a>
+						</div>
+					</div>
+				</div>
+			);
+		})
 
 		return (
 			<>
@@ -297,7 +323,7 @@ class Park extends Component {
 						  	This is alerts
 						  </div>
 						  <div className="tab-pane fade" id="nav-article" role="tabpanel" aria-labelledby="nav-article-tab">
-						  	This is articles
+						  	<div className='article-page'>{ articleList }</div>
 						  </div>
 						  <div className="tab-pane fade" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
 						  	This is news
