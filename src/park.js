@@ -18,7 +18,8 @@ class Park extends Component {
 			park: [],
 			events: [],
 			articles: [],
-			alerts: []
+			alerts: [],
+			news: []
 		};
 
 		var self = this;
@@ -32,7 +33,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data[0]);
+			//console.log(res.data.data[0]);
 			self.setState({
 				park: res.data.data[0]
 			});
@@ -87,7 +88,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			self.setState({
 				articles: res.data.data
 			})
@@ -95,6 +96,26 @@ class Park extends Component {
 		.catch(error => {
 			console.log(error);
 		});
+
+		// get news releases
+		axios.get("https://developer.nps.gov/api/v1/newsreleases", {
+			params: {
+				parkCode: this.props.match.params.parkCode,
+				limit: 19,
+				api_key: process.env.REACT_APP_API_KEY
+			}
+		})
+		.then(res => {
+			console.log(res.data.data);
+			self.setState({
+				news: res.data.data
+			})
+
+		})
+		.catch(error => {
+			console.log(error);
+		});
+
 
 /*
 		// get events
@@ -154,21 +175,7 @@ class Park extends Component {
 			console.log(error);
 		});
 
-		// get news releases
-		axios.get("https://developer.nps.gov/api/v1/newsreleases", {
-			params: {
-				parkCode: this.props.match.params.parkCode,
-				limit: 19,
-				api_key: process.env.REACT_APP_API_KEY
-			}
-		})
-		.then(res => {
-			console.log(res.data.data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
-
+		
 		
 
 		// get people
@@ -214,14 +221,46 @@ class Park extends Component {
 
 	render() {
 
+		var newsList = [];
+		this.state.news.forEach((element, index) => {
+			newsList.push(
+				<div className='park-news' key={ index }>
+					<p className='news-title'>{ element.title }</p>
+					<div className='news-detail'>
+						{ element.image.url !== "" && 
+						<div>
+							<div className='news-image'>
+								<img src={ element.image.url} alt={ element.image.altText } />
+								{ element.image.caption !== "" && 
+									<p className='news-caption'>{ element.image.caption }</p>
+								}
+
+								{ element.image.credit !== "" && 
+									<p className='news-credit'>Credit: { element.image.credit }</p>
+								}
+							</div>
+						</div>
+						}
+						<div className='news-descr'>
+							<p className='news-abstract'>{ element.abstract }</p>
+							<p className='news-releasedate'>{ element.releasedate }</p>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='news-url'>Read more</a>
+						</div>
+					</div>
+				</div>
+			);
+		})
+
 		var articleList = [];
 		this.state.articles.forEach((element, index) => {
 			articleList.push(
 				<div className='park-article' key={ index }>
 					<p className='article-title'>{ element.title }</p>
 					<div className='article-detail'>
-						<div className='article-image'>
-							<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
+						<div>
+							<div className='article-image'>
+								<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
+							</div>
 						</div>
 						<div className='article-descr'>
 							<p>{ element.listingdescription }</p>
@@ -326,7 +365,7 @@ class Park extends Component {
 						  	<div className='article-page'>{ articleList }</div>
 						  </div>
 						  <div className="tab-pane fade" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
-						  	This is news
+						  	<div className='news-page'>{ newsList }</div>
 						  </div>
 						</div>
 

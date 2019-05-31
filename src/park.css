@@ -146,7 +146,6 @@
 	margin-top: 0px;
 	margin-left: 80px;
 	margin-right: 50px;
-
 }
 
 .article-detail {
@@ -155,19 +154,17 @@
 
 .article-image {
 	margin-right: 30px;
+	padding: 10px;
+	border: 1px #E0E0E0 solid;
 }
 
 .article-image img {
 	max-width: 300px;
 }
 
-.article-descr {
-}
-
-
 .park-article {
 	border-bottom: 1px #E0E0E0 solid;
-	padding-bottom: 30px;
+	padding-bottom: 40px;
 	padding-top: 30px;
 }
 
@@ -175,6 +172,68 @@
 	font-family: 'Muli', sans-serif;
 	font-size: 27px;
 }
+
+
+
+
+
+.news-page {
+	margin-top: 0px;
+	margin-left: 80px;
+	margin-right: 50px;
+}
+
+.park-news .news-title {
+	font-family: 'Muli', sans-serif;
+	font-size: 27px;
+}
+
+.news-detail {
+	display: flex;
+}
+
+.news-image {
+	margin-right: 30px;
+	padding: 10px;
+	border: 1px #E0E0E0 solid;
+}
+
+.news-image img {
+	max-width: 300px;
+}
+
+.park-news {
+	border-bottom: 1px #E0E0E0 solid;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.park-news .news-title {
+	font-family: 'Muli', sans-serif;
+	font-size: 27px;
+	margin-bottom: 20px;
+}
+
+.park-news .news-releasedate {
+	font-size: 13px;
+	color: #9E9E9E;
+	margin-bottom: 5px;
+}
+
+.park-news .news-caption {
+	font-size: 14px;
+	color: #424242;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.park-news .news-credit {
+	font-size: 12px;
+	color: #9E9E9E;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
 
 
 .active {
