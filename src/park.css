@@ -14,11 +14,12 @@
 	position: fixed;
 	left: 0;
 	background-color: black;
-	opacity: 0.6;
 	display: grid;
 	grid-template-rows: 1fr 400px 1fr;
 	grid-template-columns: 1fr 200px 1fr;
 	font-family: 'Open Sans', sans-serif;
+	opacity: 0;
+	transition: opacity 1s ease-in;
 }
 
 #right-side {
@@ -28,15 +29,21 @@
 	right: 0;
 	overflow-y: scroll;
 	background-color: rgb(246,244,242);
-	opacity: 1;
-	
+	opacity: 0;
 	display: grid;
 	grid-template-rows: 100%;
 	grid-template-columns: 100%;
-	
+	transition: opacity 1s ease-in;
 }
 
 
+#left-side.left-show {
+	opacity: 0.6;
+}
+
+#right-side.right-show {
+	opacity: 1;
+}
 
 
 

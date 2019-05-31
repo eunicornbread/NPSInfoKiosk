@@ -21,19 +21,19 @@
 }
 
 .left-slow {
-	transition: opacity 1s ease-in-out;
+	transition: opacity 3s ease-in-out;
 }
 
 .right-slow {
-	transition: opacity 1s ease-in-out;
+	transition: opacity 3s ease-in-out;
 }
 
 .left-fast {
-	transition: opacity 3s ease-in;
+	transition: opacity 1s ease-in;
 }
 
 .right-fast {
-	transition: opacity 3s ease-in;
+	transition: opacity 1s ease-in;
 }
 
 #left.page-active {

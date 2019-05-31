@@ -335,8 +335,8 @@ class Search extends Component {
 			<div className="wrapper">
 				{ background }
 
-				<div className={slow ? 'left-slow' : 'left-fast'} id='left'></div>
-				<div className={slow ? 'right-slow' : 'right-fast'} id='right'>
+				<div className={slow ? 'left-fast' : 'left-slow'} id='left'></div>
+				<div className={slow ? 'right-fast' : 'right-slow'} id='right'>
 
 				<div className='first-col'>
 					<div className='add-filter' id='add-filter'>

@@ -106,11 +106,29 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			self.setState({
 				news: res.data.data
 			})
 
+		})
+		.catch(error => {
+			console.log(error);
+		});
+
+		// get alerts
+		axios.get("https://developer.nps.gov/api/v1/alerts", {
+			params: {
+				parkCode: this.props.match.params.parkCode,
+				limit: 19,
+				api_key: process.env.REACT_APP_API_KEY
+			}
+		})
+		.then(res => {
+			console.log(res.data.data);
+			self.setState({
+				alerts: res.data.data
+			})
 		})
 		.catch(error => {
 			console.log(error);
@@ -139,24 +157,6 @@ class Park extends Component {
 
 		
 	/*
-		// get alerts
-		axios.get("https://developer.nps.gov/api/v1/alerts", {
-			params: {
-				parkCode: this.props.match.params.parkCode,
-				limit: 19,
-				api_key: process.env.REACT_APP_API_KEY
-			}
-		})
-		.then(res => {
-			console.log(res.data.data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
-
-		
-
-		
 		
 
 		
@@ -174,9 +174,6 @@ class Park extends Component {
 		.catch(error => {
 			console.log(error);
 		});
-
-		
-		
 
 		// get people
 		axios.get("https://developer.nps.gov/api/v1/people", {
@@ -207,8 +204,6 @@ class Park extends Component {
 		.catch(error => {
 			console.log(error);
 		});
-
-		
 	*/
 	
 	}
@@ -217,7 +212,14 @@ class Park extends Component {
 		this.forceUpdate();
 	}
 
-	// three parts: park info, nearby campgrounds, visitor centers
+
+	componentDidMount() {
+		setTimeout(() => {
+			document.getElementById('left-side').classList.add('left-show');
+			document.getElementById('right-side').classList.add('right-show');
+		}, 10);
+	}
+
 
 	render() {
 
