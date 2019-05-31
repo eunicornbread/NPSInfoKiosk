@@ -222,6 +222,51 @@ class Park extends Component {
 
 
 	render() {
+		var alertClosure = [];
+		var alertCaution = [];
+		var alertInfo = [];
+		this.state.alerts.forEach((element, index) => {
+			if (element.category === "Park Closure") {
+				alertClosure.push(
+					<div key={ index } className='alert-detail'>
+						<div className='alert-left'>
+							<img src="https://img.icons8.com/office/40/000000/no-entry.png" alt='no-entry icon' />
+						</div>
+						<div className='alert-right'>
+							<p className='alert-title title-closure'>{ element.title }</p>
+							<p className='alert-descr'>{ element.description }</p>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='alert-url'>Learn more</a>
+						</div>
+					</div>
+				);
+			} else if (element.category === "Caution") {
+				alertCaution.push(
+					<div key={ index } className='alert-detail'>
+						<div className='alert-left'>
+							<img src="https://img.icons8.com/office/40/000000/error.png" alt='caution icon' />
+						</div>
+						<div className='alert-right'>
+							<p className='alert-title title-caution'>{ element.title }</p>
+							<p className='alert-descr'>{ element.description }</p>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='alert-url'>Learn more</a>
+						</div>
+					</div>
+				);
+			} else if (element.category === "Information") {
+				alertInfo.push(
+					<div key={ index } className='alert-detail'>
+						<div className='alert-left'>
+							<img src="https://img.icons8.com/office/40/000000/info.png" alt='more-info icon' />
+						</div>
+						<div className='alert-right'>
+							<p className='alert-title title-info'>{ element.title }</p>
+							<p className='alert-descr'>{ element.description }</p>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='alert-url'>Learn more</a>
+						</div>
+					</div>
+				);
+			}
+		})
 
 		var newsList = [];
 		this.state.news.forEach((element, index) => {
@@ -259,11 +304,14 @@ class Park extends Component {
 				<div className='park-article' key={ index }>
 					<p className='article-title'>{ element.title }</p>
 					<div className='article-detail'>
-						<div>
-							<div className='article-image'>
-								<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
+						{ element.listingimage.url !== "" && 
+							<div>
+								<div className='article-image'>
+									<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
+								</div>
 							</div>
-						</div>
+						}
+						
 						<div className='article-descr'>
 							<p>{ element.listingdescription }</p>
 							<a href={ element.url } target='_blank' rel="noopener noreferrer">Read more</a>
@@ -315,7 +363,13 @@ class Park extends Component {
 					  	<nav className='park-nav'>
 						  <div className="nav nav-tabs" id="nav-tab" role="tablist">
 						    <a className="nav-item nav-link active" id="nav-basic-tab" data-toggle="tab" href="#nav-basic" role="tab" aria-controls="nav-basic" aria-selected="true">Basic Info</a>
-						    <a className="nav-item nav-link" id="nav-alert-tab" data-toggle="tab" href="#nav-alert" role="tab" aria-controls="nav-alert" aria-selected="false">Alerts</a>
+						    <a className="nav-item nav-link" id="nav-alert-tab" data-toggle="tab" href="#nav-alert" role="tab" aria-controls="nav-alert" aria-selected="false">
+						    	Alerts
+						    	{ this.state.alerts.length !== 0 && 
+						    		<i className="fas fa-exclamation-circle alert-icon"></i>
+						    	}
+						    	
+						    </a>
 						    <a className="nav-item nav-link" id="nav-article-tab" data-toggle="tab" href="#nav-article" role="tab" aria-controls="nav-article" aria-selected="false">Articles</a>
 						    <a className="nav-item nav-link" id="nav-news-tab" data-toggle="tab" href="#nav-news" role="tab" aria-controls="nav-news" aria-selected="false">News</a>
 						  </div>
@@ -361,7 +415,20 @@ class Park extends Component {
 						  	</div>
 						  </div>
 						  <div className="tab-pane fade" id="nav-alert" role="tabpanel" aria-labelledby="nav-alert-tab">
-						  	This is alerts
+						  	<div className='alert-page'>
+						  		{ alertClosure.length !== 0 && 
+							  		<h3 className='alert-head'>Park Closure</h3>
+						  		}
+						  		{ alertClosure }
+						  		{ alertCaution.length !== 0 && 
+							  		<h3 className='alert-head'>Caution</h3>
+						  		}
+						  		{ alertCaution }
+						  		{ alertInfo.length !== 0 && 
+							  		<h3 className='alert-head'>Information</h3>
+						  		}
+						  		{ alertInfo }
+						  	</div>
 						  </div>
 						  <div className="tab-pane fade" id="nav-article" role="tabpanel" aria-labelledby="nav-article-tab">
 						  	<div className='article-page'>{ articleList }</div>
