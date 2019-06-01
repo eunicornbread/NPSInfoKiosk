@@ -4,13 +4,16 @@ import axios from 'axios';
 import Campground from './campground.js';
 import VisitorCenter from './visitorcenter.js';
 import bgImage from './new-landing-page.svg';
-
+import backIcon from './svg/back-arrow.svg';
+import { NavLink } from 'react-router-dom';
 
 class Park extends Component {
 	constructor(props) {
 		super(props);
 
 		this.handleClick = this.handleClick.bind(this);
+		this.openNav = this.openNav.bind(this);
+		this.closeNav = this.closeNav.bind(this);
 
 		this.state = {
 			campground: [],
@@ -220,6 +223,20 @@ class Park extends Component {
 		}, 10);
 	}
 
+	openNav() {
+		document.getElementById('left-side').classList.remove('left-show');
+		setTimeout(() => {
+			document.getElementById('side-nav').classList.add('side-nav-show');
+		}, 500);
+	}
+
+	closeNav() {
+		document.getElementById('side-nav').classList.remove('side-nav-show');
+		setTimeout(() => {
+			document.getElementById('left-side').classList.add('left-show');
+		}, 700);
+	}
+
 
 	render() {
 		var alertClosure = [];
@@ -328,8 +345,31 @@ class Park extends Component {
 	            	<img src={ bgImage } alt='background' />
 	          	</div>
 
-				<div className='left-side' id='left-side'>
 
+	          	<div className='side-nav-container' id='side-nav'>
+					<div className='close-icon' onClick={ this.closeNav }>
+						<i className="fas fa-times"></i>
+					</div>
+					<div className='side-nav-menu'>
+						<NavLink to="/" className='side-nav-link side-nav-home'>
+							<span className='line-grow side-nav-item'>Home</span>
+						</NavLink>
+						<NavLink to='/search' className='side-nav-link side-nav-search'>
+							<span className='line-grow side-nav-item'>Search</span>
+						</NavLink>
+						<span className='side-nav-link side-nav-attr'>
+							<span className='line-grow side-nav-item'>Attribution</span>
+						</span>
+					</div>
+				</div>
+
+				<div className='left-side' id='left-side'>
+					<NavLink to="/search" id='back-icon' data-toggle="tooltip" data-placement="right" title="Return to search">
+						<img src={ backIcon } alt='return to previous page' />
+					</NavLink>
+
+					<div className='nav-icon' onClick={ this.openNav }><i className="fas fa-bars"></i></div>
+					
 					<div className="navigation" onClick={ this.handleClick }>
 						<ul className="nav flex-column" id="pills-tab" role="tablist">
 						  <li className="nav-item mx-auto" id="nav-park">
