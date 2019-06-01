@@ -107,7 +107,8 @@
 
 .info-header {
 	padding-bottom: 0px;
-	padding-left: 7px;
+	padding-left: 6px;
+	font-family: 'Muli', sans-serif;
 }
 
 .info-header i {

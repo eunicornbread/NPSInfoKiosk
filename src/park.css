@@ -335,7 +335,8 @@
 .side-nav-menu {
 	grid-row: 2 / 3;
 	grid-column: 2 / 3;
-	place-self: center;	
+	place-self: center;
+	font-family: 'Muli', sans-serif;
 }
 
 .side-nav-home {
@@ -376,9 +377,10 @@
 }
 
 #back-icon {
-	position: fixed;
-	margin-top: 70px;
-	margin-left: 14px;
+	grid-row: 1 / 2;
+	grid-column: 3 / 4;
+	margin-top: 17px;
+	margin-left: 10px;
 }
 
 #back-icon img {
@@ -405,3 +407,13 @@
 	opacity: 0.7;
 }
 
+.park-nav-item {
+	font-family: 'Muli', sans-serif;
+	font-size: 18px;
+}
+
+.thing-nav {
+	margin-top: 20px;
+    margin-left: 65px;
+    margin-right: 40px;
+}

@@ -5,6 +5,8 @@ import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
 import bgImage from './new-landing-page.svg';
+import sunImage from './svg/sunny.svg';
+import ReactLoading from 'react-loading';
 
 class Search extends Component {
 	constructor(props) {
@@ -32,7 +34,8 @@ class Search extends Component {
 			statesMap: map,
 			stateFilter: [],
 			desigArray: [],
-			desigFilter: []
+			desigFilter: [],
+			loading: false
 		};
 	}
 
@@ -166,6 +169,9 @@ class Search extends Component {
 
 	handleSearch(event) {
 		event.preventDefault();
+		this.setState({
+			loading: true
+		});
 		var self = this;
 		axios.get("https://developer.nps.gov/api/v1/parks", {
 			params: {
@@ -176,7 +182,8 @@ class Search extends Component {
 		})
 		.then(res => {
 			self.setState({
-				searchResults: res.data.data
+				searchResults: res.data.data,
+				loading: false
 			});
 			console.log(res.data.data);
 		})
@@ -407,8 +414,24 @@ class Search extends Component {
 					</form>
 				</div>
 
+				{ !this.state.loading &&
+					<div className="search-result" id="search-results">{ resultList }</div>
+				}
 
-				<div className="search-result" id="search-results">{ resultList }</div>
+				{ this.state.loading && 
+					<div className='loading-page'>
+						<div className='sun-loading'>
+							<img src={ sunImage} alt='sun icon' id='sun-icon' />
+							<div className='sun-eye' id='eye1'></div>
+							<div className='sun-eye' id='eye2'></div>
+							<div className='loading-text'>Loading</div>
+							<div className='loading-dots'>
+								<ReactLoading type={'bubbles'} color={'#FFC107'} height={20} width={20} />
+							</div>
+						</div>
+					</div>
+				}
+				
 
 				</div>
 

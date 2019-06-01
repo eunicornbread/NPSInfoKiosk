@@ -372,17 +372,22 @@ class Park extends Component {
 					
 					<div className="navigation" onClick={ this.handleClick }>
 						<ul className="nav flex-column" id="pills-tab" role="tablist">
-						  <li className="nav-item mx-auto" id="nav-park">
+						  <li className="nav-item mx-auto park-nav-item" id="nav-park">
 						    <a className="nav-link active nav-option" id="pills-park-tab" data-toggle="pill" 
 								href="#pills-park" role="tab" aria-controls="pills-park" 
 								aria-selected="true"><span className='nav-tex line-grow'>Park Detail</span></a>
 						  </li>
-						  <li className="nav-item mx-auto" id="nav-camp">
+						  <li className="nav-item mx-auto park-nav-item" id="nav-thing">
+						    <a className="nav-link nav-option" id="pills-thing-tab" data-toggle="pill" 
+						    	href="#pills-thing" role="tab" aria-controls="pills-thing" 
+						    	aria-selected="false"><span className='nav-tex line-grow'>Things To Do</span></a>
+						  </li>
+						  <li className="nav-item mx-auto park-nav-item" id="nav-camp">
 						    <a className="nav-link nav-option" id="pills-camp-tab" data-toggle="pill" 
 						    	href="#pills-camp" role="tab" aria-controls="pills-camp" 
 						    	aria-selected="false"><span className='nav-tex line-grow'>Campgrounds</span></a>
 						  </li>
-						  <li className="nav-item mx-auto" id="nav-visitor">
+						  <li className="nav-item mx-auto park-nav-item" id="nav-visitor">
 						    <a className="nav-link nav-option" id="pills-visitor-tab" data-toggle="pill" 
 						    	href="#pills-visitor" role="tab" aria-controls="pills-visitor" 
 						    	aria-selected="false"><span className='nav-tex line-grow'>Visitor Centers</span></a>
@@ -477,13 +482,26 @@ class Park extends Component {
 						  	<div className='news-page'>{ newsList }</div>
 						  </div>
 						</div>
-
-
-
-
-
 					  </div>
 					  
+					  <div className="tab-pane fade" id="pills-thing" 
+					  		role="tabpanel" aria-labelledby="pills-thing-tab">
+					  	<nav className='thing-nav'>
+						  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+						    <a class="nav-item nav-link active" id="nav-event-tab" data-toggle="tab" href="#nav-event" role="tab" aria-controls="nav-event" aria-selected="true">Events</a>
+						    <a class="nav-item nav-link" id="nav-place-tab" data-toggle="tab" href="#nav-place" role="tab" aria-controls="nav-place" aria-selected="false">Places</a>
+						    <a class="nav-item nav-link" id="nav-people-tab" data-toggle="tab" href="#nav-people" role="tab" aria-controls="nav-people" aria-selected="false">People</a>
+						    <a class="nav-item nav-link" id="nav-lesson-tab" data-toggle="tab" href="#nav-lesson" role="tab" aria-controls="nav-lesson" aria-selected="false">Lessons</a>
+						  </div>
+						</nav>
+						<div class="tab-content" id="nav-tabContent">
+						  <div class="tab-pane fade show active" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">This is the event page</div>
+						  <div class="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">This is the place page</div>
+						  <div class="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">This is the people page</div>
+						  <div class="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">This is the lesson page</div>
+						</div>
+					  </div>
+
 					  <div className="tab-pane fade" id="pills-camp" 
 					  		role="tabpanel" aria-labelledby="pills-camp-tab">
 					  		<Campground data={ this.state.campground }></Campground>
