@@ -487,18 +487,18 @@ class Park extends Component {
 					  <div className="tab-pane fade" id="pills-thing" 
 					  		role="tabpanel" aria-labelledby="pills-thing-tab">
 					  	<nav className='thing-nav'>
-						  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-						    <a class="nav-item nav-link active" id="nav-event-tab" data-toggle="tab" href="#nav-event" role="tab" aria-controls="nav-event" aria-selected="true">Events</a>
-						    <a class="nav-item nav-link" id="nav-place-tab" data-toggle="tab" href="#nav-place" role="tab" aria-controls="nav-place" aria-selected="false">Places</a>
-						    <a class="nav-item nav-link" id="nav-people-tab" data-toggle="tab" href="#nav-people" role="tab" aria-controls="nav-people" aria-selected="false">People</a>
-						    <a class="nav-item nav-link" id="nav-lesson-tab" data-toggle="tab" href="#nav-lesson" role="tab" aria-controls="nav-lesson" aria-selected="false">Lessons</a>
+						  <div className="nav nav-tabs" id="nav-tab" role="tablist">
+						    <a className="nav-item nav-link active" id="nav-event-tab" data-toggle="tab" href="#nav-event" role="tab" aria-controls="nav-event" aria-selected="true">Events</a>
+						    <a className="nav-item nav-link" id="nav-place-tab" data-toggle="tab" href="#nav-place" role="tab" aria-controls="nav-place" aria-selected="false">Places</a>
+						    <a className="nav-item nav-link" id="nav-people-tab" data-toggle="tab" href="#nav-people" role="tab" aria-controls="nav-people" aria-selected="false">People</a>
+						    <a className="nav-item nav-link" id="nav-lesson-tab" data-toggle="tab" href="#nav-lesson" role="tab" aria-controls="nav-lesson" aria-selected="false">Lessons</a>
 						  </div>
 						</nav>
-						<div class="tab-content" id="nav-tabContent">
-						  <div class="tab-pane fade show active" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">This is the event page</div>
-						  <div class="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">This is the place page</div>
-						  <div class="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">This is the people page</div>
-						  <div class="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">This is the lesson page</div>
+						<div className="tab-content" id="nav-tabContent">
+						  <div className="tab-pane fade show active" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">This is the event page</div>
+						  <div className="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">This is the place page</div>
+						  <div className="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">This is the people page</div>
+						  <div className="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">This is the lesson page</div>
 						</div>
 					  </div>
 

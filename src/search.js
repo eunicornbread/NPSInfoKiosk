@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import bgImage from './new-landing-page.svg';
 import sunImage from './svg/sunny.svg';
 import ReactLoading from 'react-loading';
+import errorImage from './svg/error-image.svg';
 
 class Search extends Component {
 	constructor(props) {
@@ -17,7 +18,6 @@ class Search extends Component {
 		this.handleDesigFilter = this.handleDesigFilter.bind(this);
 		this.handleDesigDelete = this.handleDesigDelete.bind(this);
 		this.handleSearchFilter = this.handleSearchFilter.bind(this);
-		this.handleCollapse = this.handleCollapse.bind(this);
 		this.handleStateCollapse = this.handleStateCollapse.bind(this);
 		this.handleDesigCollapse = this.handleDesigCollapse.bind(this);
 		this.handleSearchCollapse = this.handleSearchCollapse.bind(this);
@@ -35,7 +35,8 @@ class Search extends Component {
 			stateFilter: [],
 			desigArray: [],
 			desigFilter: [],
-			loading: false
+			loading: false,
+			error: false
 		};
 	}
 
@@ -80,10 +81,6 @@ class Search extends Component {
 			document.getElementById('search-collapse').classList.remove('rotate-90');
 			document.getElementById('search-wrapper').classList.remove('expand-sm');
 		}
-	}
-
-	handleCollapse(event) {
-
 	}
 
 	handleStateCollapse(event) {
@@ -170,7 +167,8 @@ class Search extends Component {
 	handleSearch(event) {
 		event.preventDefault();
 		this.setState({
-			loading: true
+			loading: true,
+			error: false
 		});
 		var self = this;
 		axios.get("https://developer.nps.gov/api/v1/parks", {
@@ -189,6 +187,10 @@ class Search extends Component {
 		})
 		.catch(error => {
 			console.log(error)
+			self.setState({
+				error: true,
+				loading: false
+			})
 		});
 	}
 
@@ -414,7 +416,7 @@ class Search extends Component {
 					</form>
 				</div>
 
-				{ !this.state.loading &&
+				{ !this.state.loading && !this.state.error && 
 					<div className="search-result" id="search-results">{ resultList }</div>
 				}
 
@@ -430,6 +432,19 @@ class Search extends Component {
 							</div>
 						</div>
 					</div>
+				}
+
+				{ this.state.error && 
+					<div className='error-page'>
+						<div className='error-message'>
+							<img src={ errorImage } alt='error' id='error-icon' />
+							<span className='error-text'>ERROR</span>
+							<span className='text-went-wrong'>Something went wrong</span>
+							<div className='error-instr'>
+								Try refreshing the page or come back later 	(｡•́︿•̀｡)
+							</div>
+						</div>
+					</div>	
 				}
 				
 

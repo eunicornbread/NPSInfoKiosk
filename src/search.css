@@ -472,3 +472,47 @@
 	top: 64px;
 	left: 49px;
 }
+
+.error-page {
+	grid-row: 2 / 4;
+	grid-column: 2 / 3;
+	position: relative;
+	margin-left: 20px;
+}
+
+.error-message {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#error-icon {
+	width: 400px;
+}
+
+.error-text {
+	position: absolute;
+	top: 175px;
+	left: 212px;
+	font-weight: bold;
+	font-family: 'Roboto Condensed', sans-serif;
+	color: white;
+	font-size: 18px;
+}
+
+.text-went-wrong {
+	font-family: 'Noto Sans HK', sans-serif;
+	font-size: 25px;
+	position: absolute;
+	left: 30px;
+	top: 0px;
+	color: #BF360C;
+}
+
+.error-instr {
+	position: absolute;
+	top: 100px;
+	left: 40px;
+	width: 150px;
+}
