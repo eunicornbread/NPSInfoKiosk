@@ -191,8 +191,16 @@
 	padding-right: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin-top: 10px;
+	margin-top: 12px;
 	display: inline-block;
+}
+
+.state-filter-item:hover {
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.state-filter-item i:hover {
+	font-size: 17px;
 }
 
 .desig-filter-item {
@@ -203,8 +211,16 @@
 	padding-right: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin-top: 10px;
+	margin-top: 12px;
 	display: inline-block;
+}
+
+.desig-filter-item:hover {
+	box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+.desig-filter-item i:hover {
+	font-size: 17px;
 }
 
 .desig-filter-item i {
@@ -417,7 +433,7 @@
 }
 
 #sun-icon {
-	width: 60px;
+	width: 70px;
 	animation: sun-spin infinite 17s linear;
 }
 
@@ -437,18 +453,18 @@
 	border-radius: 50%;
 	position: absolute;
 	z-index: 1;
-	top: 20px;
+	top: 27px;
 	box-sizing: border-box;
 	animation: eye-blink 2s infinite;
 }
 
 #eye1 {
-	left: 19px;
+	left: 24px;
 
 }
 
 #eye2 {
-	left: 35px;
+	left: 41px;
 	
 }
 
@@ -464,13 +480,13 @@
 .loading-text {
 	color: #FFC107;
 	margin-top: 5px;
-	font-size: 14px;
+	font-size: 16px;
 }
 
 .loading-dots {
 	position: absolute;
-	top: 64px;
-	left: 49px;
+	top: 76px;
+	left: 56px;
 }
 
 .error-page {

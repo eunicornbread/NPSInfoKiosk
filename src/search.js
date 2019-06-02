@@ -428,7 +428,7 @@ class Search extends Component {
 							<div className='sun-eye' id='eye2'></div>
 							<div className='loading-text'>Loading</div>
 							<div className='loading-dots'>
-								<ReactLoading type={'bubbles'} color={'#FFC107'} height={20} width={20} />
+								<ReactLoading type={'bubbles'} color={'#FFC107'} height={22} width={22} />
 							</div>
 						</div>
 					</div>
