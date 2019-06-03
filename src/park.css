@@ -537,6 +537,8 @@
 .event-detail {
 	transition: opacity 250ms ease-in-out;
 	position: absolute;
+	padding-right: 30px;
+	padding-top: 20px;
 }
 
 .event-list {
@@ -545,3 +547,101 @@
 	height: 100%;
 }
 
+.return-button2 {
+	position: fixed;
+	left: 26vw;
+	top: 45vh;
+	font-size: 40px;
+	z-index: 5;
+	color: #8E24AA;
+	opacity: 0.7;
+}
+
+.return-button2.hide:hover {
+	opacity: 0;
+}
+
+.return-button2:hover {
+	opacity: 0.9;
+	cursor: pointer;
+}
+
+.event-detail .event-detail-title {
+	font-family: 'Muli', sans-serif;
+	font-size: 27px;
+	margin-bottom: 0px;
+}
+
+.event-detail-types {
+	font-family: 'Muli', sans-serif;
+	font-size: 14px;
+	color: #9E9E9E;
+}
+
+.bold-text {
+	font-weight: bold;
+}
+
+.has-border {
+	margin-right: 10px;
+	padding-top: 1px;
+	padding-bottom: 2px;
+	padding-left: 8px;
+	padding-right: 8px;
+	margin-bottom: 7px;
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.text-free {
+	border-color: #01579B;
+	color: #01579B;
+}
+
+.text-all-day {
+	border-color: #00695C;
+	color: #00695C;
+}
+
+.text-recur {
+	border-color: #311B92;
+	color: #311B92;
+}
+
+.text-regres {
+	border-color: #4A148C;
+	color: #4A148C;
+}
+
+.when-where {
+	margin-top: 30px;
+	border-bottom: 1px #E0E0E0 solid;
+}
+
+.event-descr {
+	margin-top: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px #E0E0E0 solid;
+}
+
+.event-descr h1, h2, h3, h4, h5, h6 {
+	font-size: 17px;
+	text-decoration: underline;
+	font-weight: normal;
+	margin-bottom: 15px;
+	color: black;
+}
+
+#event-description {
+	font-family: 'Muli', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 20px;
+	text-decoration: none;
+
+}
+
+.event-descr-text {
+	color: #424242;
+}

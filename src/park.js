@@ -15,6 +15,7 @@ class Park extends Component {
 		this.handleClick = this.handleClick.bind(this);
 		this.openNav = this.openNav.bind(this);
 		this.closeNav = this.closeNav.bind(this);
+		this.handleReturn = this.handleReturn.bind(this);
 
 		this.state = {
 			campground: [],
@@ -214,7 +215,7 @@ class Park extends Component {
 		
 		setTimeout(() => {
 			document.getElementById('event-list').classList.add('display-none');
-			/*document.getElementById('return-button1').classList.remove('hide');*/
+			document.getElementById('return-button2').classList.remove('hide');
 			document.getElementById('event-detail' + index).classList.remove('hide');
 			document.getElementById('event-detail' + index).classList.add('show');
 		}, 250);
@@ -226,6 +227,20 @@ class Park extends Component {
 
 	handleClick(event) {
 		this.forceUpdate();
+	}
+
+	handleReturn(evnet) {
+		document.getElementById('event-list').classList.remove('display-none');
+		document.getElementById('return-button2').classList.add('hide');
+		document.getElementById('event-detail' + this.state.display).classList.remove('show');
+		document.getElementById('event-detail' + this.state.display).classList.add('hide');
+		
+		setTimeout(() => {
+			document.getElementById('event-detail' + this.state.display).classList.add('display-none');
+			document.getElementById('event-list').classList.add('show');
+			document.getElementById('event-list').classList.remove('hide');
+		
+		}, 250);
 	}
 
 
@@ -336,8 +351,8 @@ class Park extends Component {
 						}
 						<p className='event-time'>
 							<span><i className="far fa-clock mr-2"></i></span>
-							<span>Date: { element.date }</span>
-							{ element.data === element.dateend && 
+							<span>Date: { element.datestart }</span>
+							{ element.datestart !== element.dateend && 
 								<span> to { element.dateend }</span>
 							}
 							{ element.times.length !== 0 && 
@@ -360,23 +375,77 @@ class Park extends Component {
 
 			eventDetail.push(
 				<div className='event-detail hide display-none' id={ 'event-detail' + index } key={ index }>
+					<p className='event-detail-title'>{ element.title }</p>
+					{ element.types.length !== 0 && 
+						<p className='event-detail-types'>{ element.types.join(', ') }</p>
+					}
+
+					{ element.isfree === "true" && 
+						<span className='has-border text-free'>Free</span>
+					}
+					{ element.isallday === "true" && 
+						<span className='has-border text-all-day'>All Day</span>
+					}
+					{ element.isrecurring === "true" && 
+						<span className='has-border text-recur'>Recurring</span>
+					}
+					{ element.isregresrequired === "true" && 
+						<span className='has-border text-regres'>Registration or reservation required</span>
+					}
+
+					<div className='when-where'>
+					{ element.location !== "" &&
+						<p className='event-location'>
+							<span className='bold-text text-location'>Location: </span>
+							{ element.location }
+						</p>
+					}
+					<p className='event-detail-date'>
+						<span className='bold-text text-date'>Date: </span>
+						<span>{ element.datestart }</span>
+						{ element.datestart !== element.dateend && 
+							<span> to { element.dateend }</span>
+						}
+					</p>
+					<p className='event-detail-time'>
+						{ element.times.length !== 0 && 
+							<span className='text-time'>
+								<span className='bold-text'>Time: </span>
+								{ element.times[0].timestart } - { element.times[0].timeend }
+							</span>
+						}
+					</p>
+					</div>					
+
+
+					<div className='event-descr'>
+						<h2 id='event-description'>Event description</h2>
+						<div className='event-descr-text'>{ ReactHtmlParser(element.description) }</div>
+						{ element.infourl !== "" && 
+							<div>
+								<a href={ element.infourl } target='_blank' rel="noopener noreferrer">
+									<i className="fas fa-info-circle mr-2"></i>More information
+								</a>
+							</div>
+						}
+					</div>
+					
+
+					{ element.regresinfo !== "" && 
+						<div>
+							<p>Registration & Reservation</p>
+							<p>{ element.regresinfo }</p>
+						</div>
+					}
+					{ element.regresurl !== "" && 
+						<a href={ element.regresurl } target='_blank' rel="noopener noreferrer">More information</a>
+					}
+					<p>Contact</p>	
 					<p>{ element.contactemailaddress }</p>
 					<p>{ element.contactname }</p>
 					<p>{ element.contacttelephonenumber }</p>
-					<p>{ element.feeinfo }</p>
-					<div>{ ReactHtmlParser(element.description) }</div>
-					<p>{ element.infourl }</p>
-					{ element.isallday && 
-						<div>All Day</div>
-					}
-					{ element.isfree && 
-						<div>Free</div>
-					}
-					{ element.isrecurring && 
-						<div>Recurring</div>
-					}
-					{ element.isregresrequired && 
-						<div>Registration or reservation required</div>
+					{ element.feeinfo !== "" && 
+						<p>{ element.feeinfo }</p>
 					}
 					
 				</div>
@@ -597,7 +666,10 @@ class Park extends Component {
 						  <div className="tab-pane fade show active" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">
 						  	<div className='event-page'>
 						  		<div className='event-list show' id='event-list'>{ eventList }</div>
-						  		<div className='event-detail-wrapper' id='event-detail-wrapper'>{ eventDetail }</div>
+						  		<div className='event-detail-wrapper' id='event-detail-wrapper'>
+						  			<i className="fas fa-angle-double-left return-button2 hide" id='return-button2' onClick={ this.handleReturn }></i>
+						  			{ eventDetail }
+						  		</div>
 						  	</div>
 						  </div>
 						  <div className="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">This is the place page</div>

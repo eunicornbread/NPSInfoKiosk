@@ -94,8 +94,8 @@
 }
 
 .return-button1 {
-	position: absolute;
-	left: 10px;
+	position: fixed;
+	left: 26vw;
 	top: 45vh;
 	font-size: 40px;
 	z-index: 5;
@@ -109,7 +109,7 @@
 
 .return-button1:hover {
 	opacity: 0.9;
-	
+	cursor: pointer;
 }
 
 
