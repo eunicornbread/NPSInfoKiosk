@@ -6,6 +6,7 @@ import VisitorCenter from './visitorcenter.js';
 import bgImage from './new-landing-page.svg';
 import backIcon from './svg/back-arrow.svg';
 import { NavLink } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
 
 class Park extends Component {
 	constructor(props) {
@@ -22,7 +23,8 @@ class Park extends Component {
 			events: [],
 			articles: [],
 			alerts: [],
-			news: []
+			news: [],
+			display: -1
 		};
 
 		var self = this;
@@ -128,7 +130,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			self.setState({
 				alerts: res.data.data
 			})
@@ -137,8 +139,6 @@ class Park extends Component {
 			console.log(error);
 		});
 
-
-/*
 		// get events
 		axios.get("https://developer.nps.gov/api/v1/events", {
 			params: {
@@ -156,13 +156,8 @@ class Park extends Component {
 		.catch(error => {
 			console.log(error);
 		});
-*/
-
 		
 	/*
-		
-
-		
 		// get lesson plans
 		axios.get("https://developer.nps.gov/api/v1/lessonplans", {
 			params: {
@@ -209,6 +204,24 @@ class Park extends Component {
 		});
 	*/
 	
+	}
+
+	openEvent(index, event) {
+		
+		document.getElementById('event-detail' + index).classList.remove('display-none');
+		document.getElementById('event-list').classList.add('hide');
+		document.getElementById('event-list').classList.remove('show');
+		
+		setTimeout(() => {
+			document.getElementById('event-list').classList.add('display-none');
+			/*document.getElementById('return-button1').classList.remove('hide');*/
+			document.getElementById('event-detail' + index).classList.remove('hide');
+			document.getElementById('event-detail' + index).classList.add('show');
+		}, 250);
+
+		this.setState({
+			display: index
+		});
 	}
 
 	handleClick(event) {
@@ -283,6 +296,91 @@ class Park extends Component {
 					</div>
 				);
 			}
+		})
+
+		var eventList = [];
+		var eventDetail = [];
+		this.state.events.forEach((element, index) => {
+			var eventTag = [];
+			element.tags.forEach((e, i) => {
+				eventTag.push(
+					<div className='event-tag' key={ i }>{ e }</div>
+				);
+			})
+			eventList.push(
+				<div className='park-event' id={ 'park-event' + index } key={ index }>
+					{ element.images.length !== 0 &&
+						<div>
+							<div className='event-image'>
+							<img src={ "https://www.nps.gov/" + element.images[0].url } alt={ element.images[0].altText } />
+							{ element.images[0].caption !== "" &&
+								<p className='event-caption'>{ element.images[0].caption }</p>
+							}
+							{ element.images[0].credit !== "" &&
+								<p className='event-credit'>Credit: { element.images[0].credit }</p>
+							}
+							</div>
+						</div>
+					}
+					
+					<div className='event-text'>
+						<p className='event-title'>{ element.title }</p>
+						{ element.types.length !== 0 &&
+							<p className='event-type'>{ element.types.join(', ') }</p>
+						}
+						{ element.location !== "" &&
+							<p className='event-location'>
+								<span><i className="fas fa-map-marker-alt mr-2"></i></span>
+								{ element.location }
+							</p>
+						}
+						<p className='event-time'>
+							<span><i className="far fa-clock mr-2"></i></span>
+							<span>Date: { element.date }</span>
+							{ element.data === element.dateend && 
+								<span> to { element.dateend }</span>
+							}
+							{ element.times.length !== 0 && 
+								<span className='event-time-text'>Time: { element.times[0].timestart } - { element.times[0].timeend }</span>
+							}
+						</p>
+						{ element.tags.length !== 0 && 
+							<div className='tag-list'>
+								<span className='tag-text'>Tags: </span>
+								{ eventTag }
+							</div>
+						}
+						<p className='more-detail-btn' onClick={ this.openEvent.bind(this, index) }>
+							More detail
+							<i className="fas fa-angle-double-right double-right-icon"></i>
+						</p>
+					</div>
+				</div>
+			);
+
+			eventDetail.push(
+				<div className='event-detail hide display-none' id={ 'event-detail' + index } key={ index }>
+					<p>{ element.contactemailaddress }</p>
+					<p>{ element.contactname }</p>
+					<p>{ element.contacttelephonenumber }</p>
+					<p>{ element.feeinfo }</p>
+					<div>{ ReactHtmlParser(element.description) }</div>
+					<p>{ element.infourl }</p>
+					{ element.isallday && 
+						<div>All Day</div>
+					}
+					{ element.isfree && 
+						<div>Free</div>
+					}
+					{ element.isrecurring && 
+						<div>Recurring</div>
+					}
+					{ element.isregresrequired && 
+						<div>Registration or reservation required</div>
+					}
+					
+				</div>
+			);
 		})
 
 		var newsList = [];
@@ -496,7 +594,12 @@ class Park extends Component {
 						  </div>
 						</nav>
 						<div className="tab-content" id="nav-tabContent">
-						  <div className="tab-pane fade show active" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">This is the event page</div>
+						  <div className="tab-pane fade show active" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">
+						  	<div className='event-page'>
+						  		<div className='event-list show' id='event-list'>{ eventList }</div>
+						  		<div className='event-detail-wrapper' id='event-detail-wrapper'>{ eventDetail }</div>
+						  	</div>
+						  </div>
 						  <div className="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">This is the place page</div>
 						  <div className="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">This is the people page</div>
 						  <div className="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">This is the lesson page</div>

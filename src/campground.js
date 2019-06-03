@@ -282,13 +282,6 @@ class Campground extends Component {
 				</div>
 			);
 
-			// name
-			// - description
-			// direction
-			// regulation
-			// reservation
-			// weather
-
 			// Info about accessibility
 			var accessInfo = [];
 			var accessData = element.accessibility;
