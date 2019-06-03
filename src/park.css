@@ -133,6 +133,7 @@
 	font-family: 'Muli', sans-serif;
 	margin-top: 30px;
 	margin-bottom: 20px;
+	font-size: 23px;
 }
 
 .park-link {
@@ -633,15 +634,73 @@
 	color: black;
 }
 
-#event-description {
+.event-description {
 	font-family: 'Muli', sans-serif;
 	font-weight: bold;
 	font-size: 20px;
 	margin-bottom: 20px;
 	text-decoration: none;
-
 }
 
 .event-descr-text {
 	color: #424242;
+}
+
+.contact-text {
+	font-family: 'Muli', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 20px;
+	text-decoration: none;
+}
+
+.event-contact {
+	margin-top: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px #E0E0E0 solid;
+}
+
+.contact-name {
+	margin-bottom: 8px;
+}
+
+.contact-email-icon {
+	margin-right: 8px;
+	color: #757575;
+	margin-left: 2px;
+}
+
+.contact-phone-icon {
+	margin-right: 8px;
+	color: #757575;
+	margin-left: 2px;
+}
+
+.contact-email {
+	color: black;
+}
+
+.contact-name-icon {
+	margin-right: 8px;
+	color: #757575;
+	margin-left: 2px;
+}
+
+.contact-email-text {
+	display: inline-block;
+	margin-bottom: 8px;
+}
+
+.event-regres {
+	margin-top: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px #E0E0E0 solid;
+}
+
+.regres-text {
+	font-family: 'Muli', sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	margin-bottom: 20px;
+	text-decoration: none;
 }

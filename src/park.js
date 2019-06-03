@@ -350,13 +350,16 @@ class Park extends Component {
 							</p>
 						}
 						<p className='event-time'>
-							<span><i className="far fa-clock mr-2"></i></span>
+							<span><i className="far fa-calendar-alt mr-2"></i></span>
 							<span>Date: { element.datestart }</span>
 							{ element.datestart !== element.dateend && 
 								<span> to { element.dateend }</span>
 							}
 							{ element.times.length !== 0 && 
-								<span className='event-time-text'>Time: { element.times[0].timestart } - { element.times[0].timeend }</span>
+								<span className='event-time-text'>
+									<span><i className="far fa-clock mr-2"></i></span>
+									Time: { element.times[0].timestart } - { element.times[0].timeend }
+								</span>
 							}
 						</p>
 						{ element.tags.length !== 0 && 
@@ -415,11 +418,25 @@ class Park extends Component {
 							</span>
 						}
 					</p>
+					<p className='event-time-info'>
+						{ element.timeinfo !== "" && 
+							<span>
+								<span className='bold-text'>Note: </span>
+								<span>{ element.timeinfo }</span>
+							</span>
+						}
+					</p>
+					{ element.feeinfo !== "" && 
+						<p>
+							<span className='bold-text'>Fee: </span>
+							{ element.feeinfo }
+						</p>
+					}
 					</div>					
 
 
 					<div className='event-descr'>
-						<h2 id='event-description'>Event description</h2>
+						<p className='event-description'>Event description</p>
 						<div className='event-descr-text'>{ ReactHtmlParser(element.description) }</div>
 						{ element.infourl !== "" && 
 							<div>
@@ -430,23 +447,43 @@ class Park extends Component {
 						}
 					</div>
 					
-
+					<div>
 					{ element.regresinfo !== "" && 
-						<div>
-							<p>Registration & Reservation</p>
-							<p>{ element.regresinfo }</p>
+						<div className='event-regres'>
+							<p className='regres-text'>Registration & Reservation</p>
+							<p className='regres-info'>{ element.regresinfo }</p>
+							{ element.regresurl !== "" && 
+								<a href={ element.regresurl } target='_blank' rel="noopener noreferrer">
+									<i className="fas fa-info-circle mr-2"></i>More information
+								</a>
+							}
 						</div>
 					}
-					{ element.regresurl !== "" && 
-						<a href={ element.regresurl } target='_blank' rel="noopener noreferrer">More information</a>
-					}
-					<p>Contact</p>	
-					<p>{ element.contactemailaddress }</p>
-					<p>{ element.contactname }</p>
-					<p>{ element.contacttelephonenumber }</p>
-					{ element.feeinfo !== "" && 
-						<p>{ element.feeinfo }</p>
-					}
+					</div>
+
+					<div className='event-contact'>
+						<p className='contact-text'>Contact</p>	
+						{ element.contactname !== "" && 
+							<p className='contact-name'>
+								<span className='contact-name-icon'><i className="fas fa-id-card-alt"></i></span>
+								{ element.contactname }
+							</p>
+						}
+						{ element.contactemailaddress !== "" && 
+							<a href={ "mailto:" + element.contactemailaddress } target='_blank' 
+								rel="noopener noreferrer" className='contact-email-text'>
+								<span className='contact-email-icon'><i className="fas fa-envelope"></i></span>
+								<span className='contact-email'>{ element.contactemailaddress }</span>
+							</a>
+						}
+						{ element.contacttelephonenumber !== "" && 
+							<p>
+								<span className='contact-phone-icon'><i className="fas fa-phone"></i></span>
+								{ element.contacttelephonenumber }
+							</p>
+						}
+					</div>
+					
 					
 				</div>
 			);
@@ -595,7 +632,7 @@ class Park extends Component {
 						  			<span className='park-state'>{ this.state.park.states }</span>
 						  			<span className='park-desig'>{ this.state.park.designation }</span>
 						  		</div>
-						  		<h4 className='park-overview park-h4'>Overview</h4>
+						  		<p className='park-overview park-h4'>Overview</p>
 						  		<p className='park-descr park-text'>{ this.state.park.description }</p>
 						  		{ this.state.park.url !== "" &&
 						  			<p className='park-url'>
@@ -609,7 +646,7 @@ class Park extends Component {
 						  			</p>
 						  		}
 
-						  		<h4 className='park-h4'>Direction</h4>
+						  		<p className='park-h4'>Direction</p>
 						  		<p className='park-direc park-text'>{ this.state.park.directionsInfo }</p>
 						  		{ this.state.park.directionsUrl !== "" &&
 						  			<div className='park-dire-url'>
@@ -623,22 +660,22 @@ class Park extends Component {
 						  			</div>
 						  		}
 						  		
-						  		<h4 className='park-h4 park-text'>Weather</h4>
+						  		<p className='park-h4 park-text'>Weather</p>
 						  		<p className='park-weather pb-4'>{ this.state.park.weatherInfo }</p>
 						  	</div>
 						  </div>
 						  <div className="tab-pane fade" id="nav-alert" role="tabpanel" aria-labelledby="nav-alert-tab">
 						  	<div className='alert-page'>
 						  		{ alertClosure.length !== 0 && 
-							  		<h3 className='alert-head'>Park Closure</h3>
+							  		<p className='alert-head'>Park Closure</p>
 						  		}
 						  		{ alertClosure }
 						  		{ alertCaution.length !== 0 && 
-							  		<h3 className='alert-head'>Caution</h3>
+							  		<p className='alert-head'>Caution</p>
 						  		}
 						  		{ alertCaution }
 						  		{ alertInfo.length !== 0 && 
-							  		<h3 className='alert-head'>Information</h3>
+							  		<p className='alert-head'>Information</p>
 						  		}
 						  		{ alertInfo }
 						  	</div>

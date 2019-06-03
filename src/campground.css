@@ -27,10 +27,10 @@
 }
 
 .detail-page-camp {
-	top: 30px;
+	top: 25px;
 	height: 100%;
 	width: 100%;
-	padding-left: 90px;
+	padding-left: 80px;
 	transition: opacity 250ms ease-in-out;
 	position: absolute;
 	padding-right: 40px;
@@ -98,6 +98,7 @@
 	border-bottom: 1px #EEEEEE solid;
 	position: relative;
 	margin-top: 25px;
+	text-decoration: none;
 }
 
 .access-tab p {
@@ -185,6 +186,7 @@
 	margin-top: 25px;
 	padding-bottom: 2px;
 	padding-left: 3px;
+	text-decoration: none;
 }
 
 .camp-tab {
