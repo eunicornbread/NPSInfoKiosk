@@ -606,35 +606,14 @@ class Park extends Component {
 							<br />
 							<pre className='question-objective'>{ element.questionobjective }</pre>
 						</div>
-						<div className='common-core'>
-							<div className='common-core-toggle'>
-							  <span className="lesson-collapse-button">
-							  <a data-toggle="collapse" href={ "#lesson-collapse" + index } role="button" aria-expanded="false" aria-controls={ "lesson-collapse" + index }>
-							    <i className="fas fa-angle-double-right mr-2"></i>
-							    Common Core
-							  </a>
-							  </span>
 							  
-							  <span className='lesson-url'>
-							  <a href={ element.url } target='_blank' rel="noopener noreferrer">
+						<div className='lesson-url'>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer">
 								<i className="fas fa-info-circle lesson-info-icon"></i>
 								More information
-							  </a>
-							  </span>
-							</div>
-
-
-
-							<div className="collapse" id={ "lesson-collapse" + index }>
-							  <div className="card card-body common-core-collapse">
-							    { index }
-							  </div>
-							</div>
+							</a>
 						</div>
-
-						
-
-						
+					
 						
 					</div>
 				</div>

@@ -852,35 +852,8 @@
 	margin-top: 10px;
 }
 
-.lesson-collapse-button {
-	background-color: rgba(0,0,0,0);
-	border: none;
-	padding-left: 0px;
-	
-}
-
-.lesson-collapse-button:focus {
-	outline: none;
-}
-
 .lesson-info-icon {
 	margin-right: 6px;
-}
-
-.lesson-collapse-button {
-	width: 50%;
-}
-
-.common-core-collapse {
-	background-color: rgba(255,255,255,0.5);
-}
-
-.lesson-url {
-	width: 50%;
-}
-
-.common-core-toggle {
-	display: flex;
 }
 
 pre {
