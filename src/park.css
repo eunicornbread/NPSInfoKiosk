@@ -704,3 +704,48 @@
 	margin-bottom: 20px;
 	text-decoration: none;
 }
+
+.park-people {
+	border-bottom: 1px #E0E0E0 solid;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.park-people .people-title {
+	font-family: 'Muli', sans-serif;
+	font-size: 27px;
+}
+
+.people-page {
+	margin-top: 0px;
+	margin-left: 80px;
+	margin-right: 50px;
+}
+
+.people-detail {
+	display: flex;
+}
+
+.people-image {
+	margin-right: 30px;
+	padding: 10px;
+	border: 1px #E0E0E0 solid;
+}
+
+.people-image img {
+	max-width: 300px;
+}
+
+.park-people .people-caption {
+	font-size: 14px;
+	color: #424242;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.park-people .people-credit {
+	font-size: 12px;
+	color: #9E9E9E;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}

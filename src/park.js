@@ -25,6 +25,7 @@ class Park extends Component {
 			articles: [],
 			alerts: [],
 			news: [],
+			people: [],
 			display: -1
 		};
 
@@ -149,7 +150,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			self.setState({
 				events: res.data.data
 			})
@@ -157,6 +158,25 @@ class Park extends Component {
 		.catch(error => {
 			console.log(error);
 		});
+
+		// get people
+		axios.get("https://developer.nps.gov/api/v1/people", {
+			params: {
+				parkCode: this.props.match.params.parkCode,
+				limit: 19,
+				api_key: process.env.REACT_APP_API_KEY
+			}
+		})
+		.then(res => {
+			console.log(res.data.data);
+			self.setState({
+				people: res.data.data
+			});
+		})
+		.catch(error => {
+			console.log(error);
+		});
+
 		
 	/*
 		// get lesson plans
@@ -174,21 +194,7 @@ class Park extends Component {
 			console.log(error);
 		});
 
-		// get people
-		axios.get("https://developer.nps.gov/api/v1/people", {
-			params: {
-				parkCode: this.props.match.params.parkCode,
-				limit: 19,
-				api_key: process.env.REACT_APP_API_KEY
-			}
-		})
-		.then(res => {
-			console.log(res.data.data);
-		})
-		.catch(error => {
-			console.log(error);
-		});
-
+		
 		// get places
 		axios.get("https://developer.nps.gov/api/v1/places", {
 			params: {
@@ -208,7 +214,6 @@ class Park extends Component {
 	}
 
 	openEvent(index, event) {
-		
 		document.getElementById('event-detail' + index).classList.remove('display-none');
 		document.getElementById('event-list').classList.add('hide');
 		document.getElementById('event-list').classList.remove('show');
@@ -351,14 +356,14 @@ class Park extends Component {
 						}
 						<p className='event-time'>
 							<span><i className="far fa-calendar-alt mr-2"></i></span>
-							<span>Date: { element.datestart }</span>
+							<span>{ element.datestart }</span>
 							{ element.datestart !== element.dateend && 
 								<span> to { element.dateend }</span>
 							}
 							{ element.times.length !== 0 && 
 								<span className='event-time-text'>
 									<span><i className="far fa-clock mr-2"></i></span>
-									Time: { element.times[0].timestart } - { element.times[0].timeend }
+									{ element.times[0].timestart } - { element.times[0].timeend }
 								</span>
 							}
 						</p>
@@ -488,6 +493,36 @@ class Park extends Component {
 				</div>
 			);
 		})
+
+		var peopleList = [];
+		this.state.people.forEach((element, index) => {
+			peopleList.push(
+				<div className='park-people' key={ index }>
+					<p className='people-title'>{ element.title }</p>
+					<div className='people-detail'>
+						{ element.listingimage.url !== "" && 
+						<div>
+							<div className='people-image'>
+								<img src={ element.listingimage.url} alt={ element.listingimage.altText } />
+								{ element.listingimage.caption !== "" && 
+									<p className='people-caption'>{ element.listingimage.caption }</p>
+								}
+
+								{ element.listingimage.credit !== "" && 
+									<p className='people-credit'>Credit: { element.listingimage.credit }</p>
+								}
+							</div>
+						</div>
+						}
+						<div className='people-descr'>
+							<p className='listing-descr'>{ element.listingdescription }</p>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='people-url'>Read more</a>
+						</div>
+					</div>
+				</div>
+			);
+		})
+				
 
 		var newsList = [];
 		this.state.news.forEach((element, index) => {
@@ -710,7 +745,9 @@ class Park extends Component {
 						  	</div>
 						  </div>
 						  <div className="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">This is the place page</div>
-						  <div className="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">This is the people page</div>
+						  <div className="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">
+						  	<div className='people-page'>{ peopleList }</div>
+						  </div>
 						  <div className="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">This is the lesson page</div>
 						</div>
 					  </div>
