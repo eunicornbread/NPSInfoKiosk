@@ -796,3 +796,93 @@
 	margin-top: 5px;
 	margin-bottom: 0px;
 }
+
+/* Style for the lesson page */
+
+.lesson-page {
+	margin-top: 0px;
+	margin-left: 80px;
+	margin-right: 50px;
+}
+
+.park-lesson .lesson-title {
+	font-family: 'Muli', sans-serif;
+	font-size: 27px;
+}
+
+.park-lesson {
+	border-bottom: 1px #E0E0E0 solid;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+
+.lesson-subject {
+}
+
+.subject-science {
+	color: #00796B;
+	border-color: #00796B;
+}
+
+.subject-math {
+	color: #C2185B;
+	border-color: #C2185B;
+}
+
+.subject-social {
+	color: #512DA8;
+	border-color: #512DA8;
+}
+
+.subject-ela {
+	color: #0277BD;
+	border-color: #0277BD;
+}
+
+.subject-else {
+	color: #5D4037;
+	border-color: #5D4037;
+}
+
+.question-objective {
+	font-family: 'Muli', sans-serif;
+	font-size: 16px;
+	color: #424242;
+	margin-top: 10px;
+}
+
+.lesson-collapse-button {
+	background-color: rgba(0,0,0,0);
+	border: none;
+	padding-left: 0px;
+	
+}
+
+.lesson-collapse-button:focus {
+	outline: none;
+}
+
+.lesson-info-icon {
+	margin-right: 6px;
+}
+
+.lesson-collapse-button {
+	width: 50%;
+}
+
+.common-core-collapse {
+	background-color: rgba(255,255,255,0.5);
+}
+
+.lesson-url {
+	width: 50%;
+}
+
+.common-core-toggle {
+	display: flex;
+}
+
+pre {
+	white-space:pre-wrap;
+}

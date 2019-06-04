@@ -27,6 +27,7 @@ class Park extends Component {
 			news: [],
 			people: [],
 			places: [],
+			lessons: [],
 			display: -1
 		};
 
@@ -178,8 +179,7 @@ class Park extends Component {
 			console.log(error);
 		});
 
-		
-	/*
+
 		// get lesson plans
 		axios.get("https://developer.nps.gov/api/v1/lessonplans", {
 			params: {
@@ -190,12 +190,13 @@ class Park extends Component {
 		})
 		.then(res => {
 			console.log(res.data.data);
+			self.setState({
+				lessons: res.data.data
+			})
 		})
 		.catch(error => {
 			console.log(error);
 		});
-
-		*/
 
 		// get places
 		axios.get("https://developer.nps.gov/api/v1/places", {
@@ -206,7 +207,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			self.setState({
 				places: res.data.data
 			})
@@ -555,6 +556,90 @@ class Park extends Component {
 				</div>
 			);
 		})
+
+		var lessonList = [];
+		this.state.lessons.forEach((element, index) => {
+			var subjectList = [];
+			element.subject.split(",").forEach((e, i) => {
+				if (e === 'Science') {
+					subjectList.push(
+						<span className='has-border subject-item subject-science' key={ i }>{ e }</span>
+					);
+				} else if (e === 'Math') {
+					subjectList.push(
+						<span className='has-border subject-item subject-math' key={ i }>{ e }</span>
+					);
+				} else if (e === 'Social Studies') {
+					subjectList.push(
+						<span className='has-border subject-item subject-social' key={ i }>{ e }</span>
+					);
+				} else if (e === 'Literacy and Language Arts') {
+					subjectList.push(
+						<span className='has-border subject-item subject-ela' key={ i }>{ e }</span>
+					);
+				} else {
+					subjectList.push(
+						<span className='has-border subject-item subject-else' key={ i }>{ e }</span>
+					);
+				}
+			})
+
+			lessonList.push(
+				<div className='park-lesson' key={ index }>
+					<p className='lesson-title'>{ element.title }</p>
+					<div className='lesson-detail'>
+						<p className='lesson-subject'>
+							<span className='bold-text'>Subject: </span>
+							{ subjectList }
+						</p>
+						
+						<p className='lesson-duration'>
+							<span className='bold-text'>Duration: </span>
+							{ element.duration }
+						</p>
+						<p className='lesson-gradelevel'>
+							<span className='bold-text'>Grade level: </span>
+							{ element.gradelevel }
+						</p>
+						<div className='lesson-questionobjective'>
+							<span className='bold-text'>Objective</span>
+							<br />
+							<pre className='question-objective'>{ element.questionobjective }</pre>
+						</div>
+						<div className='common-core'>
+							<div className='common-core-toggle'>
+							  <span className="lesson-collapse-button">
+							  <a data-toggle="collapse" href={ "#lesson-collapse" + index } role="button" aria-expanded="false" aria-controls={ "lesson-collapse" + index }>
+							    <i className="fas fa-angle-double-right mr-2"></i>
+							    Common Core
+							  </a>
+							  </span>
+							  
+							  <span className='lesson-url'>
+							  <a href={ element.url } target='_blank' rel="noopener noreferrer">
+								<i className="fas fa-info-circle lesson-info-icon"></i>
+								More information
+							  </a>
+							  </span>
+							</div>
+
+
+
+							<div className="collapse" id={ "lesson-collapse" + index }>
+							  <div className="card card-body common-core-collapse">
+							    { index }
+							  </div>
+							</div>
+						</div>
+
+						
+
+						
+						
+					</div>
+				</div>
+			);
+		})
 				
 
 		var newsList = [];
@@ -783,7 +868,9 @@ class Park extends Component {
 						  <div className="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">
 						  	<div className='people-page'>{ peopleList }</div>
 						  </div>
-						  <div className="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">This is the lesson page</div>
+						  <div className="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">
+						  	<div className='lesson-page'>{ lessonList }</div>
+						  </div>
 						</div>
 					  </div>
 
