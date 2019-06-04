@@ -26,6 +26,7 @@ class Park extends Component {
 			alerts: [],
 			news: [],
 			people: [],
+			places: [],
 			display: -1
 		};
 
@@ -168,7 +169,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			self.setState({
 				people: res.data.data
 			});
@@ -194,7 +195,8 @@ class Park extends Component {
 			console.log(error);
 		});
 
-		
+		*/
+
 		// get places
 		axios.get("https://developer.nps.gov/api/v1/places", {
 			params: {
@@ -205,12 +207,14 @@ class Park extends Component {
 		})
 		.then(res => {
 			console.log(res.data.data);
+			self.setState({
+				places: res.data.data
+			})
 		})
 		.catch(error => {
 			console.log(error);
 		});
-	*/
-	
+
 	}
 
 	openEvent(index, event) {
@@ -522,6 +526,35 @@ class Park extends Component {
 				</div>
 			);
 		})
+
+		var placeList = [];
+		this.state.places.forEach((element, index) => {
+			placeList.push(
+				<div className='park-place' key={ index }>
+					<p className='place-title'>{ element.title }</p>
+					<div className='place-detail'>
+						{ element.listingimage.url !== "" && 
+						<div>
+							<div className='place-image'>
+								<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
+								{ element.listingimage.caption !== "" && 
+									<p className='place-caption'>{ element.listingimage.caption }</p>
+								}
+
+								{ element.listingimage.credit !== "" && 
+									<p className='place-credit'>Credit: { element.listingimage.credit }</p>
+								}
+							</div>
+						</div>
+						}
+						<div className='place-descr'>
+							<p className='listing-descr'>{ element.listingdescription }</p>
+							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='place-url'>Read more</a>
+						</div>
+					</div>
+				</div>
+			);
+		})
 				
 
 		var newsList = [];
@@ -744,7 +777,9 @@ class Park extends Component {
 						  		</div>
 						  	</div>
 						  </div>
-						  <div className="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">This is the place page</div>
+						  <div className="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">
+						  	<div className='place-page'>{ placeList }</div>
+						  </div>
 						  <div className="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">
 						  	<div className='people-page'>{ peopleList }</div>
 						  </div>

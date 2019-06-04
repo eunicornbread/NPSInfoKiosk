@@ -705,6 +705,7 @@
 	text-decoration: none;
 }
 
+/* Style for the people page */
 .park-people {
 	border-bottom: 1px #E0E0E0 solid;
 	padding-bottom: 30px;
@@ -744,6 +745,52 @@
 }
 
 .park-people .people-credit {
+	font-size: 12px;
+	color: #9E9E9E;
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
+/* Style for the place page */
+.park-place {
+	border-bottom: 1px #E0E0E0 solid;
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+
+.park-place .place-title {
+	font-family: 'Muli', sans-serif;
+	font-size: 27px;
+}
+
+.place-page {
+	margin-top: 0px;
+	margin-left: 80px;
+	margin-right: 50px;
+}
+
+.place-detail {
+	display: flex;
+}
+
+.place-image {
+	margin-right: 30px;
+	padding: 10px;
+	border: 1px #E0E0E0 solid;
+}
+
+.place-image img {
+	max-width: 300px;
+}
+
+.park-place .place-caption {
+	font-size: 14px;
+	color: #424242;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.park-place .place-credit {
 	font-size: 12px;
 	color: #9E9E9E;
 	margin-top: 5px;
