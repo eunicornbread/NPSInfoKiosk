@@ -28,7 +28,8 @@ class Park extends Component {
 			people: [],
 			places: [],
 			lessons: [],
-			display: -1
+			display: -1,
+			campLoading: true
 		};
 
 		var self = this;
@@ -62,7 +63,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				campground: res.data.data
+				campground: res.data.data,
+				campLoading: false
 			})
 		})
 		.catch(error => {
@@ -189,7 +191,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			self.setState({
 				lessons: res.data.data
 			})

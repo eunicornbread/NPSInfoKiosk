@@ -307,3 +307,28 @@
 	opacity: 0;
 	z-index: 0;
 }
+
+.no-camp-page {
+	height: 100vh;
+	width: 100%;
+	position: relative;
+}
+
+.no-camp {
+	position: absolute;
+	left: 50%;
+	top: 30vh;
+	transform: translateX(-50%);
+}
+
+#camping-icon {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100px;	
+}
+
+.no-camp-text {
+	margin-top: 100px;
+	color: #01579B;
+}

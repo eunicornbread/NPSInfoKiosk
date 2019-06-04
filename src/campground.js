@@ -10,6 +10,7 @@ import infoIcon from './svg/information-black-18.svg';
 import directionIcon from './svg/directions-black-22.svg';
 import campgroundIcon from './svg/campground-black-18.svg';
 import reservationIcon from './svg/reservations-black-22.svg';
+import campingIcon from './svg/camping-tent.svg';
 
 class Campground extends Component {
 	constructor(props) {
@@ -54,9 +55,12 @@ class Campground extends Component {
 		//console.log(this.props.data);
 		if (this.props.data.length === 0) {
 			return (
-				<>
-					<p>No available campground nearby QAQ</p>
-				</>
+				<div className='no-camp-page'>
+					<div className='no-camp'>
+						<img src={ campingIcon } alt='camping tent' id='camping-icon' />
+						<p className='no-camp-text'>No campground available :(</p>
+					</div>
+				</div>
 			);
 		}
 
