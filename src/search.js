@@ -433,7 +433,7 @@ class Search extends Component {
 						</div>
 					</div>
 				}
-
+				
 				{ this.state.error && 
 					<div className='error-page'>
 						<div className='error-message'>

@@ -282,10 +282,6 @@
 	border-bottom: 1px #E0E0E0 solid;
 }
 
-.camp-item:hover {
-	color: #7C4DFF;
-	cursor: pointer;
-}
 
 .bold-text {
 	font-weight: bold;

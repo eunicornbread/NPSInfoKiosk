@@ -7,6 +7,12 @@ import bgImage from './new-landing-page.svg';
 import backIcon from './svg/back-arrow.svg';
 import { NavLink } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
+import pawprintIcon from './svg/pawprint.svg';
+import alertIcon from './svg/alarm.svg';
+import cloudIcon from './svg/cloud.svg';
+import mountainIcon from './svg/mountain.svg';
+import ReactLoading from 'react-loading';
+
 
 class Park extends Component {
 	constructor(props) {
@@ -29,7 +35,16 @@ class Park extends Component {
 			places: [],
 			lessons: [],
 			display: -1,
-			campLoading: true
+			campLoading: true,
+			visitorLoading: true,
+			parkLoading: true,
+			eventLoading: true,
+			articleLoading: true,
+			alertLoading: true,
+			newsLoading: true,
+			peopleLoading: true,
+			placeLoading: true,
+			lessonLoading: true
 		};
 
 		var self = this;
@@ -45,7 +60,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data[0]);
 			self.setState({
-				park: res.data.data[0]
+				park: res.data.data[0],
+				parkLoading: false
 			});
 		})
 		.catch(error => {
@@ -82,7 +98,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				visitorcenter: res.data.data
+				visitorcenter: res.data.data,
+				visitorLoading: false
 			})
 		})
 		.catch(error => {
@@ -101,7 +118,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				articles: res.data.data
+				articles: res.data.data,
+				articleLoading: false
 			})
 		})
 		.catch(error => {
@@ -119,7 +137,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				news: res.data.data
+				news: res.data.data,
+				newsLoading: false
 			})
 
 		})
@@ -138,7 +157,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				alerts: res.data.data
+				alerts: res.data.data,
+				alertLoading: false
 			})
 		})
 		.catch(error => {
@@ -156,7 +176,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				events: res.data.data
+				events: res.data.data,
+				eventLoading: false
 			})
 		})
 		.catch(error => {
@@ -174,7 +195,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				people: res.data.data
+				people: res.data.data,
+				peopleLoading: false
 			});
 		})
 		.catch(error => {
@@ -193,7 +215,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				lessons: res.data.data
+				lessons: res.data.data,
+				lessonLoading: false
 			})
 		})
 		.catch(error => {
@@ -211,7 +234,8 @@ class Park extends Component {
 		.then(res => {
 			//console.log(res.data.data);
 			self.setState({
-				places: res.data.data
+				places: res.data.data,
+				placeLoading: false
 			})
 		})
 		.catch(error => {
@@ -676,6 +700,19 @@ class Park extends Component {
 			);
 		})
 
+		var cloudLoading = (
+			<div className='cloud-loading-page'>
+				<div className='cloud-loading'>
+					<img src={ cloudIcon } alt='cloud icon' id='cloud-icon' />
+					<img src={ mountainIcon } alt='mountain icon' id='mountain-icon' />
+					<div className='cloud-loading-text'>Loading</div>
+					<div className='cloud-loading-dots'>
+						<ReactLoading type={'bubbles'} color={'#A3D4F7'} height={22} width={22} />
+					</div>
+				</div>
+			</div>
+		);
+
 		return (
 			<>
 			<div className="wrapper">
@@ -737,7 +774,7 @@ class Park extends Component {
 
 				</div>
 				<div className='right-side' id='right-side'>
-
+	
 
 				  <div className='park-page'>
 					<div className="tab-content" id="pills-tabContent">
@@ -760,65 +797,121 @@ class Park extends Component {
 						</nav>
 						<div className="tab-content" id="nav-tabContent">
 						  <div className="tab-pane fade show active" id="nav-basic" role="tabpanel" aria-labelledby="nav-basic-tab">
-						  	<div className='basic-page'>
-						  		<div className='park-fullname'>{ this.state.park.fullName }</div>
-						  		<div className='state-desig'>
-						  			<span className='park-state'>{ this.state.park.states }</span>
-						  			<span className='park-desig'>{ this.state.park.designation }</span>
-						  		</div>
-						  		<p className='park-overview park-h4'>Overview</p>
-						  		<p className='park-descr park-text'>{ this.state.park.description }</p>
-						  		{ this.state.park.url !== "" &&
-						  			<p className='park-url'>
-						  				<span className='mr-2 more-info'>More information at</span>
-						  				<a href={ this.state.park.url } target="_blank" rel="noopener noreferrer">
-						  					{ this.state.park.url }
-						  					<span className='park-link'>
-						  						<i className="fas fa-external-link-alt link-icon"></i>
-						  					</span>
-						  				</a>
-						  			</p>
-						  		}
+						  	{ this.state.parkLoading &&
+						  		cloudLoading
+						  	}
+						  	{ !this.state.parkLoading &&
+						  		<div className='basic-page'>
+							  		<div className='park-fullname'>{ this.state.park.fullName }</div>
+							  		<div className='state-desig'>
+							  			<span className='park-state'>{ this.state.park.states }</span>
+							  			<span className='park-desig'>{ this.state.park.designation }</span>
+							  		</div>
+							  		<p className='park-overview park-h4'>Overview</p>
+							  		<p className='park-descr park-text'>{ this.state.park.description }</p>
+							  		{ this.state.park.url !== "" &&
+							  			<p className='park-url'>
+							  				<span className='mr-2 more-info'>More information at</span>
+							  				<a href={ this.state.park.url } target="_blank" rel="noopener noreferrer">
+							  					{ this.state.park.url }
+							  					<span className='park-link'>
+							  						<i className="fas fa-external-link-alt link-icon"></i>
+							  					</span>
+							  				</a>
+							  			</p>
+							  		}
 
-						  		<p className='park-h4'>Direction</p>
-						  		<p className='park-direc park-text'>{ this.state.park.directionsInfo }</p>
-						  		{ this.state.park.directionsUrl !== "" &&
-						  			<div className='park-dire-url'>
-						  				<span className='mr-2 more-info'>More information at</span>
-						  				<a href={ this.state.park.directionsUrl } target="_blank" rel="noopener noreferrer">
-						  					{ this.state.park.directionsUrl }
-						  					<span className='park-link'>
-						  						<i className="fas fa-external-link-alt link-icon"></i>
-						  					</span>
-						  				</a>
-						  			</div>
-						  		}
-						  		
-						  		<p className='park-h4 park-text'>Weather</p>
-						  		<p className='park-weather pb-4'>{ this.state.park.weatherInfo }</p>
-						  	</div>
+							  		<p className='park-h4'>Direction</p>
+							  		<p className='park-direc park-text'>{ this.state.park.directionsInfo }</p>
+							  		{ this.state.park.directionsUrl !== "" &&
+							  			<div className='park-dire-url'>
+							  				<span className='mr-2 more-info'>More information at</span>
+							  				<a href={ this.state.park.directionsUrl } target="_blank" rel="noopener noreferrer">
+							  					{ this.state.park.directionsUrl }
+							  					<span className='park-link'>
+							  						<i className="fas fa-external-link-alt link-icon"></i>
+							  					</span>
+							  				</a>
+							  			</div>
+							  		}
+							  		
+							  		<p className='park-h4 park-text'>Weather</p>
+							  		<p className='park-weather pb-4'>{ this.state.park.weatherInfo }</p>
+							  	</div>
+						  	}
+						  	
 						  </div>
 						  <div className="tab-pane fade" id="nav-alert" role="tabpanel" aria-labelledby="nav-alert-tab">
-						  	<div className='alert-page'>
-						  		{ alertClosure.length !== 0 && 
-							  		<p className='alert-head'>Park Closure</p>
-						  		}
-						  		{ alertClosure }
-						  		{ alertCaution.length !== 0 && 
-							  		<p className='alert-head'>Caution</p>
-						  		}
-						  		{ alertCaution }
-						  		{ alertInfo.length !== 0 && 
-							  		<p className='alert-head'>Information</p>
-						  		}
-						  		{ alertInfo }
-						  	</div>
+							  { this.state.alertLoading &&
+							  	cloudLoading
+							  }
+							  { !this.state.alertLoading && 
+							  	<div className='alert-page'>
+							  		{ alertClosure.length !== 0 && 
+								  		<p className='alert-head'>Park Closure</p>
+							  		}
+							  		{ alertClosure }
+							  		{ alertCaution.length !== 0 && 
+								  		<p className='alert-head'>Caution</p>
+							  		}
+							  		{ alertCaution }
+							  		{ alertInfo.length !== 0 && 
+								  		<p className='alert-head'>Information</p>
+							  		}
+							  		{ alertInfo }
+
+							  		{ this.state.alerts.length === 0 && 
+							  			<div className='no-event-page'>
+						  					<div className='no-event'>
+						  						<img src={ alertIcon } alt='alert' id='alert-icon' />
+						  						<p className='no-alert-text'>No alert active</p>
+						  					</div>
+						  				</div>
+							  		}
+							  	</div>
+							  }
 						  </div>
 						  <div className="tab-pane fade" id="nav-article" role="tabpanel" aria-labelledby="nav-article-tab">
-						  	<div className='article-page'>{ articleList }</div>
+						  	{ this.state.articleLoading &&
+						  		cloudLoading
+						  	}
+						  	{ !this.state.articleLoading &&
+						  		<div className='article-page'>
+							  		{ this.state.articles.length !== 0 && 
+							  			articleList 
+							  		}
+							  		{ this.state.articles.length === 0 && 
+							  			<div className='no-event-page'>
+						  					<div className='no-event'>
+						  						<img src={ pawprintIcon } alt='paw print' id='paw-print-icon' />
+						  						<p className='no-event-text'>No article found</p>
+						  					</div>
+						  				</div>
+							  		}
+							  	</div>	
+						  	}
+						  	
 						  </div>
 						  <div className="tab-pane fade" id="nav-news" role="tabpanel" aria-labelledby="nav-news-tab">
-						  	<div className='news-page'>{ newsList }</div>
+						  	{ this.state.newsLoading &&
+						  		cloudLoading
+						  	}
+						  	{ !this.state.newsLoading && 
+						  		<div className='news-page'>
+							  		{ this.state.news.length !== 0 && 
+							  			newsList 
+							  		}
+							  		{ this.state.news.length === 0 && 
+							  			<div className='no-event-page'>
+						  					<div className='no-event'>
+						  						<img src={ pawprintIcon } alt='paw print' id='paw-print-icon' />
+						  						<p className='no-event-text'>No news found</p>
+						  					</div>
+						  				</div>
+							  		}
+							  	</div>
+						  	}
+						  	
 						  </div>
 						</div>
 					  </div>
@@ -835,34 +928,113 @@ class Park extends Component {
 						</nav>
 						<div className="tab-content" id="nav-tabContent">
 						  <div className="tab-pane fade show active" id="nav-event" role="tabpanel" aria-labelledby="nav-event-tab">
-						  	<div className='event-page'>
-						  		<div className='event-list show' id='event-list'>{ eventList }</div>
-						  		<div className='event-detail-wrapper' id='event-detail-wrapper'>
-						  			<i className="fas fa-angle-double-left return-button2 hide" id='return-button2' onClick={ this.handleReturn }></i>
-						  			{ eventDetail }
-						  		</div>
-						  	</div>
+						  	{ this.state.eventLoading && 
+						  		cloudLoading
+						  	}
+						  	{ !this.state.eventLoading && 
+						  		<div className='event-page'>
+							  		<div className='event-list show' id='event-list'>
+							  			{ this.state.events.length !== 0 &&
+							  				eventList
+							  			}
+							  			{ this.state.events.length === 0 &&
+							  				<div className='no-event-page'>
+							  					<div className='no-event'>
+							  						<img src={ pawprintIcon } alt='paw print' id='paw-print-icon' />
+							  						<p className='no-event-text'>No event found</p>
+							  					</div>
+							  				</div>
+							  			}
+							  		</div>
+							  		<div className='event-detail-wrapper' id='event-detail-wrapper'>
+							  			<i className="fas fa-angle-double-left return-button2 hide" id='return-button2' onClick={ this.handleReturn }></i>
+							  			{ eventDetail }
+							  		</div>
+							  	</div>
+						  	}						  	
 						  </div>
 						  <div className="tab-pane fade" id="nav-place" role="tabpanel" aria-labelledby="nav-place-tab">
-						  	<div className='place-page'>{ placeList }</div>
+						  	{ this.state.placeLoading && 
+						  		cloudLoading
+						  	}
+						  	{ !this.state.placeLoading && 
+						  		<div className='place-page'>
+							  		{ this.state.places.length !== 0 && 
+							  			placeList
+							  		}
+							  		{ this.state.places.length === 0 && 
+							  			<div className='no-event-page'>
+						  					<div className='no-event'>
+						  						<img src={ pawprintIcon } alt='paw print' id='paw-print-icon' />
+						  						<p className='no-event-text'>No place found</p>
+						  					</div>
+						  				</div>
+							  		}
+							  	</div>
+						  	}						  	
 						  </div>
 						  <div className="tab-pane fade" id="nav-people" role="tabpanel" aria-labelledby="nav-people-tab">
-						  	<div className='people-page'>{ peopleList }</div>
+						  	{ this.state.peopleLoading && 
+						  		cloudLoading
+						  	}
+						  	{ !this.state.peopleLoading && 
+						  		<div className='people-page'>
+							  		{ this.state.people.length !== 0 && 
+							  			peopleList
+							  		}
+							  		{ this.state.people.length === 0 &&
+							  			<div className='no-event-page'>
+						  					<div className='no-event'>
+						  						<img src={ pawprintIcon } alt='paw print' id='paw-print-icon' />
+						  						<p className='no-event-text'>No people found</p>
+						  					</div>
+						  				</div>
+							  		}
+							  	</div>
+						  	}
+						  	
 						  </div>
 						  <div className="tab-pane fade" id="nav-lesson" role="tabpanel" aria-labelledby="nav-lesson-tab">
-						  	<div className='lesson-page'>{ lessonList }</div>
+						  	{ this.state.lessonLoading && 
+						  		cloudLoading
+						  	}
+						  	{ !this.state.lessonLoading && 
+						  		<div className='lesson-page'>
+							  		{ this.state.lessons.length !== 0 && 
+							  			lessonList
+							  		}
+							  		{ this.state.lessons.length === 0 && 
+							  			<div className='no-event-page'>
+						  					<div className='no-event'>
+						  						<img src={ pawprintIcon } alt='paw print' id='paw-print-icon' />
+						  						<p className='no-event-text'>No lesson found</p>
+						  					</div>
+						  				</div>
+							  		}
+							  	</div>
+						  	}
 						  </div>
 						</div>
 					  </div>
 
 					  <div className="tab-pane fade" id="pills-camp" 
 					  		role="tabpanel" aria-labelledby="pills-camp-tab">
-					  		<Campground data={ this.state.campground }></Campground>
+					  		{ this.state.campLoading && 
+					  			cloudLoading
+					  		}
+					  		{ !this.state.campLoading && 
+								<Campground data={ this.state.campground }></Campground>
+					  		}
 					  </div>
 					  
 					  <div className="tab-pane fade" id="pills-visitor" 
 					  		role="tabpanel" aria-labelledby="pills-visitor-tab">
-					  		<VisitorCenter data={ this.state.visitorcenter }></VisitorCenter>
+					  		{ this.state.visitorLoading && 
+					  			cloudLoading
+					  		}
+					  		{ !this.state.visitorLoading && 
+					  			<VisitorCenter data={ this.state.visitorcenter }></VisitorCenter>
+					  		}
 					  </div>
 					</div>
 

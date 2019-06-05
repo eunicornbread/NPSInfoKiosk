@@ -679,13 +679,19 @@ class Campground extends Component {
 
 			// Combining all into the modal
 			campList.push(
-				<div className='camp-item' key={index} onClick={ this.handleClick.bind(this, index) }>
+				<div className='camp-item' key={index}>
 					<p className='camp-name'>{ element.name }</p>
 					<p className='camp-desc'>
 						<span className='bold-text'>Description:</span> { element.description }
 					</p>
-					<p className='camp-weat'>
-						<span className='bold-text'>Weather:</span> { element.weatheroverview }
+					{ element.weatheroverview !== "" && 
+						<p className='camp-weat'>
+							<span className='bold-text'>Weather:</span> { element.weatheroverview }
+						</p>
+					}
+					<p className='more-detail-btn' onClick={ this.handleClick.bind(this, index) }>
+						More detail
+						<i className="fas fa-angle-double-right double-right-icon"></i>
 					</p>
 				</div>
 			);
