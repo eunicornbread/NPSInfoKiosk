@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import { NavLink } from 'react-router-dom';
-import bgImage from './new-landing-page.svg';
+import bgImage from './svg/new-landing-page.svg';
 
 // resources used:
 // google font

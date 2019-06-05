@@ -136,14 +136,8 @@
 	font-size: 23px;
 }
 
-.park-link {
-	font-size: 12px;
-
-}
-
 .more-info {
 	font-size: 15px;
-	color: #757575;
 }
 
 .park-text {
@@ -893,7 +887,6 @@ pre {
 	margin-top: 80px;
 	color: #C58965;
 }
-
 
 .cloud-loading-page {
 	position: absolute;

@@ -398,6 +398,9 @@
 	max-height: 100px;
 }
 
+.filter-wrapper {
+	cursor: pointer;
+}
 
 .filter-wrapper i {
 	transition: color 200ms ease, transform 250ms ease-in-out;

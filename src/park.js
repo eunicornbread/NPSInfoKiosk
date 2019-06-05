@@ -3,7 +3,7 @@ import './park.css';
 import axios from 'axios';
 import Campground from './campground.js';
 import VisitorCenter from './visitorcenter.js';
-import bgImage from './new-landing-page.svg';
+import bgImage from './svg/new-landing-page.svg';
 import backIcon from './svg/back-arrow.svg';
 import { NavLink } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
@@ -810,29 +810,19 @@ class Park extends Component {
 							  		<p className='park-overview park-h4'>Overview</p>
 							  		<p className='park-descr park-text'>{ this.state.park.description }</p>
 							  		{ this.state.park.url !== "" &&
-							  			<p className='park-url'>
-							  				<span className='mr-2 more-info'>More information at</span>
-							  				<a href={ this.state.park.url } target="_blank" rel="noopener noreferrer">
-							  					{ this.state.park.url }
-							  					<span className='park-link'>
-							  						<i className="fas fa-external-link-alt link-icon"></i>
-							  					</span>
-							  				</a>
-							  			</p>
+						  				<a href={ this.state.park.url } target="_blank" rel="noopener noreferrer">
+						  					<i className="fas fa-info-circle link-icon"></i>
+						  					<span className='more-info'>More information</span>
+						  				</a>
 							  		}
 
 							  		<p className='park-h4'>Direction</p>
 							  		<p className='park-direc park-text'>{ this.state.park.directionsInfo }</p>
 							  		{ this.state.park.directionsUrl !== "" &&
-							  			<div className='park-dire-url'>
-							  				<span className='mr-2 more-info'>More information at</span>
-							  				<a href={ this.state.park.directionsUrl } target="_blank" rel="noopener noreferrer">
-							  					{ this.state.park.directionsUrl }
-							  					<span className='park-link'>
-							  						<i className="fas fa-external-link-alt link-icon"></i>
-							  					</span>
-							  				</a>
-							  			</div>
+						  				<a href={ this.state.park.directionsUrl } target="_blank" rel="noopener noreferrer">
+						  					<i className="fas fa-info-circle link-icon"></i>
+						  					<span className='more-info'>More information</span>
+						  				</a>
 							  		}
 							  		
 							  		<p className='park-h4 park-text'>Weather</p>

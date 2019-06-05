@@ -4,7 +4,7 @@ import './search.css';
 import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
 import { NavLink } from 'react-router-dom';
-import bgImage from './new-landing-page.svg';
+import bgImage from './svg/new-landing-page.svg';
 import sunImage from './svg/sunny.svg';
 import ReactLoading from 'react-loading';
 import errorImage from './svg/error-image.svg';
