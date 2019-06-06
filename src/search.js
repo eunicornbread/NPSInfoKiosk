@@ -3,11 +3,11 @@ import axios from 'axios';
 import './search.css';
 import USStateData from './states_titlecase.json';
 import designationData from './NPS_designation.json'
-import { NavLink } from 'react-router-dom';
 import bgImage from './svg/new-landing-page.svg';
 import sunImage from './svg/sunny.svg';
 import ReactLoading from 'react-loading';
 import errorImage from './svg/error-image.svg';
+import DelayLink from './DelayLink.jsx';
 
 class Search extends Component {
 	constructor(props) {
@@ -249,7 +249,17 @@ class Search extends Component {
 			if (includeState && includeDesig && includeSearch) {
 				var parkURL = "/park/" + element.parkCode;
 				resultList.push(
-					<NavLink to={ parkURL } className="result-link" key={ element.parkCode }>
+					<DelayLink 
+						to={ parkURL } 
+						delay={ 800 }
+						onDelayStart={() => {
+							document.getElementById('left').classList.remove('page-active');
+							document.getElementById('right').classList.remove('page-active');
+						}}
+						className="result-link" 
+						key={ element.parkCode }>
+						
+
 						<div className="result-item">
 							<p className="result-name">
 								<span className='result-fullname'>{ element.fullName }</span>
@@ -261,7 +271,7 @@ class Search extends Component {
 							</p>
 							<p className='result-dest'>{ element.description }</p>
 						</div>
-					</NavLink>
+					</DelayLink>
 				);
 			}
 			

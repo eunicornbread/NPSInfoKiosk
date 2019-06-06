@@ -29,11 +29,11 @@
 }
 
 .left-fast {
-	transition: opacity 1s ease-in;
+	transition: opacity 800ms ease-in;
 }
 
 .right-fast {
-	transition: opacity 1s ease-in;
+	transition: opacity 800ms ease-in;
 }
 
 #left.page-active {
@@ -63,7 +63,6 @@
 	height: 100vh;
 	transform: translateY(0px);
 	position: fixed;
-	transition: transform 5s ease-in-out;
 }
 
 .content {

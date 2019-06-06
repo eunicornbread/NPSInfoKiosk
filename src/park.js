@@ -291,14 +291,14 @@ class Park extends Component {
 		document.getElementById('left-side').classList.remove('left-show');
 		setTimeout(() => {
 			document.getElementById('side-nav').classList.add('side-nav-show');
-		}, 500);
+		}, 800);
 	}
 
 	closeNav() {
 		document.getElementById('side-nav').classList.remove('side-nav-show');
 		setTimeout(() => {
 			document.getElementById('left-side').classList.add('left-show');
-		}, 700);
+		}, 800);
 	}
 
 
