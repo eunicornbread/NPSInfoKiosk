@@ -543,3 +543,32 @@
 		transition: transform 4s ease-in-out, background-color 1s ease-in-out;
 	}
 }
+
+
+.no-result-found {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#snow-icon {
+	width: 70px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.no-result-page {
+	grid-row: 2 / 4;
+	grid-column: 2 / 3;
+	margin-left: 20px;
+	margin-right: 90px;
+	margin-bottom: 190px;
+	position: relative;
+}
+
+.no-result-text {
+	color: #A1B7FF;
+	margin-top: 80px;
+}

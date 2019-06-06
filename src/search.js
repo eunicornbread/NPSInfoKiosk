@@ -8,6 +8,7 @@ import sunImage from './svg/sunny.svg';
 import ReactLoading from 'react-loading';
 import errorImage from './svg/error-image.svg';
 import DelayLink from './DelayLink.jsx';
+import snowIcon from './svg/snowing.svg';
 
 class Search extends Component {
 	constructor(props) {
@@ -36,6 +37,7 @@ class Search extends Component {
 			desigArray: [],
 			desigFilter: [],
 			loading: false,
+			loaded: false,
 			error: false
 		};
 	}
@@ -181,7 +183,8 @@ class Search extends Component {
 		.then(res => {
 			self.setState({
 				searchResults: res.data.data,
-				loading: false
+				loading: false,
+				loaded: true
 			});
 			console.log(res.data.data);
 		})
@@ -428,6 +431,16 @@ class Search extends Component {
 
 				{ !this.state.loading && !this.state.error && 
 					<div className="search-result" id="search-results">{ resultList }</div>
+				}
+				{ this.state.loaded && !this.state.loading && resultList.length === 0 && 
+					<div className='no-result-page'>
+						<div className='no-result-found'>
+							<img src={ snowIcon } alt='snow icon' id='snow-icon' />
+							<div className='no-result-text'>
+								<div>No result found :(</div>
+							</div>
+						</div>
+					</div>
 				}
 
 				{ this.state.loading && 
