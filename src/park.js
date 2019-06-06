@@ -12,7 +12,7 @@ import alertIcon from './svg/alarm.svg';
 import cloudIcon from './svg/cloud.svg';
 import mountainIcon from './svg/mountain.svg';
 import ReactLoading from 'react-loading';
-
+import DelayLink from './DelayLink.jsx';
 
 class Park extends Component {
 	constructor(props) {
@@ -739,9 +739,17 @@ class Park extends Component {
 				</div>
 
 				<div className='left-side' id='left-side'>
-					<NavLink to="/search" id='back-icon' data-toggle="tooltip" data-placement="right" title="Return to search">
+					<DelayLink 
+						delay={ 800 }
+						onDelayStart={() => {
+							document.getElementById('left-side').classList.remove('left-show');
+							document.getElementById('right-side').classList.remove('right-show');
+						}}
+						to="/search" id='back-icon' data-toggle="tooltip" data-placement="right" 
+						title="Return to search">
+						
 						<img src={ backIcon } alt='return to previous page' />
-					</NavLink>
+					</DelayLink>
 
 					<div className='nav-icon' onClick={ this.openNav }><i className="fas fa-bars"></i></div>
 					

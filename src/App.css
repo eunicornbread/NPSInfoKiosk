@@ -12,66 +12,59 @@
 
 .web-name {
   position: fixed;
-  left: 100px;
-  top: 100px;
+  left: 15vw;
+  top: 10vh;
   color: #01579B;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
 }
 
-
-.content {
-  position: absolute;
-  margin-top: 30px;
-  margin-left: 300px;
+#head-2 {
+  margin-left: 100px;
+  margin-top: 20px;
 }
 
-.button:hover {
-  background-color: rgba(118, 82, 133, 1);
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
-}
+/* Style for the CTA ghost button group */
 
-.button:hover .button-icon {
-  opacity: 1;
-}
-
-.button:hover .button-text {
-  opacity: 1;
-}
-
-.button {
-  background-image: linear-gradient(to right, rgba(118, 82, 133, 1), rgba(118, 82, 133, 0.5));
-  color: white;
+.ghost-button {
+  background: rgba(0,0,0,0);
   border: none;
-  width: 155px;
-  height: 40px;
-  border-radius: 50px;
-  position: fixed;
-  left: 300px;
-  top: 220px;
-  transition: all 250ms ease;
-  box-sizing: border-box;
-}
-
-.button:focus {
-  outline: none;
 }
 
 .button-text {
-  opacity: 0.8;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  left: 20px;
-  font-family: 'Cabin', sans-serif;
-  font-size: 20px;
+  font-size: 17px;
+  font-family: 'Muli', sans-serif;
 }
 
-.button-icon {
-  opacity: 0.8;
-  font-size: 25px;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  right: 6px;
+.ghost-button:focus {
+  outline: none;
+}
+
+#ghost-1 {
+  background-color: #01579B;
+  color: white;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 22px;
+  padding-right: 22px;
+  border-radius: 3px;
+  margin-right: 10px;
+}
+
+#ghost-2 {
+  box-sizing: border-box;
+  border: 2px #01579B solid;
+  color: #01579B;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 3px;
+  
+}
+
+.ghost-btn-group {
+  position: fixed;
+  left: 17vw;
+  top: 36vh;
 }
