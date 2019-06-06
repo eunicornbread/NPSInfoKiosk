@@ -363,7 +363,6 @@
 }
 
 .show {
-	/*display: block;*/
 	visibility: visible;
 }
 
@@ -378,7 +377,6 @@
 }
 
 .option-wrapper {
-	/*max-height: 400px;*/
 	max-height: 0px;
 	transition: max-height 500ms ease;
 	overflow-y: scroll;

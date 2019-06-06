@@ -452,10 +452,6 @@ class Search extends Component {
 
 				</div>
 
-
-				
-
-
 			</>
 		);
 	}
