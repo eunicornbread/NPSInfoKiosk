@@ -12,7 +12,7 @@
 
 .web-name {
   position: fixed;
-  left: 15vw;
+  left: 14vw;
   top: 10vh;
   color: #01579B;
   font-family: 'Open Sans', sans-serif;
@@ -60,11 +60,89 @@
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 3px;
-  
+}
+
+#ghost-1:hover {
+  background-color: #1976D2;
+}
+
+#ghost-2:hover {
+  border-color: #1976D2;
+  color: #1976D2;
 }
 
 .ghost-btn-group {
-  position: fixed;
-  left: 17vw;
-  top: 36vh;
+  margin-top: 40px;
+  margin-left: 50px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .web-name {
+    position: fixed;
+    left: 14vw;
+    top: 5vh;
+    color: #01579B;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .web-name {
+    position: fixed;
+    left: 15vw;
+    top: 10vh;
+    color: #01579B;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+  }
+
+  .intro-head {
+    font-size: 50px;
+  }
+
+  #head-2 {
+    margin-left: 120px;
+    margin-top: 20px;
+  }
+
+  .ghost-btn-group {
+    margin-top: 40px;
+    margin-left: 60px;
+  }
+
+  .button-text {
+    font-size: 22px;
+    font-family: 'Muli', sans-serif;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  .web-name {
+    position: fixed;
+    left: 14vw;
+    top: 8vh;
+    color: #01579B;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+  }
+
+  .intro-head {
+    font-size: 70px;
+  }
+
+  .ghost-btn-group {
+    margin-top: 70px;
+    margin-left: 105px;
+  }
+
+  .button-text {
+    font-size: 29px;
+    font-family: 'Muli', sans-serif;
+  }
+
+  #head-2 {
+    margin-left: 170px;
+    margin-top: 30px;
+  }
 }

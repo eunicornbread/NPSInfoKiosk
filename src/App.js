@@ -14,24 +14,24 @@ class App extends Component {
             <img src={ bgImage } alt='background' />
           </div>
           <div className='web-name'>
-            <h1 id='head-1'>National Park Service</h1>
-            <h1 id='head-2'>Info Kiosk</h1>
-          </div>
-          <div className="content">
-            <div className='ghost-btn-group'>
-              <NavLink to={{
-                            pathname: "/search",
-                            transition: {
-                              transition: true
-                            }
-                          }}>
-                <button type="button" className="ghost-button" id='ghost-1'>
-                  <span className="button-text mr-2">Get Started</span>
+            <h1 className='intro-head' id='head-1'>National Park Service</h1>
+            <h1 className='intro-head' id='head-2'>Info Kiosk</h1>
+            <div className="content">
+              <div className='ghost-btn-group'>
+                <NavLink to={{
+                              pathname: "/search",
+                              transition: {
+                                transition: true
+                              }
+                            }}>
+                  <button type="button" className="ghost-button" id='ghost-1'>
+                    <span className="button-text mr-2">Get Started</span>
+                  </button>
+                </NavLink>
+                <button type='button' className='ghost-button' id='ghost-2'>
+                  <span className='button-text'>Go to GitHub</span>
                 </button>
-              </NavLink>
-              <button type='button' className='ghost-button' id='ghost-2'>
-                <span className='button-text'>Go to GitHub</span>
-              </button>
+              </div>
             </div>
           </div>
         </div>
