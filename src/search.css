@@ -612,3 +612,44 @@
 	position: absolute;
 	left: 19px;
 }
+
+.return-to-top {
+	position: fixed;
+	right: 35px;
+	bottom: 20px;
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background-color: #212121;
+	cursor: pointer;
+	visibility: hidden;
+	z-index: 1;
+	opacity: 0;
+	transition: opacity 250ms linear;
+}
+
+.visible {
+	opacity: 0.2;
+}
+
+.return-to-top:hover {
+	opacity: 0.5;
+}
+
+.top-arrow {
+	position: absolute;
+	font-size: 34px;
+	left: 21px;
+	top: 14px;
+	color: #F6F4F2;
+}
+
+.top-bar {
+	position: absolute;
+	width: 32px;
+	height: 5px;
+	top: 17px;
+	border-radius: 3px;
+	left: 20px;
+	background-color: #F6F4F2;
+}

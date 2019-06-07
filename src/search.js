@@ -53,6 +53,7 @@ class Search extends Component {
 
 	componentDidMount() {
 		window.addEventListener('click', this.handleClickOutside, false);
+		document.getElementById('right').addEventListener('scroll', this.handleScroll);
 		if (this.props.location.transition !== undefined) {
 			setTimeout(() => {
 				document.getElementById('bg-img').classList.add('top');
@@ -72,6 +73,7 @@ class Search extends Component {
 
 	componentWillUnmount() {
 		window.removeEventListener('click', this.handleClickOutside, false);
+		document.getElementById('right').removeEventListener('scroll', this.handleScroll);
 		source.cancel();
 	}
 
@@ -215,6 +217,14 @@ class Search extends Component {
 		this.forceUpdate();
 	}
 
+	handleScroll(event) {
+		if (document.getElementById('right').scrollTop > window.innerHeight / 2) {
+			document.getElementById('return-to-top').classList.add('visible');
+		} else {
+			document.getElementById('return-to-top').classList.remove('visible');
+		}
+	}
+
 	handleSearch(event) {
 		event.preventDefault();
 		this.setState({
@@ -254,8 +264,6 @@ class Search extends Component {
 	}
 
 	render() {
-		//console.log(this.props.location.state);
-		
 		// display the results from the api get request
 		var resultList = [];
 		this.state.searchResults.forEach((element, index) => {
@@ -433,6 +441,11 @@ class Search extends Component {
 
 				<div className={slow ? 'left-fast' : 'left-slow'} id='left'></div>
 				<div className={slow ? 'right-fast' : 'right-slow'} id='right'>
+
+				<div className='return-to-top' id='return-to-top'>
+					<span className='top-arrow'><i className="fas fa-arrow-up"></i></span>
+					<span className='top-bar'></span>
+				</div>
 
 				<div className='first-col'>
 					<div className='add-filter' id='add-filter'>

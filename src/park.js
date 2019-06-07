@@ -800,8 +800,7 @@ class Park extends Component {
 
 				</div>
 				<div className='right-side' id='right-side'>
-	
-
+				  
 				  <div className='park-page'>
 					<div className="tab-content" id="pills-tabContent">
 					  <div className="tab-pane fade show active" id="pills-park" 
