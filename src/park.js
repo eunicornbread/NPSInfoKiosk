@@ -26,6 +26,7 @@ class Park extends Component {
 		this.openNav = this.openNav.bind(this);
 		this.closeNav = this.closeNav.bind(this);
 		this.handleReturn = this.handleReturn.bind(this);
+		this.returnToTop = this.returnToTop.bind(this);
 
 		this.state = {
 			campground: [],
@@ -259,7 +260,23 @@ class Park extends Component {
 	}
 
 	componentWillUnmount() {
+		document.getElementById('right-side').removeEventListener('scroll', this.handleScroll);
 		source.cancel();
+	}
+
+	returnToTop(event) {
+		document.getElementById('right-side').scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
+	}
+
+	handleScroll(event) {
+		if (document.getElementById('right-side').scrollTop > window.innerHeight / 2) {
+			document.getElementById('return-to-top').classList.add('visible');
+		} else {
+			document.getElementById('return-to-top').classList.remove('visible');
+		}
 	}
 
 	openEvent(index, event) {
@@ -299,6 +316,7 @@ class Park extends Component {
 
 
 	componentDidMount() {
+		document.getElementById('right-side').addEventListener('scroll', this.handleScroll);
 		setTimeout(() => {
 			document.getElementById('left-side').classList.add('left-show');
 			document.getElementById('right-side').classList.add('right-show');
@@ -800,7 +818,11 @@ class Park extends Component {
 
 				</div>
 				<div className='right-side' id='right-side'>
-				  
+				  <div className='return-to-top' id='return-to-top' onClick={ this.returnToTop }>
+					<span className='top-arrow'><i className="fas fa-arrow-up"></i></span>
+					<span className='top-bar'></span>
+				  </div>
+
 				  <div className='park-page'>
 					<div className="tab-content" id="pills-tabContent">
 					  <div className="tab-pane fade show active" id="pills-park" 

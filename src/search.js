@@ -29,6 +29,7 @@ class Search extends Component {
 		this.handleSearchCollapse = this.handleSearchCollapse.bind(this);
 		this.handleClickOutside = this.handleClickOutside.bind(this);
 		this.loadMore = this.loadMore.bind(this);
+		this.returnToTop = this.returnToTop.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -75,6 +76,13 @@ class Search extends Component {
 		window.removeEventListener('click', this.handleClickOutside, false);
 		document.getElementById('right').removeEventListener('scroll', this.handleScroll);
 		source.cancel();
+	}
+
+	returnToTop(event) {
+		document.getElementById('right').scrollTo({
+			top: 0,
+			behavior: 'smooth'
+		});
 	}
 
 	loadMore(event) {
@@ -442,7 +450,7 @@ class Search extends Component {
 				<div className={slow ? 'left-fast' : 'left-slow'} id='left'></div>
 				<div className={slow ? 'right-fast' : 'right-slow'} id='right'>
 
-				<div className='return-to-top' id='return-to-top'>
+				<div className='return-to-top' id='return-to-top' onClick={ this.returnToTop }>
 					<span className='top-arrow'><i className="fas fa-arrow-up"></i></span>
 					<span className='top-bar'></span>
 				</div>
