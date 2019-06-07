@@ -46,7 +46,8 @@ class Search extends Component {
 			loaded: false,
 			error: false,
 			loadMore: true,
-			loadIndex: 1
+			loadIndex: 1,
+			loadingMore: false
 		};
 	}
 
@@ -76,6 +77,9 @@ class Search extends Component {
 
 	loadMore(event) {
 		var self = this;
+		self.setState({
+			loadingMore: true
+		});
 		axios.get("https://developer.nps.gov/api/v1/parks", {
 			params: {
 				start: this.state.loadIndex * 10,
@@ -98,12 +102,15 @@ class Search extends Component {
 			var newIndex = self.state.loadIndex + 1;
 			self.setState({
 				searchResults: parks,
-				loadIndex: newIndex
+				loadIndex: newIndex,
+				loadingMore: false
 			})
 		})
 		.catch(error => {
 			console.log(error)
-			
+			self.setState({
+				loadingMore: false
+			})	
 		});
 	}
 
@@ -221,7 +228,8 @@ class Search extends Component {
 				limit: 9,
 				q: this.textInput.value,
 				api_key: process.env.REACT_APP_API_KEY
-			}
+			},
+			cancelToken: source.token
 		})
 		.then(res => {
 			self.setState({
@@ -331,8 +339,17 @@ class Search extends Component {
 			resultList.push(
 				<div className='load-more-page' key='load-more'>
 					<div className='load-more' onClick={ this.loadMore }>
-						<div className='load-more-text'>Load more</div>
-						<img src={ searchIcon } alt='search icon' className='load-more-icon' />
+						{ this.state.loadingMore && 
+							<div className='loading-more-icon'>
+								<ReactLoading type={'spinningBubbles'} color={'#07AEEA'} height={45} width={45} />
+							</div>
+						}
+						{ !this.state.loadingMore && 
+							<div>
+								<div className='load-more-text'>Load more</div>
+								<img src={ searchIcon } alt='search icon' className='load-more-icon' />	
+							</div>
+						}
 					</div>
 				</div>
 			);

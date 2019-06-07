@@ -607,3 +607,8 @@
 	position: absolute;
 	bottom: 0px;
 }
+
+.loading-more-icon {
+	position: absolute;
+	left: 19px;
+}
