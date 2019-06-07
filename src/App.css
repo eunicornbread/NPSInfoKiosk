@@ -54,12 +54,21 @@
 #ghost-2 {
   box-sizing: border-box;
   border: 2px #01579B solid;
-  color: #01579B;
   padding-top: 7px;
   padding-bottom: 7px;
   padding-left: 20px;
   padding-right: 20px;
   border-radius: 3px;
+  color: #01579B;
+}
+
+#ghost-2 a {
+  color: #01579B;
+}
+
+#ghost-2:hover a {
+  color: #1976D2;
+  text-decoration: none;
 }
 
 #ghost-1:hover {
@@ -68,7 +77,6 @@
 
 #ghost-2:hover {
   border-color: #1976D2;
-  color: #1976D2;
 }
 
 .ghost-btn-group {
