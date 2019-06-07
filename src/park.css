@@ -979,11 +979,3 @@ pre {
 	left: 20px;
 	background-color: #F6F4F2;
 }
-
-.modal-backdrop.show.fade {
-	z-index: 0;
-}
-
-.side-nav-attr {
-	cursor: pointer;
-}

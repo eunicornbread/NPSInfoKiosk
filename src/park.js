@@ -12,6 +12,7 @@ import cloudIcon from './svg/cloud.svg';
 import mountainIcon from './svg/mountain.svg';
 import ReactLoading from 'react-loading';
 import DelayLink from './DelayLink.jsx';
+import AttributionModal from './modal.js';
 
 
 const CancelToken = axios.CancelToken;
@@ -785,22 +786,8 @@ class Park extends Component {
 					</div>
 				</div>
 
-				<div className="modal fade" id="attributionModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-				  <div className="modal-dialog modal-dialog-scrollable" role="document">
-				    <div className="modal-content">
-				      <div className="modal-header">
-				        <h5 className="modal-title" id="exampleModalScrollableTitle">Attribution</h5>
-				        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-				          <span aria-hidden="true">&times;</span>
-				        </button>
-				      </div>
-				      <div className="modal-body">
-				        ...
-				      </div>
-				    </div>
-				  </div>
-				</div>
-
+				<AttributionModal></AttributionModal>
+				
 				<div className='left-side' id='left-side'>
 					<DelayLink 
 						delay={ 800 }
