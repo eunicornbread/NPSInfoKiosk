@@ -5,7 +5,7 @@ import visitorIcon from './svg/visitors.svg';
 class VisitorCenter extends Component {
 	
 	render() {
-		console.log(this.props.data);
+		//console.log(this.props.data);
 		if (this.props.data.length === 0) {
 			return (
 				<div className='no-visitor-page'>

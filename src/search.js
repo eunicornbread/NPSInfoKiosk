@@ -255,7 +255,7 @@ class Search extends Component {
 				loading: false,
 				loaded: true
 			});
-			console.log(res.data.data);
+			//console.log(res.data.data);
 			if (res.data.data.length === 0) {
 				self.setState({
 					loadMore: false

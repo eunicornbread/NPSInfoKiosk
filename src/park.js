@@ -5,7 +5,6 @@ import Campground from './campground.js';
 import VisitorCenter from './visitorcenter.js';
 import bgImage from './svg/new-landing-page.svg';
 import backIcon from './svg/back-arrow.svg';
-import { NavLink } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 import pawprintIcon from './svg/pawprint.svg';
 import alertIcon from './svg/alarm.svg';
@@ -325,16 +324,12 @@ class Park extends Component {
 
 	openNav() {
 		document.getElementById('left-side').classList.remove('left-show');
-		setTimeout(() => {
-			document.getElementById('side-nav').classList.add('side-nav-show');
-		}, 800);
+		document.getElementById('side-nav').classList.add('side-nav-show');
 	}
 
 	closeNav() {
 		document.getElementById('side-nav').classList.remove('side-nav-show');
-		setTimeout(() => {
-			document.getElementById('left-side').classList.add('left-show');
-		}, 800);
+		document.getElementById('left-side').classList.add('left-show');
 	}
 
 
@@ -762,16 +757,48 @@ class Park extends Component {
 						<i className="fas fa-times"></i>
 					</div>
 					<div className='side-nav-menu'>
-						<NavLink to="/" className='side-nav-link side-nav-home'>
+						<DelayLink 
+							delay={ 800 }
+							onDelayStart={() => {
+								document.getElementById('left-side').classList.remove('left-show');
+								document.getElementById('right-side').classList.remove('right-show');
+								document.getElementById('side-nav').classList.remove('side-nav-show');
+							}}
+							to="/" className='side-nav-link side-nav-home'>
+							
 							<span className='line-grow side-nav-item'>Home</span>
-						</NavLink>
-						<NavLink to='/search' className='side-nav-link side-nav-search'>
+						</DelayLink>
+						<DelayLink 
+							delay={ 800 }
+							onDelayStart={() => {
+								document.getElementById('left-side').classList.remove('left-show');
+								document.getElementById('right-side').classList.remove('right-show');
+								document.getElementById('side-nav').classList.remove('side-nav-show');
+							}}
+							to='/search' className='side-nav-link side-nav-search'>
+							
 							<span className='line-grow side-nav-item'>Search</span>
-						</NavLink>
-						<span className='side-nav-link side-nav-attr'>
+						</DelayLink>
+						<span className='side-nav-link side-nav-attr' data-toggle="modal" data-target="#attributionModal">
 							<span className='line-grow side-nav-item'>Attribution</span>
 						</span>
 					</div>
+				</div>
+
+				<div className="modal fade" id="attributionModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+				  <div className="modal-dialog modal-dialog-scrollable" role="document">
+				    <div className="modal-content">
+				      <div className="modal-header">
+				        <h5 className="modal-title" id="exampleModalScrollableTitle">Attribution</h5>
+				        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div className="modal-body">
+				        ...
+				      </div>
+				    </div>
+				  </div>
 				</div>
 
 				<div className='left-side' id='left-side'>
