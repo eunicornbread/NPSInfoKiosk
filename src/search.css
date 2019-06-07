@@ -572,3 +572,38 @@
 	color: #A1B7FF;
 	margin-top: 80px;
 }
+
+.load-more-page {
+	height: 170px;
+	width: 100%;
+	position: relative;
+}
+
+.load-more {
+	position: absolute;
+	left: 40%;
+	top: 50%;
+	transform: translate(0, -50%);
+	width: 80px;
+	height: 80px;
+}
+
+.load-more:hover {
+	cursor: pointer;
+}
+
+.load-more:hover .load-more-icon {
+	width: 53px;
+}
+
+.load-more-icon {
+	width: 50px;
+	margin-left: 12px;
+	margin-bottom: 10px;
+}
+
+.load-more-text {
+	color: #07AEEA;
+	position: absolute;
+	bottom: 0px;
+}

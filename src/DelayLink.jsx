@@ -71,6 +71,7 @@ class DelayLink extends React.Component {
     delete props.delay;
     delete props.onDelayStart;
     delete props.onDelayEnd;
+    delete props.staticContext;
 
     return (
       <Link {...props} onClick={this.handleClick} />

@@ -9,6 +9,11 @@ import ReactLoading from 'react-loading';
 import errorImage from './svg/error-image.svg';
 import DelayLink from './DelayLink.jsx';
 import snowIcon from './svg/snowing.svg';
+import searchIcon from './svg/search.svg';
+
+
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
 
 class Search extends Component {
 	constructor(props) {
@@ -23,6 +28,7 @@ class Search extends Component {
 		this.handleDesigCollapse = this.handleDesigCollapse.bind(this);
 		this.handleSearchCollapse = this.handleSearchCollapse.bind(this);
 		this.handleClickOutside = this.handleClickOutside.bind(this);
+		this.loadMore = this.loadMore.bind(this);
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -38,7 +44,9 @@ class Search extends Component {
 			desigFilter: [],
 			loading: false,
 			loaded: false,
-			error: false
+			error: false,
+			loadMore: true,
+			loadIndex: 1
 		};
 	}
 
@@ -63,6 +71,40 @@ class Search extends Component {
 
 	componentWillUnmount() {
 		window.removeEventListener('click', this.handleClickOutside, false);
+		source.cancel();
+	}
+
+	loadMore(event) {
+		var self = this;
+		axios.get("https://developer.nps.gov/api/v1/parks", {
+			params: {
+				start: this.state.loadIndex * 10,
+				limit: 9,
+				q: this.textInput.value,
+				api_key: process.env.REACT_APP_API_KEY
+			},
+			cancelToken: source.token
+		})
+		.then(res => {
+			if (res.data.data.length === 0) {
+				self.setState({
+					loadMore: false
+				});
+			}
+			var parks = self.state.searchResults;
+			res.data.data.forEach((element, index) => {
+				parks.push(element);
+			})
+			var newIndex = self.state.loadIndex + 1;
+			self.setState({
+				searchResults: parks,
+				loadIndex: newIndex
+			})
+		})
+		.catch(error => {
+			console.log(error)
+			
+		});
 	}
 
 	handleClickOutside(event) {
@@ -170,7 +212,8 @@ class Search extends Component {
 		event.preventDefault();
 		this.setState({
 			loading: true,
-			error: false
+			error: false,
+			loadMore: true
 		});
 		var self = this;
 		axios.get("https://developer.nps.gov/api/v1/parks", {
@@ -187,6 +230,11 @@ class Search extends Component {
 				loaded: true
 			});
 			console.log(res.data.data);
+			if (res.data.data.length === 0) {
+				self.setState({
+					loadMore: false
+				});
+			}
 		})
 		.catch(error => {
 			console.log(error)
@@ -202,7 +250,7 @@ class Search extends Component {
 		
 		// display the results from the api get request
 		var resultList = [];
-		this.state.searchResults.forEach(element => {
+		this.state.searchResults.forEach((element, index) => {
 			
 			// filter by state
 			var includeState = false;
@@ -260,7 +308,7 @@ class Search extends Component {
 							document.getElementById('right').classList.remove('page-active');
 						}}
 						className="result-link" 
-						key={ element.parkCode }>
+						key={ index }>
 						
 
 						<div className="result-item">
@@ -277,9 +325,18 @@ class Search extends Component {
 					</DelayLink>
 				);
 			}
-			
 		});
 
+		if (this.state.loaded && !this.state.error && this.state.loadMore) {
+			resultList.push(
+				<div className='load-more-page' key='load-more'>
+					<div className='load-more' onClick={ this.loadMore }>
+						<div className='load-more-text'>Load more</div>
+						<img src={ searchIcon } alt='search icon' className='load-more-icon' />
+					</div>
+				</div>
+			);
+		}
 		
 		// display all the state options
 		var stateOptions = [];
@@ -432,12 +489,12 @@ class Search extends Component {
 				{ !this.state.loading && !this.state.error && 
 					<div className="search-result" id="search-results">{ resultList }</div>
 				}
-				{ this.state.loaded && !this.state.loading && resultList.length === 0 && 
+				{ this.state.loaded && !this.state.loading && this.state.searchResults.length === 0 && 
 					<div className='no-result-page'>
 						<div className='no-result-found'>
 							<img src={ snowIcon } alt='snow icon' id='snow-icon' />
 							<div className='no-result-text'>
-								<div>No result found :(</div>
+								<div>No park matching :(</div>
 							</div>
 						</div>
 					</div>
