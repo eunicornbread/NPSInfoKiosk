@@ -12,8 +12,6 @@ import snowIcon from './svg/snowing.svg';
 import searchIcon from './svg/search.svg';
 import AttributionModal from './modal.js';
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
 
 class Search extends Component {
 	constructor(props) {
@@ -78,7 +76,6 @@ class Search extends Component {
 	componentWillUnmount() {
 		window.removeEventListener('click', this.handleClickOutside, false);
 		document.getElementById('right').removeEventListener('scroll', this.handleScroll);
-		source.cancel();
 	}
 
 	returnToTop(event) {
@@ -99,8 +96,7 @@ class Search extends Component {
 				limit: 9,
 				q: this.textInput.value,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			if (res.data.data.length === 0) {
@@ -259,8 +255,7 @@ class Search extends Component {
 				limit: 9,
 				q: this.textInput.value,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			self.setState({

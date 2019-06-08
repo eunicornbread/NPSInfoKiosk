@@ -14,10 +14,6 @@ import ReactLoading from 'react-loading';
 import DelayLink from './DelayLink.jsx';
 import AttributionModal from './modal.js';
 
-
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
-
 class Park extends Component {
 	constructor(props) {
 		super(props);
@@ -60,8 +56,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data[0]);
@@ -80,8 +75,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -100,8 +94,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -121,8 +114,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -141,8 +133,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -162,8 +153,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -182,8 +172,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -202,8 +191,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -223,8 +211,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -243,8 +230,7 @@ class Park extends Component {
 				parkCode: this.props.match.params.parkCode,
 				limit: 19,
 				api_key: process.env.REACT_APP_API_KEY
-			},
-			cancelToken: source.token
+			}
 		})
 		.then(res => {
 			//console.log(res.data.data);
@@ -261,7 +247,7 @@ class Park extends Component {
 
 	componentWillUnmount() {
 		document.getElementById('right-side').removeEventListener('scroll', this.handleScroll);
-		source.cancel();
+		
 	}
 
 	returnToTop(event) {
