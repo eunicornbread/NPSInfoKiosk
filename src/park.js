@@ -745,7 +745,7 @@ class Park extends Component {
 					</div>
 					<div className='side-nav-menu'>
 						<DelayLink 
-							delay={ 3000 }
+							delay={ 2900 }
 							onDelayStart={() => {
 								document.getElementById('bg-img').classList.add('bottom');
 

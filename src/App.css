@@ -94,7 +94,29 @@
   .web-name {
     position: fixed;
     left: 14vw;
-    top: 5vh;
+    top: 13vh;
+    color: #01579B;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .web-name {
+    position: fixed;
+    left: 16vw;
+    top: 17vh;
+    color: #01579B;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .web-name {
+    position: fixed;
+    left: 18vw;
+    top: 17vh;
     color: #01579B;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
@@ -104,8 +126,8 @@
 @media only screen and (min-width: 1500px) {
   .web-name {
     position: fixed;
-    left: 15vw;
-    top: 10vh;
+    left: 16vw;
+    top: 17vh;
     color: #01579B;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
@@ -134,8 +156,8 @@
 @media only screen and (min-width: 1800px) {
   .web-name {
     position: fixed;
-    left: 14vw;
-    top: 8vh;
+    left: 15vw;
+    top: 18vh;
     color: #01579B;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
