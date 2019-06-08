@@ -301,8 +301,7 @@
 }
 
 
-
-
+/* Style for side nav bar */
 
 .side-nav-container {
 	height: 100%;
@@ -373,8 +372,10 @@
 #back-icon {
 	grid-row: 1 / 2;
 	grid-column: 3 / 4;
-	margin-top: 17px;
-	margin-left: 10px;
+	top: 17px;
+	right: 17px;
+	position: absolute;
+
 }
 
 #back-icon img {

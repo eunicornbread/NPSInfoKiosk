@@ -6,6 +6,10 @@ import bgImage from './svg/new-landing-page.svg';
 /* This is the landing page for the NPS info kiosk */
 
 class App extends Component {
+  componentDidMount() {
+    document.getElementById('web-name').classList.add('opacity-one');
+  }
+
   render() {
     return (
       <>
@@ -13,7 +17,7 @@ class App extends Component {
           <div className="bg-img">
             <img src={ bgImage } alt='background' />
           </div>
-          <div className='web-name'>
+          <div className='web-name' id='web-name'>
             <h1 className='intro-head' id='head-1'>National Park Service</h1>
             <h1 className='intro-head' id='head-2'>Info Kiosk</h1>
             <div className="content">

@@ -1,4 +1,4 @@
-# National Park Service Info Kiosk
+## National Park Service Info Kiosk
 
 Submission for the MindSumo challenge hosted by CapitalOne as part of the application for the 2019 August Software Engineering Summit.<br>
 
@@ -9,7 +9,7 @@ The website can be found here.
 
 A web application that utilizes the [National Park Service API](https://www.nps.gov/subjects/developer/api-documentation.htm#/) to provide tools to assist users in finding information. It includes features such as state and designation filtering, name and keyword search, and displays relevant information about a selected destination.
 
-## List of frameworks and resources used
+## Frameworks and resources used
 
 * [React](https://reactjs.org/docs/getting-started.html) - Javascript library
 * [Bootstrap](https://getbootstrap.com/) - Front end framework

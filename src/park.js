@@ -748,7 +748,7 @@ class Park extends Component {
 		return (
 			<>
 			<div className="wrapper">
-				<div className="bg-img-no-transition" key={0}>
+				<div className="bg-img-no-transition" id='bg-img' key={0}>
 	            	<img src={ bgImage } alt='background' />
 	          	</div>
 
@@ -759,8 +759,10 @@ class Park extends Component {
 					</div>
 					<div className='side-nav-menu'>
 						<DelayLink 
-							delay={ 800 }
+							delay={ 3800 }
 							onDelayStart={() => {
+								document.getElementById('bg-img').classList.add('bottom');
+
 								document.getElementById('left-side').classList.remove('left-show');
 								document.getElementById('right-side').classList.remove('right-show');
 								document.getElementById('side-nav').classList.remove('side-nav-show');

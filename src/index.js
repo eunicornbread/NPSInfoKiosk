@@ -5,7 +5,7 @@ import App from './App';
 import Search from './search';
 import Park from './park';
 import * as serviceWorker from './serviceWorker';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, HashRouter as Router } from 'react-router-dom';
 
 const routing = (
 	<Router>

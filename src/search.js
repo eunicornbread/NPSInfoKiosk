@@ -10,7 +10,7 @@ import errorImage from './svg/error-image.svg';
 import DelayLink from './DelayLink.jsx';
 import snowIcon from './svg/snowing.svg';
 import searchIcon from './svg/search.svg';
-
+import AttributionModal from './modal.js';
 
 const CancelToken = axios.CancelToken;
 const source = CancelToken.source();
@@ -30,6 +30,9 @@ class Search extends Component {
 		this.handleClickOutside = this.handleClickOutside.bind(this);
 		this.loadMore = this.loadMore.bind(this);
 		this.returnToTop = this.returnToTop.bind(this);
+		this.openNav = this.openNav.bind(this);
+		this.closeNav = this.closeNav.bind(this);
+		
 
 		// convert the json file to key value pair
 		var map = new Map();
@@ -223,6 +226,16 @@ class Search extends Component {
 		event.preventDefault();
 		document.getElementById('search-filter').innerHTML = event.target.getAttribute('data-search');
 		this.forceUpdate();
+	}
+
+	openNav() {
+		document.getElementById('nav-icon').classList.add('opacity-zero');
+		document.getElementById('side-nav').classList.add('side-nav-show');
+	}
+
+	closeNav() {
+		document.getElementById('side-nav').classList.remove('side-nav-show');
+		document.getElementById('nav-icon').classList.remove('opacity-zero');
 	}
 
 	handleScroll(event) {
@@ -428,7 +441,7 @@ class Search extends Component {
 		var background = [];
 		if (this.props.location.transition === undefined) {
 			background.push(
-				<div className="bg-img-no-transition" key={0}>
+				<div className="bg-img-no-transition" id='bg-img' key={0}>
 	            	<img src={ bgImage } alt='background' />
 	          	</div>
 			);
@@ -447,7 +460,44 @@ class Search extends Component {
 			<div className="wrapper">
 				{ background }
 
-				<div className={slow ? 'left-fast' : 'left-slow'} id='left'></div>
+				<div className='side-nav-container2' id='side-nav'>
+					<div className='close-icon' onClick={ this.closeNav }>
+						<i className="fas fa-times"></i>
+					</div>
+					<div className='side-nav-menu'>
+						<DelayLink 
+							delay={ 3800 }
+							onDelayStart={() => {
+								document.getElementById('bg-img').classList.remove('top');
+								document.getElementById('bg-img').classList.add('bottom');
+
+								document.getElementById('left').classList.remove('left-slow');
+								document.getElementById('right').classList.remove('right-slow');
+								document.getElementById('left').classList.remove('left-fast');
+								document.getElementById('right').classList.remove('right-fast');
+								
+								document.getElementById('left').classList.remove('page-active');
+								document.getElementById('right').classList.remove('page-active');
+								document.getElementById('side-nav').classList.remove('side-nav-show');
+							}}
+							to="/" className='side-nav-link side-nav-home'>
+							
+							<span className='line-grow side-nav-item'>Home</span>
+						</DelayLink>
+						<div className='side-nav-link side-nav-search'>
+							<span className='line-grow side-nav-item'>Search</span>
+						</div>
+						<span className='side-nav-link side-nav-attr' data-toggle="modal" data-target="#attributionModal">
+							<span className='line-grow side-nav-item'>Attribution</span>
+						</span>
+					</div>
+				</div>
+
+				<AttributionModal></AttributionModal>
+
+				<div className={slow ? 'left-fast' : 'left-slow'} id='left'>
+					<div className='nav-icon' id='nav-icon' onClick={ this.openNav }><i className="fas fa-bars"></i></div>
+				</div>
 				<div className={slow ? 'right-fast' : 'right-slow'} id='right'>
 
 				<div className='return-to-top' id='return-to-top' onClick={ this.returnToTop }>
