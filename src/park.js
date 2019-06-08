@@ -745,7 +745,7 @@ class Park extends Component {
 					</div>
 					<div className='side-nav-menu'>
 						<DelayLink 
-							delay={ 3800 }
+							delay={ 3000 }
 							onDelayStart={() => {
 								document.getElementById('bg-img').classList.add('bottom');
 
@@ -758,7 +758,7 @@ class Park extends Component {
 							<span className='line-grow side-nav-item'>Home</span>
 						</DelayLink>
 						<DelayLink 
-							delay={ 800 }
+							delay={ 500 }
 							onDelayStart={() => {
 								document.getElementById('left-side').classList.remove('left-show');
 								document.getElementById('right-side').classList.remove('right-show');
@@ -778,7 +778,7 @@ class Park extends Component {
 				
 				<div className='left-side' id='left-side'>
 					<DelayLink 
-						delay={ 800 }
+						delay={ 500 }
 						onDelayStart={() => {
 							document.getElementById('left-side').classList.remove('left-show');
 							document.getElementById('right-side').classList.remove('right-show');

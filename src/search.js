@@ -334,7 +334,7 @@ class Search extends Component {
 				resultList.push(
 					<DelayLink 
 						to={ parkURL } 
-						delay={ 800 }
+						delay={ 500 }
 						onDelayStart={() => {
 							document.getElementById('left').classList.remove('page-active');
 							document.getElementById('right').classList.remove('page-active');
@@ -461,7 +461,7 @@ class Search extends Component {
 					</div>
 					<div className='side-nav-menu'>
 						<DelayLink 
-							delay={ 3800 }
+							delay={ 3000 }
 							onDelayStart={() => {
 								document.getElementById('bg-img').classList.remove('top');
 								document.getElementById('bg-img').classList.add('bottom');

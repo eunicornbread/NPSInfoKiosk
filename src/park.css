@@ -17,7 +17,7 @@
 	grid-template-columns: 1fr 200px 1fr;
 	font-family: 'Open Sans', sans-serif;
 	opacity: 0;
-	transition: opacity 800ms ease-in;
+	transition: opacity 500ms ease-in;
 }
 
 #right-side {
@@ -31,7 +31,7 @@
 	display: grid;
 	grid-template-rows: 100%;
 	grid-template-columns: 100%;
-	transition: opacity 800ms ease-in;
+	transition: opacity 500ms ease-in;
 }
 
 
@@ -311,7 +311,7 @@
 	background-color: black;
 	font-family: 'Open Sans', sans-serif;
 	opacity: 0;
-	transition: opacity 800ms ease-in;
+	transition: opacity 500ms ease-in;
 	z-index: 0;
 	color: white;
 	display: grid;

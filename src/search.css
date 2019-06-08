@@ -21,19 +21,19 @@
 }
 
 .left-slow {
-	transition: opacity 3s ease-in-out;
+	transition: opacity 2s ease-in-out;
 }
 
 .right-slow {
-	transition: opacity 3s ease-in-out;
+	transition: opacity 2s ease-in-out;
 }
 
 .left-fast {
-	transition: opacity 800ms ease-in;
+	transition: opacity 500ms ease-in;
 }
 
 .right-fast {
-	transition: opacity 800ms ease-in;
+	transition: opacity 500ms ease-in;
 }
 
 #left.page-active {
@@ -48,9 +48,9 @@
 	z-index: -10;
 	width: 100%;
 	height: 100vh;
-	transform: translateY(-350px);
+	transform: translateY(-270px);
 	position: fixed;
-	transition: transform 4s ease-in-out, background-color 1s ease-in-out;
+	transition: transform 3s ease-out;
 }
 
 .bg-img.top {
@@ -58,8 +58,8 @@
 }
 
 #bg-img.bottom {
-	transition: transform 4s ease-in-out;
-	transform: translateY(-350px);
+	transition: transform 3s ease-out;
+	transform: translateY(-270px);
 }
 
 .bg-img-no-transition {
@@ -752,12 +752,12 @@
 		z-index: -10;
 		width: 100%;
 		height: 100vh;
-		transform: translateY(-250px);
+		transform: translateY(-200px);
 		position: fixed;
-		transition: transform 4s ease-in-out, background-color 1s ease-in-out;
+		transition: transform 3s ease-out;
 	}
 
 	#bg-img.bottom {
-		transform: translateY(-250px);
+		transform: translateY(-200px);
 	}
 }
