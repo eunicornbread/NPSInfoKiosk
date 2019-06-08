@@ -112,6 +112,30 @@
 	outline: none;
 }
 
+.search-button2 {
+	height: 40px;
+	width: 90px;
+	border-bottom-right-radius: 50px;
+	border-top-right-radius: 50px;
+	background-color: rgba(69,39,160,1);
+	border: none;
+	border-left: 1px #4527A0 solid;
+	color: white;
+	position: absolute;
+	right: 0px;
+	outline: none;
+	padding-right: 10px;
+}
+
+.search-button2:hover {
+	background-color: rgba(69,39,160,0.9);
+	color: white;
+}
+
+.search-button2:focus {
+	outline: none;
+}
+
 .search-button:focus {
 	outline: none;
 }

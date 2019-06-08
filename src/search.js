@@ -566,6 +566,9 @@ class Search extends Component {
 				    	</button>
 				    	<input type="text" className="search-input shadow-sm" id="search-input" 
 				    			ref={(input) => this.textInput = input} placeholder="Find a park" />
+				    	<button type="submit" className="search-button2" onClick={ this.handleSearch }>
+				    		Search
+				    	</button>
 					</form>
 				</div>
 
