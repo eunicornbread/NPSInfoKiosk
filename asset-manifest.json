@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/mindSumoChallenge/static/css/main.60877fa3.chunk.css",
-    "main.js": "/mindSumoChallenge/static/js/main.31603e04.chunk.js",
-    "main.js.map": "/mindSumoChallenge/static/js/main.31603e04.chunk.js.map",
+    "main.js": "/mindSumoChallenge/static/js/main.35bf930b.chunk.js",
+    "main.js.map": "/mindSumoChallenge/static/js/main.35bf930b.chunk.js.map",
     "runtime~main.js": "/mindSumoChallenge/static/js/runtime~main.a4db2a56.js",
     "runtime~main.js.map": "/mindSumoChallenge/static/js/runtime~main.a4db2a56.js.map",
     "static/js/2.edcebadd.chunk.js": "/mindSumoChallenge/static/js/2.edcebadd.chunk.js",
     "static/js/2.edcebadd.chunk.js.map": "/mindSumoChallenge/static/js/2.edcebadd.chunk.js.map",
     "index.html": "/mindSumoChallenge/index.html",
-    "precache-manifest.670e8cb2595f8a57b1cbf918080e6256.js": "/mindSumoChallenge/precache-manifest.670e8cb2595f8a57b1cbf918080e6256.js",
+    "precache-manifest.29e2c7d5cc0755f480d7c048104a4dd9.js": "/mindSumoChallenge/precache-manifest.29e2c7d5cc0755f480d7c048104a4dd9.js",
     "service-worker.js": "/mindSumoChallenge/service-worker.js",
     "static/css/main.60877fa3.chunk.css.map": "/mindSumoChallenge/static/css/main.60877fa3.chunk.css.map",
     "static/media/alarm.svg": "/mindSumoChallenge/static/media/alarm.1f7bbd83.svg",
