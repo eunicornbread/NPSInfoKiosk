@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c57e2a4dfde26c5f6122d37f2792593b",
+    "revision": "8bf1b59dd4fc211bb523521952fe0c2e",
     "url": "/mindSumoChallenge/index.html"
   },
   {
-    "revision": "0f512781c7ecdaa14a10",
+    "revision": "16d8386ac9a21d300247",
     "url": "/mindSumoChallenge/static/css/main.55fc66fb.chunk.css"
   },
   {
-    "revision": "81e7cc9ddee74ef97b6a",
-    "url": "/mindSumoChallenge/static/js/2.20e2963f.chunk.js"
+    "revision": "2b5e0454cfb555b2a08b",
+    "url": "/mindSumoChallenge/static/js/2.bc59603e.chunk.js"
   },
   {
-    "revision": "0f512781c7ecdaa14a10",
-    "url": "/mindSumoChallenge/static/js/main.d0e87746.chunk.js"
+    "revision": "16d8386ac9a21d300247",
+    "url": "/mindSumoChallenge/static/js/main.1dbea396.chunk.js"
   },
   {
     "revision": "a4e6b117b0c7a73694ac",

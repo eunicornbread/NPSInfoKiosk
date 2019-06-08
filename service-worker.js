@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/mindSumoChallenge/precache-manifest.e95947dd3843e3fb12f9cd3e3fa1f993.js"
+  "/mindSumoChallenge/precache-manifest.f73548036484d75458bffa02814607f8.js"
 );
 
 self.addEventListener('message', (event) => {
