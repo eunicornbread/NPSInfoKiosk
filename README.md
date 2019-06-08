@@ -3,7 +3,7 @@
 Submission for the MindSumo challenge hosted by CapitalOne as part of the application for the 2019 August Software Engineering Summit.<br>
 
 The challenge can be found [here](https://www.mindsumo.com/contests/national-park-api).<br>
-The website can be found here.
+The website can be found [here](https://eunicornbread.github.io/mindSumoChallenge/#/).
 
 ## Application overview
 
