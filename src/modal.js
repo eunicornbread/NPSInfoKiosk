@@ -54,7 +54,7 @@ class AttributionModal extends Component {
 			        
 			        <div className='attr-group'>Flaticon</div>
 
-			        <div className='attr-item'>
+			        {/*<div className='attr-item'>
 			        	<i className="fas fa-circle solid-dot-icon"></i>
 			        	Web Logo
 			        </div>
@@ -62,7 +62,7 @@ class AttributionModal extends Component {
 			        	title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> 
 			        	is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 
 			        	title="Creative Commons BY 3.0" target="_blank" rel="noopener noreferrer">CC 3.0 BY</a>
-			        </div>
+			        </div>*/}
 
 			        <div className='attr-item'>
 			        	<i className="fas fa-circle solid-dot-icon"></i>
