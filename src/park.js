@@ -78,7 +78,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			console.log(res.data.data);
+			// console.log(res.data.data);
 			self.setState({
 				campground: res.data.data,
 				campLoading: false
@@ -97,7 +97,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			//console.log(res.data.data);
+			// console.log(res.data.data);
 			self.setState({
 				visitorcenter: res.data.data,
 				visitorLoading: false
