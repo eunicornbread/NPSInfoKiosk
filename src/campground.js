@@ -91,49 +91,35 @@ class Campground extends Component {
 			);
 
 			campInfo.push(
-				<p key={2} className='info-title'>Direction Overview</p>
+				<ul key={2}>
+					<li>
+						<p className='info-title'>Direction Overview</p>
+						{ element.directionsOverview === "" ? 
+							<p id='direction-overview' className='info-detail'>None</p>
+							: <p id='direction-overview' className='info-detail'>{ element.directionsOverview }</p>
+						}
+					</li>
+					<li>
+						<p className='info-title'>Direction URL</p>
+						{ element.directionsUrl === "" ? 
+							<p id='direction-url' key={5} className='info-detail'>None</p> : 
+							<p>
+								<a href={ element.directionsUrl } target="_blank" rel="noopener noreferrer" id='direction-url' key={5} className='info-detail'>
+									{ element.directionsUrl }
+									<span><i className="fas fa-external-link-alt link-icon"></i></span>
+								</a>
+							</p>
+						}
+					</li>
+					<li>
+						<p className='info-title'>Longitude & Latitude</p>
+						{ element.latLong === "" ? 
+							<p id='lat-long' key={7} className='info-detail'>None</p> : 
+							<p id='lat-long' key={7} className='info-detail'>Latitude: { element.latitude }, Longitude: { element.longitude }</p>
+						}
+					</li>
+				</ul>
 			);
-
-			if (element.directionsoverview === "") {
-				campInfo.push(
-					<p id='direction-overview' key={3} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<p id='direction-overview' key={3} className='info-detail'>{ element.directionsoverview }</p>
-				);
-			}
-
-			campInfo.push(
-				<p key={4} className='info-title'>Direction URL</p>
-			);
-
-			if (element.directionsUrl === "") {
-				campInfo.push(
-					<p id='direction-url' key={5} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<a href={ element.directionsUrl } target="_blank" rel="noopener noreferrer" id='direction-url' key={5} className='info-detail'>
-						{ element.directionsUrl }
-						<span><i className="fas fa-external-link-alt link-icon"></i></span>
-					</a>
-				);
-			}
-
-			campInfo.push(
-				<p key={6} className='info-title'>Longitude & Latitude</p>
-			);
-
-			if (element.latLong === "") {
-				campInfo.push(
-					<p id='lat-long' key={7} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<p id='lat-long' key={7} className='info-detail'>{ element.latLong }</p>
-				);
-			}
 
 			campInfo.push(
 				<h3 key={8}>
@@ -145,51 +131,30 @@ class Campground extends Component {
 			);
 
 			campInfo.push(
-				<p key={11} className='info-title'>Regulation Overview</p>
+				<ul key={3}>
+					<li>
+						<p className='info-title'>Regulation Overview</p>
+						{ element.regulationsOverview === "" ? 
+							<p id='regulation-overview' className='info-detail'>None</p> :
+							<p id='regulation-overview' className='info-detail'>
+								{ element.regulationsOverview }
+							</p>
+						}
+					</li>
+					<li>
+						<p className='info-title'>Regulation URL</p>
+						{ element.regulationsurl === "" ? 
+							<p id='regulation-url' className='info-detail'>None</p> : 
+							<p>
+								<a href={ element.regulationsurl } target="_blank" rel="noopener noreferrer"  id='regulation-url' className='info-detail'>
+									{ element.regulationsurl }
+									<span><i className="fas fa-external-link-alt link-icon"></i></span>
+								</a>
+							</p>
+						}
+					</li>
+				</ul>
 			);
-
-			if (element.regulationsoverview === "") {
-				campInfo.push(
-					<p id='regulation-overview' key={9} className='info-detail'>None</p>
-				);
-			} else {
-				var regulation = [];
-				element.regulationsoverview.replace(/\n/g, " ").split('. ').forEach((e, i) => {
-					
-					if (e.charAt(0) === '-') {
-						e = e.substring(1);
-					}
-
-					regulation.push(
-						<p className='rule-item info-detail' key={ e }>
-							{ (i + 1) + ". " + e }
-						</p>
-					);
-				})
-				campInfo.push(
-					<div id='regulation-overview' key={9}>
-						{ regulation }
-					</div>
-				);
-			}
-
-			campInfo.push(
-				<p key={10} className='info-title'>Regulation URL</p>
-			);
-
-
-			if (element.regulationsurl === "") {
-				campInfo.push(
-					<p id='regulation-url' key={12} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<a href={ element.regulationsurl } target="_blank" rel="noopener noreferrer"  id='regulation-url' key={12} className='info-detail'>
-						{ element.regulationsurl }
-						<span><i className="fas fa-external-link-alt link-icon"></i></span>
-					</a>
-				);
-			}
 
 			campInfo.push(
 				<h3 key={13}>
@@ -199,64 +164,28 @@ class Campground extends Component {
 			);
 
 			campInfo.push(
-				<p key={14} className='info-title'>Reservation Description</p>
+				<ul key={4}>
+					<li>
+						<p className='info-title'>Reservation Information</p>
+						{ element.reservationInfo === "" ? 
+							<p id='reservation-description' className='info-detail'>None</p> : 
+							<p id='reservation-description' className='info-detail'>{ element.reservationInfo }</p>
+						}
+					</li>
+					<li>
+						<p className='info-title'>Reservation URL</p>
+						{ element.reservationUrl === "" ? 
+							<p id='reservation-url' className='info-detail'>None</p> : 
+							<p>
+								<a href={ element.reservationUrl } target="_blank" rel="noopener noreferrer"  id='reservation-url' className='info-detail'>
+									{ element.reservationUrl }
+									<span><i className="fas fa-external-link-alt link-icon"></i></span>
+								</a>
+							</p>
+						}
+					</li>
+				</ul>
 			);
-
-
-			if (element.reservationsdescription === "") {
-				campInfo.push(
-					<p id='reservation-description' key={15} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<p id='reservation-description' key={15} className='info-detail'>{ element.reservationsdescription }</p>
-				);
-			}
-
-			campInfo.push(
-				<p key={16} className='info-title'>Reservation Sites First Come First Serve</p>
-			);
-
-
-			if (element.reservationssitesfirstcome === "") {
-				campInfo.push(
-					<p id='reservation-first' key={17} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<p id='reservation-first' key={17} className='info-detail'>{ element.reservationssitesfirstcome }</p>
-				);
-			}
-
-			campInfo.push(
-				<p key={18} className='info-title'>Reservation Sites Reservable</p>
-			);
-
-
-			if (element.reservationssitesreservable === "") {
-				campInfo.push(
-					<p id='reservation-reserve' key={19} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<p id='reservation-reserve' key={19} className='info-detail'>{ element.reservationssitesreservable }</p>
-				);
-			}
-
-			campInfo.push(
-				<p key={20} className='info-title'>Reservation URL</p>
-			);
-
-
-			if (element.reservationsurl === "") {
-				campInfo.push(
-					<p id='reservation-url' key={21} className='info-detail'>None</p>
-				);
-			} else {
-				campInfo.push(
-					<p id='reservation-url' key={21} className='info-detail'>{ element.reservationsurl }</p>
-				);
-			}
 
 			campInfo.push(
 				<h3 key={22}>
@@ -265,13 +194,13 @@ class Campground extends Component {
 				</h3>
 			);
 
-			if (element.weatheroverview === "") {
+			if (element.weatherOverview === "") {
 				campInfo.push(
 					<p id='weather-overview' key={23}>No Overview</p>
 				);
 			} else {
 				campInfo.push(
-					<p id='weather-overview' key={23}>{ element.weatheroverview }</p>
+					<p id='weather-overview' key={23}>{ element.weatherOverview }</p>
 				);
 			}
 
@@ -298,25 +227,22 @@ class Campground extends Component {
 				</h3>
 			);
 
-			if (accessData.accessroads.length === 0) {
-				accessInfo.push(
-					<p key={1}>None</p>
-				);
-			} else {
-				accessInfo.push(
-					<div key={1}>
-						<div>
-							<p className='road-title'>Road Access</p>
-							<p className='road-detail'>{ accessData.accessroads[0] }</p>
-						</div>
-						<div>
-							<p className='road-title'>Road Info</p>
-							<p className='road-detail'>{ accessData.adainfo }</p>
-						</div>
-					</div>
-				);
-			}
-
+			accessInfo.push(
+				<ul key={1}>
+					<li>
+						<p className='road-title'>Road Access</p>
+						{ accessData.accessRoads.length === 0 ? 
+							<p>None</p>: 
+							<p className='road-detail'>{ accessData.accessRoads[0] }</p>
+						}
+					</li>
+					<li>
+						<p className='road-title'>Road Info</p>
+						<p className='road-detail'>{ accessData.adaInfo }</p>
+					</li>
+				</ul>
+			);
+			
 			accessInfo.push(
 				<h3 key={2}>
 					<span className='info-header'>
@@ -327,13 +253,13 @@ class Campground extends Component {
 				</h3>
 			);
 
-			if (accessData.cellphoneinfo === "") {
+			if (accessData.cellPhoneInfo === "") {
 				accessInfo.push(
 					<p key={3}>None</p>
 				);
 			} else {
 				accessInfo.push(
-					<p key={3}>{ accessData.cellphoneinfo }</p>
+					<p key={3}>{ accessData.cellPhoneInfo }</p>
 				);	
 			}
 
@@ -365,13 +291,13 @@ class Campground extends Component {
 				</h3>
 			);
 
-			if (accessData.firestovepolicy === "") {
+			if (accessData.fireStovePolicy === "") {
 				accessInfo.push(
 					<p key={7}>None</p>
 				);
 			} else {
 				accessInfo.push(
-					<p key={7}>{ accessData.firestovepolicy }</p>
+					<p key={7}>{ accessData.fireStovePolicy }</p>
 				);	
 			}
 
@@ -384,13 +310,13 @@ class Campground extends Component {
 				</h3>
 			);
 
-			if (accessData.internetinfo === "") {
+			if (accessData.internetInfo === "") {
 				accessInfo.push(
 					<p key={9}>None</p>
 				);
 			} else {
 				accessInfo.push(
-					<p key={9}>{ accessData.internetinfo }</p>
+					<p key={9}>{ accessData.internetInfo }</p>
 				);	
 			}
 
@@ -403,13 +329,13 @@ class Campground extends Component {
 				</h3>
 			);
 
-			if (accessData.wheelchairaccess === "") {
+			if (accessData.wheelchairAccess === "") {
 				accessInfo.push(
 					<p key={11}>None</p>
 				);
 			} else {
 				accessInfo.push(
-					<p key={11}>{ accessData.wheelchairaccess }</p>
+					<p key={11}>{ accessData.wheelchairAccess }</p>
 				);	
 			}
 
@@ -423,36 +349,38 @@ class Campground extends Component {
 			);
 
 			accessInfo.push(
-				<div key={13}>
-					<p className='vehicle-group'>RV</p>
-					<p className='vehicle-info'>Number of RVs Allowed: { accessData.rvallowed }</p>
-				</div>
+				<ul key={13}>
+					<li>
+						<p className='vehicle-group'>RV</p>
+						<ul>
+							<li>
+								<p className='vehicle-info'>Number of RVs Allowed: { accessData.rvAllowed }</p>
+							</li>
+							<li>
+								{ accessData.rvInfo === "" ? 
+									<p className='vehicle-info'>RV Info: None</p> : 
+									<p className='vehicle-info'>RV Info: { accessData.rvInfo }</p>
+								}
+							</li>
+							<li>
+								<p key={15} className='vehicle-info'>RV Maxlength: { accessData.rvMaxLength }</p>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<p className='vehicle-group'>Trailer</p>
+						<ul>
+							<li>
+								<p className='vehicle-info'>Number of Trailers Allowed: { accessData.trailerAllowed } </p>
+							</li>
+							<li>
+							<p key={17} className='vehicle-info'>Trailers Maxlength: { accessData.trailerMaxLength } </p>
+							</li>
+						</ul>
+					</li>
+				</ul>
 			);
 
-			if (accessData.rvinfo === "") {
-				accessInfo.push(
-					<p key={14} className='vehicle-info'>RV Info: None</p>
-				);
-			} else {
-				accessInfo.push(
-					<p key={14} className='vehicle-info'>RV Info: { accessData.rvinfo }</p>
-				);
-			}
-
-			accessInfo.push(
-				<p key={15} className='vehicle-info'>RV Maxlength: { accessData.rvmaxlength }</p>
-			);
-
-			accessInfo.push(
-				<div key={16}>
-					<p className='vehicle-group'>Trailer</p>
-					<p className='vehicle-info'>Number of Trailers Allowed: { accessData.trailerallowed } </p>
-				</div>
-			);
-
-			accessInfo.push(
-				<p key={17} className='vehicle-info'>Trailers Maxlength: { accessData.trailermaxlength } </p>
-			);
 
 			accessInfo.push(
 				<h3 key={20}>
@@ -463,13 +391,13 @@ class Campground extends Component {
 				</h3>
 			);
 
-			if (accessData.additionalinfo === "") {
+			if (accessData.additionalInfo === "") {
 				accessInfo.push(
 					<p key={21}>None</p>
 				);
 			} else {
 				accessInfo.push(
-					<p key={21}>{ accessData.additionalinfo }</p>
+					<p key={21}>{ accessData.additionalInfo }</p>
 				);	
 			}
 
@@ -484,49 +412,49 @@ class Campground extends Component {
 			var noList = [];
 			var amenData = element.amenities;
 
-			if (amenData.ampitheater.toUpperCase().includes('YES')) {
+			if (amenData.amphitheater.toUpperCase().includes('YES')) {
 				yesList.push('Amphitheater');
 			} else {
 				noList.push('Amphitheater');
 			}
 
-			if (amenData.campstore.toUpperCase().includes('YES')) {
+			if (amenData.campStore.toUpperCase().includes('YES')) {
 				yesList.push('Camp Store');
 			} else {
 				noList.push('Camp Store');
 			}
 
-			if (amenData.cellphonereception.toUpperCase().includes('YES')) {
+			if (amenData.cellPhoneReception.toUpperCase().includes('YES')) {
 				yesList.push('Cell Phone Reception');
 			} else {
 				noList.push('Cell Phone Reception');
 			}
 
-			if (amenData.dumpstation.toUpperCase().includes('YES')) {
+			if (amenData.dumpStation.toUpperCase().includes('YES')) {
 				yesList.push('Dump Station');
 			} else {
 				noList.push('Dump Station');
 			}
 
-			if (amenData.firewoodforsale.toUpperCase().includes('YES')) {
+			if (amenData.firewoodForSale.toUpperCase().includes('YES')) {
 				yesList.push('Firewood For Sale');
 			} else {
 				noList.push('Firewood For Sale');
 			}
 
-			if (amenData.foodstoragelockers.toUpperCase().includes('YES')) {
+			if (amenData.foodStorageLockers.toUpperCase().includes('YES')) {
 				yesList.push('Food Storage Lockers');
 			} else {
 				noList.push('Food Storage Lockers');
 			}
 
-			if (amenData.iceavailableforsale.toUpperCase().includes('YES')) {
+			if (amenData.iceAvailableForSale.toUpperCase().includes('YES')) {
 				yesList.push('Ice Available For Sale');
 			} else {
 				noList.push('Ice Available For Sale');
 			}
 
-			if (amenData.internetconnectivity.toUpperCase().includes('YES')) {
+			if (amenData.internetConnectivity.toUpperCase().includes('YES')) {
 				yesList.push('Internet Connectivity');
 			} else {
 				noList.push('Internet Connectivity');
@@ -538,8 +466,8 @@ class Campground extends Component {
 				noList.push('Laundry');
 			}
 
-			if (amenData.potablewater.length !== 0 
-					&& amenData.potablewater[0].toUpperCase().includes('YES')) {
+			if (amenData.potableWater.length !== 0 
+					&& amenData.potableWater[0].toUpperCase().includes('YES')) {
 				yesList.push('Potable Water');
 			} else {
 				noList.push('Potable Water');
@@ -552,7 +480,7 @@ class Campground extends Component {
 				noList.push('Showers');
 			}
 
-			if (amenData.stafforvolunteerhostonsite.toUpperCase().includes('YES')) {
+			if (amenData.staffOrVolunteerHostOnsite.toUpperCase().includes('YES')) {
 				yesList.push('Staff Or Volunteer Host On Site');
 			} else {
 				noList.push('Staff Or Volunteer Host On Site');
@@ -565,7 +493,7 @@ class Campground extends Component {
 				noList.push('Toilets');
 			}
 
-			if (amenData.trashrecyclingcollection.toUpperCase().includes('YES')) {
+			if (amenData.trashRecyclingCollection.toUpperCase().includes('YES')) {
 				yesList.push('Trash Recycling Collection');
 			} else {
 				noList.push('Trash Recycling Collection');
@@ -603,19 +531,19 @@ class Campground extends Component {
 			var siteTab = (
 				<div className='site-tab'>
 					<p className='site-item'>
-						<span className='dot-icon' data-number={ siteData.totalsites }>
-							<i className={"fas fa-circle number-" + siteData.totalsites}></i>
+						<span className='dot-icon' data-number={ siteData.totalSites }>
+							<i className={"fas fa-circle number-" + siteData.totalSites}></i>
 						</span>
 						<span className='site-name'>Total Sites: </span>
-						<span>{ siteData.totalsites }</span>
+						<span>{ siteData.totalSites }</span>
 					</p>
 
 					<p className='site-item'>
-						<span className='dot-icon' data-number={ siteData.electricalhookups }>
-							<i className={"fas fa-circle number-" + siteData.electricalhookups}></i>
+						<span className='dot-icon' data-number={ siteData.electricalHookups }>
+							<i className={"fas fa-circle number-" + siteData.electricalHookups}></i>
 						</span>
 						<span className='site-name'>Electrical Hookups: </span>
-						<span>{ siteData.electricalhookups }</span>
+						<span>{ siteData.electricalHookups }</span>
 					</p>
 
 					<p className='site-item'>
@@ -635,27 +563,27 @@ class Campground extends Component {
 					</p>
 
 					<p className='site-item'>
-						<span className='dot-icon' data-number={ siteData.rvonly }>
-							<i className={"fas fa-circle number-" + siteData.rvonly}></i>
+						<span className='dot-icon' data-number={ siteData.rvOnly }>
+							<i className={"fas fa-circle number-" + siteData.rvOnly}></i>
 						</span>
 						<span className='site-name'>RV Only: </span>
-						<span>{ siteData.rvonly }</span>
+						<span>{ siteData.rvOnly }</span>
 					</p>
 
 					<p className='site-item'>
-						<span className='dot-icon' data-number={ siteData.tentonly }>
-							<i className={"fas fa-circle number-" + siteData.tentonly}></i>
+						<span className='dot-icon' data-number={ siteData.tentOnly }>
+							<i className={"fas fa-circle number-" + siteData.tentOnly}></i>
 						</span>
 						<span className='site-name'>Tent Only: </span>
-						<span>{ siteData.tentonly }</span>
+						<span>{ siteData.tentOnly }</span>
 					</p>
 
 					<p className='site-item'>
-						<span className='dot-icon' data-number={ siteData.walkboatto }>
-							<i className={"fas fa-circle number-" + siteData.walkboatto}></i>
+						<span className='dot-icon' data-number={ siteData.walkBoatTo }>
+							<i className={"fas fa-circle number-" + siteData.walkBoatTo}></i>
 						</span>
 						<span className='site-name'>Walk & Boat To: </span>
-						<span>{ siteData.walkboatto }</span>
+						<span>{ siteData.walkBoatTo }</span>
 					</p>
 
 					<p className='site-item'>
@@ -686,7 +614,7 @@ class Campground extends Component {
 					</p>
 					{ element.weatheroverview !== "" && 
 						<p className='camp-weat'>
-							<span className='bold-text'>Weather:</span> { element.weatheroverview }
+							<span className='bold-text'>Weather:</span> { element.weatherOverview }
 						</p>
 					}
 					<p className='more-detail-btn' onClick={ this.handleClick.bind(this, index) }>

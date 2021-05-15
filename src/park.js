@@ -78,7 +78,7 @@ class Park extends Component {
 			}
 		})
 		.then(res => {
-			//console.log(res.data.data);
+			console.log(res.data.data);
 			self.setState({
 				campground: res.data.data,
 				campLoading: false
@@ -578,7 +578,7 @@ class Park extends Component {
 				<div className='park-place' key={ index }>
 					<p className='place-title'>{ element.title }</p>
 					<div className='place-detail'>
-						{ element.listingimage.url !== "" && 
+						{/* { element.listingimage.url !== "" && 
 						<div>
 							<div className='place-image'>
 								<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
@@ -591,7 +591,7 @@ class Park extends Component {
 								}
 							</div>
 						</div>
-						}
+						} */}
 						<div className='place-descr'>
 							<p className='listing-descr'>{ element.listingdescription }</p>
 							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='place-url'>Read more</a>
@@ -602,67 +602,67 @@ class Park extends Component {
 		})
 
 		var lessonList = [];
-		this.state.lessons.forEach((element, index) => {
-			var subjectList = [];
-			element.subject.split(",").forEach((e, i) => {
-				if (e === 'Science') {
-					subjectList.push(
-						<span className='has-border subject-item subject-science' key={ i }>{ e }</span>
-					);
-				} else if (e === 'Math') {
-					subjectList.push(
-						<span className='has-border subject-item subject-math' key={ i }>{ e }</span>
-					);
-				} else if (e === 'Social Studies') {
-					subjectList.push(
-						<span className='has-border subject-item subject-social' key={ i }>{ e }</span>
-					);
-				} else if (e === 'Literacy and Language Arts') {
-					subjectList.push(
-						<span className='has-border subject-item subject-ela' key={ i }>{ e }</span>
-					);
-				} else {
-					subjectList.push(
-						<span className='has-border subject-item subject-else' key={ i }>{ e }</span>
-					);
-				}
-			})
+		// this.state.lessons.forEach((element, index) => {
+		// 	var subjectList = [];
+		// 	element.subject.split(",").forEach((e, i) => {
+		// 		if (e === 'Science') {
+		// 			subjectList.push(
+		// 				<span className='has-border subject-item subject-science' key={ i }>{ e }</span>
+		// 			);
+		// 		} else if (e === 'Math') {
+		// 			subjectList.push(
+		// 				<span className='has-border subject-item subject-math' key={ i }>{ e }</span>
+		// 			);
+		// 		} else if (e === 'Social Studies') {
+		// 			subjectList.push(
+		// 				<span className='has-border subject-item subject-social' key={ i }>{ e }</span>
+		// 			);
+		// 		} else if (e === 'Literacy and Language Arts') {
+		// 			subjectList.push(
+		// 				<span className='has-border subject-item subject-ela' key={ i }>{ e }</span>
+		// 			);
+		// 		} else {
+		// 			subjectList.push(
+		// 				<span className='has-border subject-item subject-else' key={ i }>{ e }</span>
+		// 			);
+		// 		}
+		// 	})
 
-			lessonList.push(
-				<div className='park-lesson' key={ index }>
-					<p className='lesson-title'>{ element.title }</p>
-					<div className='lesson-detail'>
-						<p className='lesson-subject'>
-							<span className='bold-text'>Subject: </span>
-							{ subjectList }
-						</p>
+		// 	lessonList.push(
+		// 		<div className='park-lesson' key={ index }>
+		// 			<p className='lesson-title'>{ element.title }</p>
+		// 			<div className='lesson-detail'>
+		// 				<p className='lesson-subject'>
+		// 					<span className='bold-text'>Subject: </span>
+		// 					{ subjectList }
+		// 				</p>
 						
-						<p className='lesson-duration'>
-							<span className='bold-text'>Duration: </span>
-							{ element.duration }
-						</p>
-						<p className='lesson-gradelevel'>
-							<span className='bold-text'>Grade level: </span>
-							{ element.gradelevel }
-						</p>
-						<div className='lesson-questionobjective'>
-							<span className='bold-text'>Objective</span>
-							<br />
-							<pre className='question-objective'>{ element.questionobjective }</pre>
-						</div>
+		// 				<p className='lesson-duration'>
+		// 					<span className='bold-text'>Duration: </span>
+		// 					{ element.duration }
+		// 				</p>
+		// 				<p className='lesson-gradelevel'>
+		// 					<span className='bold-text'>Grade level: </span>
+		// 					{ element.gradelevel }
+		// 				</p>
+		// 				<div className='lesson-questionobjective'>
+		// 					<span className='bold-text'>Objective</span>
+		// 					<br />
+		// 					<pre className='question-objective'>{ element.questionobjective }</pre>
+		// 				</div>
 							  
-						<div className='lesson-url'>
-							<a href={ element.url } target='_blank' rel="noopener noreferrer">
-								<i className="fas fa-info-circle lesson-info-icon"></i>
-								More information
-							</a>
-						</div>
+		// 				<div className='lesson-url'>
+		// 					<a href={ element.url } target='_blank' rel="noopener noreferrer">
+		// 						<i className="fas fa-info-circle lesson-info-icon"></i>
+		// 						More information
+		// 					</a>
+		// 				</div>
 					
 						
-					</div>
-				</div>
-			);
-		})
+		// 			</div>
+		// 		</div>
+		// 	);
+		// })
 				
 
 		var newsList = [];
@@ -701,13 +701,13 @@ class Park extends Component {
 				<div className='park-article' key={ index }>
 					<p className='article-title'>{ element.title }</p>
 					<div className='article-detail'>
-						{ element.listingimage.url !== "" && 
+						{/* { element.listingimage.url !== "" && 
 							<div>
 								<div className='article-image'>
 									<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
 								</div>
 							</div>
-						}
+						} */}
 						
 						<div className='article-descr'>
 							<p>{ element.listingdescription }</p>
