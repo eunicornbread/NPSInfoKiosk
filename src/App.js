@@ -33,7 +33,7 @@ class App extends Component {
                   </button>
                 </NavLink>
                 <button type='button' className='ghost-button' id='ghost-2'>
-                  <a href='https://github.com/eunicornbread/mindSumoChallenge' 
+                  <a href='https://github.com/eunicornbread/NPSInfoKiosk' 
                       className='button-text'>Go to GitHub</a>
                 </button>
               </div>
