@@ -725,10 +725,17 @@
 	margin-right: 30px;
 	padding: 10px;
 	border: 1px #E0E0E0 solid;
+	width: 322px;
 }
 
 .people-image img {
-	max-width: 300px;
+	width: 300px;
+	height: 335px;
+	object-fit: cover;
+}
+
+#quick-fact-list {
+	padding-left: 25px !important;
 }
 
 .park-people .people-caption {
@@ -771,10 +778,13 @@
 	margin-right: 30px;
 	padding: 10px;
 	border: 1px #E0E0E0 solid;
+	width: 322px;
 }
 
 .place-image img {
-	max-width: 300px;
+	width: 300px;
+	height: 225px;
+	object-fit: cover;
 }
 
 .park-place .place-caption {
