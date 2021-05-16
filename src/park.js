@@ -687,7 +687,7 @@ class Park extends Component {
 				
 
 		var newsList = [];
-		console.log(this.state.news);
+		// console.log(this.state.news);
 		this.state.news.forEach((element, index) => {
 			newsList.push(
 				<div className='park-news' key={ index }>
