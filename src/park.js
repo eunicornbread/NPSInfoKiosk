@@ -549,7 +549,7 @@ class Park extends Component {
 				<div className='park-people' key={ index }>
 					<p className='people-title'>{ element.title }</p>
 					<div className='people-detail'>
-						{ element.images.length !== 0 &&  element.images[0].url !== "" && 
+						{ (element.images.length !== 0 && element.images[0].url !== "") ?  
 						<div>
 							<div className='people-image'>
 								<img src={ element.images[0].url} alt={ element.images[0].altText } />
@@ -561,6 +561,9 @@ class Park extends Component {
 									<p className='people-credit'>Credit: { element.images[0].credit }</p>
 								}
 							</div>
+						</div> : 
+						<div className='people-image'>
+							<div className="placeholder-img">No Image Available</div>
 						</div>
 						}
 						<div className='people-descr'>
@@ -586,7 +589,7 @@ class Park extends Component {
 				<div className='park-place' key={ index }>
 					<p className='place-title'>{ element.title }</p>
 					<div className='place-detail'>
-						{ element.images.length !== 0 && element.images[0].url !== "" && 
+						{ element.images.length !== 0 && element.images[0].url !== "" ? 
 						<div>
 							<div className='place-image'>
 								<img src={ element.images[0].url } alt={ element.images[0].altText } />
@@ -598,11 +601,14 @@ class Park extends Component {
 									<p className='place-credit'>Credit: { element.images[0].credit }</p>
 								}
 							</div>
+						</div> : 
+						<div className='place-image'>
+							<div className="placeholder-img">No Image Available</div>
 						</div>
 						}
 						<div className='place-descr'>
 							<p className='listing-descr'>{ element.listingDescription }</p>
-							<p>Quick Facts: </p>
+							{ element.quickFacts.length !== 0 && <p>Quick Facts: </p> }
 							<ul>
 								{ element.quickFacts.map((fact, idx) => 
 									<li key={idx}>{fact.name}: {fact.value}</li>
@@ -616,7 +622,7 @@ class Park extends Component {
 		})
 
 		var lessonList = [];
-		console.log(this.state.lessons);
+		// console.log(this.state.lessons);
 		this.state.lessons.forEach((element, index) => {
 			var subjectList = [];
 			element.subject.forEach((e, i) => {
@@ -681,12 +687,13 @@ class Park extends Component {
 				
 
 		var newsList = [];
+		console.log(this.state.news);
 		this.state.news.forEach((element, index) => {
 			newsList.push(
 				<div className='park-news' key={ index }>
 					<p className='news-title'>{ element.title }</p>
 					<div className='news-detail'>
-						{ element.image.url !== "" && 
+						{ element.image.url !== "" ? 
 						<div>
 							<div className='news-image'>
 								<img src={ element.image.url} alt={ element.image.altText } />
@@ -698,11 +705,14 @@ class Park extends Component {
 									<p className='news-credit'>Credit: { element.image.credit }</p>
 								}
 							</div>
+						</div> : 
+						<div className='news-image'>
+							<div className="placeholder-img">No Image Available</div>
 						</div>
 						}
 						<div className='news-descr'>
 							<p className='news-abstract'>{ element.abstract }</p>
-							<p className='news-releasedate'>{ element.releasedate }</p>
+							<p className='news-releasedate'>{ element.releaseDate }</p>
 							<a href={ element.url } target='_blank' rel="noopener noreferrer" className='news-url'>Read more</a>
 						</div>
 					</div>
@@ -711,21 +721,25 @@ class Park extends Component {
 		})
 
 		var articleList = [];
+		// console.log(this.state.articles);
 		this.state.articles.forEach((element, index) => {
 			articleList.push(
 				<div className='park-article' key={ index }>
 					<p className='article-title'>{ element.title }</p>
 					<div className='article-detail'>
-						{/* { element.listingimage.url !== "" && 
+						{ element.listingImage.url !== "" ?  
 							<div>
 								<div className='article-image'>
-									<img src={ element.listingimage.url } alt={ element.listingimage.altText } />
+									<img src={ element.listingImage.url } alt={ element.listingImage.altText } />
 								</div>
+							</div> : 
+							<div className='article-image'>
+								<div className="placeholder-img">No Image Available</div>
 							</div>
-						} */}
+						}
 						
 						<div className='article-descr'>
-							<p>{ element.listingdescription }</p>
+							<p>{ element.listingDescription }</p>
 							<a href={ element.url } target='_blank' rel="noopener noreferrer">Read more</a>
 						</div>
 					</div>
