@@ -6,6 +6,14 @@ The website can be found [here](https://eunicornbread.github.io/NPSInfoKiosk/).
 
 ## Gallery
 
+#### Search
+
+[include video here]
+
+#### Park Details
+
+[include video here]
+
 park: badl, bisc, abli, alka, hale
 
 ## Frameworks
