@@ -2,6 +2,10 @@
 
 A web application that utilizes the [National Park Service API](https://www.nps.gov/subjects/developer/api-documentation.htm#/) to provide tools to assist users in finding information. It includes features such as state and designation filtering, name and keyword search, and displays relevant information about a selected destination.
 
+## Gallery
+
+park: badl, bisc, abli, alka
+
 ## Frameworks
 
 * [React](https://reactjs.org/docs/getting-started.html) - Javascript library
