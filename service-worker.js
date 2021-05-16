@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/NPSInfoKiosk/precache-manifest.537f2fcfc25e0179e18a604533e75247.js"
+  "/NPSInfoKiosk/precache-manifest.6ad48666e8b9b30d466ede95e9962dba.js"
 );
 
 self.addEventListener('message', (event) => {
