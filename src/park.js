@@ -825,7 +825,7 @@ class Park extends Component {
 						  <li className="nav-item mx-auto park-nav-item" id="nav-park">
 						    <a className="nav-link active nav-option" id="pills-park-tab" data-toggle="pill" 
 								href="#pills-park" role="tab" aria-controls="pills-park" 
-								aria-selected="true"><span className='nav-tex line-grow'>Park Detail</span></a>
+								aria-selected="true"><span className='nav-tex line-grow'>Park Details</span></a>
 						  </li>
 						  <li className="nav-item mx-auto park-nav-item" id="nav-thing">
 						    <a className="nav-link nav-option" id="pills-thing-tab" data-toggle="pill" 
